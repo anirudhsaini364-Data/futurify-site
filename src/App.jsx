@@ -570,7 +570,7 @@ export default function App() {
         />
 
               <ReCAPTCHA
-                sitekey="6LcDYtIrAAAAAHJVn0jJ9JfZrqwKr2IJSROPkcNN"
+                sitekey="6LeRytIrAAAAALe8-oiz3knc41X4xMDCwVsVti39"
                 onChange={handleCaptchaChange}
               />
               <button
