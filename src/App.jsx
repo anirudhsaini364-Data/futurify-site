@@ -11,7 +11,12 @@ export default function App() {
     await loadSlim(engine);
   }, []);
 
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    details: "",
+  });
   const [submissions, setSubmissions] = useState({});
   const [message, setMessage] = useState("");
   const [captchaValue, setCaptchaValue] = useState(null);
@@ -56,7 +61,7 @@ export default function App() {
         [email]: (prev[email] || 0) + 1,
       }));
       setMessage("Form submitted successfully!");
-      setFormData({ name: "", email: "", phone: "" });
+      setFormData({ name: "", email: "", phone: "", details: "" });
       setCaptchaValue(null);
       setShowFormPopup(false);
     } catch (err) {
@@ -66,36 +71,12 @@ export default function App() {
   };
 
   const serviceCards = [
-    {
-      title: "Web Development",
-      desc: "Enterprise-grade web apps with scalable architecture.",
-      icon: "💻",
-    },
-    {
-      title: "AI & Data Science",
-      desc: "AI solutions and analytics for smarter decisions.",
-      icon: "🤖",
-    },
-    {
-      title: "Digital Marketing",
-      desc: "Optimize digital presence with data-driven strategies.",
-      icon: "📈",
-    },
-    {
-      title: "Cloud Solutions",
-      desc: "Secure, scalable cloud infrastructure.",
-      icon: "☁️",
-    },
-    {
-      title: "UI/UX Design",
-      desc: "Modern, intuitive interfaces.",
-      icon: "🎨",
-    },
-    {
-      title: "Automation Projects",
-      desc: "Streamline workflows with AI-driven automation.",
-      icon: "⚙️🤖",
-    },
+    { title: "Web Development", desc: "Enterprise-grade web apps with scalable architecture.", icon: "💻", color: "#00c6ff" },
+    { title: "AI & Data Science", desc: "AI solutions and analytics for smarter decisions.", icon: "🤖", color: "#f00000" },
+    { title: "Digital Marketing", desc: "Optimize digital presence with data-driven strategies.", icon: "📈", color: "#f7971e" },
+    { title: "Cloud Solutions", desc: "Secure, scalable cloud infrastructure.", icon: "☁️", color: "#00c6ff" },
+    { title: "UI/UX Design", desc: "Modern, intuitive interfaces.", icon: "🎨", color: "#ff5f6d" },
+    { title: "Automation Projects", desc: "Streamline workflows with AI-driven automation.", icon: "⚙️🤖", color: "#1de9b6" },
   ];
 
   const sliderSettings = {
@@ -118,6 +99,7 @@ export default function App() {
     maxWidth: "1200px",
     margin: "0 auto",
   };
+
   const headingStyle = {
     fontSize: "3rem",
     marginBottom: "40px",
@@ -125,19 +107,12 @@ export default function App() {
     color: "#00ffff",
     textAlign: "center",
   };
+
   const textStyle = { color: "#ddd", fontSize: "1.2rem", lineHeight: 1.6 };
 
   return (
-    <div
-      style={{
-        position: "relative",
-        minHeight: "100vh",
-        backgroundColor: "#0a0f1f",
-        fontFamily: "'Poppins', sans-serif",
-        overflowX: "hidden",
-      }}
-    >
-      {/* Background Particles */}
+    <div style={{ position: "relative", minHeight: "100vh", backgroundColor: "#0a0f1f", fontFamily: "'Poppins', sans-serif", overflowX: "hidden" }}>
+      {/* Particles */}
       <Particles
         id="main-bg"
         init={particlesInit}
@@ -147,13 +122,7 @@ export default function App() {
           particles: {
             number: { value: 60 },
             color: { value: "#00ffff" },
-            links: {
-              enable: true,
-              color: "#00ffff",
-              distance: 130,
-              opacity: 0.25,
-              width: 1,
-            },
+            links: { enable: true, color: "#00ffff", distance: 130, opacity: 0.25, width: 1 },
             move: { enable: true, speed: 0.5 },
             shape: { type: "circle" },
             opacity: { value: 0.5 },
@@ -161,53 +130,13 @@ export default function App() {
           },
           detectRetina: true,
         }}
-        style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          zIndex: -1,
-        }}
+        style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: -1 }}
       />
 
       {/* Navbar */}
-      <nav
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "15px 40px",
-          backgroundColor: "rgba(0,0,0,0.85)",
-          zIndex: 50,
-          flexWrap: "wrap",
-          boxSizing: "border-box",
-        }}
-      >
-        <h1
-          style={{
-            color: "#00ffff",
-            fontSize: "1.5rem",
-            fontWeight: "bold",
-            textShadow: "0 0 10px #00ffff",
-            margin: 0,
-          }}
-        >
-          Futurify
-        </h1>
-        <div
-          style={{
-            display: "flex",
-            gap: "25px",
-            flexWrap: "wrap",
-            justifyContent: "flex-end",
-            flexGrow: 1,
-          }}
-        >
+      <nav style={{ position: "fixed", top: 0, left: 0, width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "15px 20px", backgroundColor: "rgba(0,0,0,0.85)", zIndex: 50, flexWrap: "wrap" }}>
+        <h1 style={{ color: "#00ffff", fontSize: "1.5rem", fontWeight: "bold", textShadow: "0 0 10px #00ffff", margin: 0 }}>Futurify</h1>
+        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "flex-end", flexGrow: 1 }}>
           {[
             { name: "Home", ref: null },
             { name: "Services", ref: servicesRef },
@@ -215,14 +144,7 @@ export default function App() {
             { name: "Why Choose Us", ref: whyRef },
             { name: "Contact Us", ref: contactRef },
           ].map((item) => (
-            <span
-              key={item.name}
-              style={{
-                cursor: "pointer",
-                color: "#fff",
-                textShadow: "0 0 5px #00ffff",
-                transition: "0.3s",
-              }}
+            <span key={item.name} style={{ cursor: "pointer", color: "#fff", textShadow: "0 0 5px #00ffff", transition: "0.3s" }}
               onClick={() => scrollToSection(item.ref)}
               onMouseEnter={(e) => (e.target.style.color = "#1de9b6")}
               onMouseLeave={(e) => (e.target.style.color = "#fff")}
@@ -233,66 +155,15 @@ export default function App() {
         </div>
       </nav>
 
-      {/* Sections */}
       <div style={{ position: "relative", zIndex: 10 }}>
         {/* Hero */}
-        <section
-          style={{
-            paddingTop: "120px",
-            minHeight: "80vh",
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "center",
-            alignItems: "center",
-            gap: "40px",
-          }}
-        >
-          <div
-            style={{
-              flex: "1 1 400px",
-              minWidth: "300px",
-              textAlign: "center",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "4rem",
-                fontWeight: 700,
-                textAlign: "center",
-                color: "#00ffff",
-                textShadow: "0 0 8px #00ffff, 0 0 20px #1de9b6",
-                marginBottom: "20px",
-              }}
-            >
-              Build Your Digital Future
-            </h2>
-            <p
-              style={{
-                color: "#ddd",
-                fontSize: "1.3rem",
-                maxWidth: "700px",
-                margin: "0 auto 30px auto",
-              }}
-            >
-              Cutting-edge solutions in{" "}
-              <span style={{ color: "#1de9b6" }}>Web Development</span>,{" "}
-              <span style={{ color: "#1de9b6" }}>AI & Data Science</span>, and{" "}
-              <span style={{ color: "#1de9b6" }}>Digital Marketing</span>.
+        <section style={{ paddingTop: "120px", minHeight: "80vh", display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "40px", textAlign: "center" }}>
+          <div style={{ flex: "1 1 400px", minWidth: "300px" }}>
+            <h2 style={{ fontSize: "3.5rem", fontWeight: 700, color: "#00ffff", textShadow: "0 0 8px #00ffff, 0 0 20px #1de9b6", marginBottom: "20px" }}>Build Your Digital Future</h2>
+            <p style={{ color: "#ddd", fontSize: "1.2rem", maxWidth: "700px", margin: "0 auto 30px auto" }}>
+              Cutting-edge solutions in <span style={{ color: "#1de9b6" }}>Web Development</span>, <span style={{ color: "#1de9b6" }}>AI & Data Science</span>, and <span style={{ color: "#1de9b6" }}>Digital Marketing</span>.
             </p>
-            <button
-              onClick={() => setShowFormPopup(true)}
-              style={{
-                padding: "14px 30px",
-                background: "linear-gradient(90deg, #00ffff, #1de9b6)",
-                border: "none",
-                borderRadius: "12px",
-                fontWeight: "bold",
-                color: "#000",
-                fontSize: "1rem",
-                cursor: "pointer",
-                boxShadow: "0 0 15px #00ffff, 0 0 25px #1de9b6",
-              }}
-            >
+            <button onClick={() => setShowFormPopup(true)} style={{ padding: "12px 28px", background: "linear-gradient(90deg, #00ffff, #1de9b6)", border: "none", borderRadius: "12px", fontWeight: "bold", color: "#000", cursor: "pointer", fontSize: "1rem", boxShadow: "0 0 15px #00ffff, 0 0 25px #1de9b6" }}>
               Start Building
             </button>
           </div>
@@ -304,31 +175,9 @@ export default function App() {
           <Slider {...sliderSettings}>
             {serviceCards.map((service, idx) => (
               <div key={idx} style={{ padding: "10px" }}>
-                <div
-                  style={{
-                    background: "#111",
-                    padding: "30px",
-                    borderRadius: "20px",
-                    textAlign: "center",
-                    minHeight: "280px",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    boxShadow: "0 0 20px rgba(0,255,255,0.3)",
-                  }}
-                >
-                  <div style={{ fontSize: "3rem", marginBottom: "15px" }}>
-                    {service.icon}
-                  </div>
-                  <h4
-                    style={{
-                      fontSize: "1.5rem",
-                      marginBottom: "15px",
-                      color: "#1de9b6",
-                    }}
-                  >
-                    {service.title}
-                  </h4>
+                <div style={{ background: `linear-gradient(135deg, ${service.color} 0%, #111 100%)`, padding: "30px", borderRadius: "20px", textAlign: "center", minHeight: "280px", display: "flex", flexDirection: "column", justifyContent: "center", boxShadow: `0 0 25px ${service.color}` }}>
+                  <div style={{ fontSize: "3rem", marginBottom: "15px" }}>{service.icon}</div>
+                  <h4 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#fff" }}>{service.title}</h4>
                   <p style={{ color: "#ddd" }}>{service.desc}</p>
                 </div>
               </div>
@@ -337,34 +186,15 @@ export default function App() {
         </section>
 
         {/* About */}
-        <section
-          ref={aboutRef}
-          style={{
-            ...sectionStyle,
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            gap: "40px",
-          }}
-        >
-          <img
-            src="https://source.unsplash.com/500x400/?technology,futuristic"
-            alt="About"
-            style={{
-              borderRadius: "20px",
-              maxWidth: "500px",
-              flex: "1 1 400px",
-              boxShadow: "0 0 25px #00ffff",
-            }}
-          />
+        <section ref={aboutRef} style={{ ...sectionStyle, display: "flex", flexWrap: "wrap", alignItems: "center", gap: "40px" }}>
+          <img src="https://source.unsplash.com/500x400/?technology,futuristic" alt="About" style={{ borderRadius: "20px", maxWidth: "500px", flex: "1 1 400px", boxShadow: "0 0 25px #00ffff", width: "100%" }} />
           <div style={{ flex: "1 1 400px" }}>
             <h3 style={{ fontSize: "3rem", marginBottom: "20px", color: "#00ffff" }}>
               Who We Are
             </h3>
             <p style={textStyle}>
-              We are innovators, developers, and strategists passionate about
-              transforming businesses with futuristic technology. Stay ahead in
-              the digital era with our solutions.
+              We are innovators, developers, and strategists passionate about transforming businesses with futuristic technology.
+              Stay ahead in the digital era with our cutting-edge solutions tailored for your growth.
             </p>
           </div>
         </section>
@@ -455,122 +285,122 @@ export default function App() {
       </div>
 
       {/* Popup Form */}
-{showFormPopup && (
-  <div
-    style={{
-      position: "fixed",
-      top: 0,
-      left: 0,
-      width: "100%",
-      height: "100%",
-      background: "rgba(0,0,0,0.85)",
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      zIndex: 200,
-      padding: "20px",
-    }}
-  >
-    <div
-      style={{
-        background: "#0c132b",
-        padding: "40px",
-        borderRadius: "25px",
-        maxWidth: "500px",
-        width: "100%",
-        boxShadow: "0 0 30px #00ffff",
-      }}
-    >
-      <h3
-        style={{
-          color: "#00ffff",
-          marginBottom: "20px",
-          textAlign: "center",
-        }}
-      >
-        Start Your Project
-      </h3>
-      <p
-        style={{
-          color: "#ddd",
-          marginBottom: "20px",
-          textAlign: "center",
-        }}
-      >
-        Share your project details and our team will get back to you with futuristic solutions.
-      </p>
+      {showFormPopup && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            background: "rgba(0,0,0,0.85)",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            zIndex: 200,
+            padding: "20px",
+          }}
+        >
+          <div
+            style={{
+              background: "#0c132b",
+              padding: "40px",
+              borderRadius: "25px",
+              maxWidth: "500px",
+              width: "100%",
+              boxShadow: "0 0 30px #00ffff",
+            }}
+          >
+            <h3
+              style={{
+                color: "#00ffff",
+                marginBottom: "20px",
+                textAlign: "center",
+              }}
+            >
+              Start Your Project
+            </h3>
+            <p
+              style={{
+                color: "#ddd",
+                marginBottom: "20px",
+                textAlign: "center",
+              }}
+            >
+              Share your project details and our team will get back to you with futuristic solutions.
+            </p>
 
-      <form
-        onSubmit={handleSubmit}
-        style={{ display: "flex", flexDirection: "column", gap: "15px" }}
-      >
-        <input
-          required
-          placeholder="Your Name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          style={{
-            padding: "12px",
-            borderRadius: "10px",
-            border: "none",
-            outline: "none",
-            backgroundColor: "#111",
-            color: "#fff",
-          }}
-        />
-        <input
-          required
-          placeholder="Your Email"
-          name="email"
-          type="email"
-          value={formData.email}
-          onChange={handleChange}
-          style={{
-            padding: "12px",
-            borderRadius: "10px",
-            border: "none",
-            outline: "none",
-            backgroundColor: "#111",
-            color: "#fff",
-          }}
-        />
-        <input
-          required
-          placeholder="Phone Number"
-          name="phone"
-          type="tel"
-          value={formData.phone}
-          onChange={handleChange}
-          style={{
-            padding: "12px",
-            borderRadius: "10px",
-            border: "none",
-            outline: "none",
-            backgroundColor: "#111",
-            color: "#fff",
-          }}
-        />
-        <textarea
-          required
-          placeholder="Project Details"
-          name="details"
-          value={formData.details}
-          onChange={handleChange}
-          rows={4}
-          style={{
-            padding: "12px",
-            borderRadius: "10px",
-            border: "none",
-            outline: "none",
-            backgroundColor: "#111",
-            color: "#fff",
-            resize: "none",
-          }}
-        />
+            <form
+              onSubmit={handleSubmit}
+              style={{ display: "flex", flexDirection: "column", gap: "15px" }}
+            >
+              <input
+                required
+                placeholder="Your Name"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                style={{
+                  padding: "12px",
+                  borderRadius: "10px",
+                  border: "none",
+                  outline: "none",
+                  backgroundColor: "#111",
+                  color: "#fff",
+                }}
+              />
+              <input
+                required
+                placeholder="Your Email"
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                style={{
+                  padding: "12px",
+                  borderRadius: "10px",
+                  border: "none",
+                  outline: "none",
+                  backgroundColor: "#111",
+                  color: "#fff",
+                }}
+              />
+              <input
+                required
+                placeholder="Phone Number"
+                name="phone"
+                type="tel"
+                value={formData.phone}
+                onChange={handleChange}
+                style={{
+                  padding: "12px",
+                  borderRadius: "10px",
+                  border: "none",
+                  outline: "none",
+                  backgroundColor: "#111",
+                  color: "#fff",
+                }}
+              />
+              <textarea
+                required
+                placeholder="Project Details"
+                name="details"
+                value={formData.details}
+                onChange={handleChange}
+                rows={4}
+                style={{
+                  padding: "12px",
+                  borderRadius: "10px",
+                  border: "none",
+                  outline: "none",
+                  backgroundColor: "#111",
+                  color: "#fff",
+                  resize: "none",
+                }}
+              />
 
               <ReCAPTCHA
-                sitekey="6LeRytIrAAAAALe8-oiz3knc41X4xMDCwVsVti39"
+                sitekey="6LcDYtIrAAAAAHJVn0jJ9JfZrqwKr2IJSROPkcNN"
                 onChange={handleCaptchaChange}
               />
               <button
@@ -612,3 +442,4 @@ export default function App() {
     </div>
   );
 }
+
