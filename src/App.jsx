@@ -240,18 +240,17 @@ export default function App() {
   <Slider
     dots={false}
     infinite={true}
-    speed={6000}
+    speed={1000}
     slidesToShow={4}
     slidesToScroll={1}
     autoplay={true}
-    autoplaySpeed={0}
-    cssEase="linear"
+    autoplaySpeed={3000}
     pauseOnHover={true}
     responsive={[
       { breakpoint: 1400, settings: { slidesToShow: 3 } },
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, centerMode: true, centerPadding: "20px" } },
-      { breakpoint: 480, settings: { slidesToShow: 1, centerMode: true, centerPadding: "10px" } },
+      { breakpoint: 768, settings: { slidesToShow: 1, centerMode: true, centerPadding: "40px" } },
+      { breakpoint: 480, settings: { slidesToShow: 1, centerMode: true, centerPadding: "20px" } },
     ]}
   >
     {[
@@ -267,35 +266,45 @@ export default function App() {
         style={{
           background: "linear-gradient(145deg, #0a0f1f, #111c33)",
           borderRadius: "20px",
-          padding: "25px 20px",
+          padding: "30px 20px",
           minHeight: "220px",
           margin: "10px",
           textAlign: "center",
-          boxShadow: "0 8px 20px rgba(0, 255, 247, 0.3)",
+          boxShadow: "0 10px 25px rgba(0, 255, 247, 0.4)",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           transition: "transform 0.3s, box-shadow 0.3s",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "translateY(-10px)";
-          e.currentTarget.style.boxShadow = "0 15px 30px rgba(0,255,247,0.5)";
+          e.currentTarget.style.transform = "translateY(-8px)";
+          e.currentTarget.style.boxShadow = "0 20px 40px rgba(0,255,247,0.6)";
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = "translateY(0)";
-          e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 255, 247, 0.3)";
+          e.currentTarget.style.boxShadow = "0 10px 25px rgba(0, 255, 247, 0.4)";
         }}
       >
+        <div
+          style={{
+            fontSize: "2rem",
+            marginBottom: "15px",
+            color: "#1de9b6",
+          }}
+        >
+          {/* Optional: add an icon if you want */}
+        </div>
         <h3 style={{ fontSize: "1.4rem", color: "#00fff7", marginBottom: "12px" }}>
           {service.title}
         </h3>
-        <p style={{ color: "#d1eaff", fontSize: "1rem", lineHeight: 1.5 }}>
+        <p style={{ color: "#d1eaff", fontSize: "1rem", lineHeight: 1.6 }}>
           {service.desc}
         </p>
       </div>
     ))}
   </Slider>
 </section>
+
 
 {/* About */}
 <section
