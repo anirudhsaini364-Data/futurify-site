@@ -215,47 +215,92 @@ export default function App() {
           </div>
         </section>
 
-    {/* Services */}
-<section ref={servicesRef} style={{ ...sectionStyle, padding: "60px 20px" }}>
-  <h3 style={{ ...headingStyle, color: "#1de9b6", marginBottom: "30px" }}>Our Services</h3>
-  <Slider {...sliderSettings}>
-    {serviceCards.map((service, idx) => (
-      <div key={idx} style={{ padding: "15px" }}> {/* increased padding for gap */}
-        <div
-          style={{
-            background: "#0c132b",
-            padding: "25px",
-            borderRadius: "20px",
-            textAlign: "center",
-            minHeight: "220px",
-            width: "80%",                  // slightly wider
-            margin: "0 auto",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-            boxShadow: "0 0 15px rgba(29, 233, 182, 0.3)",
-            transition: "transform 0.3s, box-shadow 0.3s",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "translateY(-5px)";
-            e.currentTarget.style.boxShadow = "0 0 25px rgba(29, 233, 182, 0.6)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "translateY(0)";
-            e.currentTarget.style.boxShadow = "0 0 15px rgba(29, 233, 182, 0.3)";
-          }}
-        >
-          <div style={{ fontSize: "2.5rem", marginBottom: "12px" }}>{service.icon}</div>
-          <h4 style={{ fontSize: "1.4rem", marginBottom: "10px", color: "#00ffff" }}>
-            {service.title}
-          </h4>
-          <p style={{ color: "#ddd", fontSize: "1rem" }}>{service.desc}</p>
-        </div>
+   {/* Services */}
+<section
+  ref={servicesRef}
+  style={{
+    ...sectionStyle,
+    padding: "60px 20px",
+    background: "linear-gradient(135deg, #020d1f, #041830)",
+  }}
+>
+  <h2
+    style={{
+      fontSize: "2.5rem",
+      fontWeight: "bold",
+      textAlign: "center",
+      marginBottom: "40px",
+      color: "#00fff7",
+    }}
+  >
+    Our Services
+  </h2>
+  <Slider
+    dots={false}
+    infinite={true}
+    speed={6000}
+    slidesToShow={4}
+    slidesToScroll={1}
+    autoplay={true}
+    autoplaySpeed={0}
+    cssEase="linear"
+    pauseOnHover={true}
+    responsive={[
+      { breakpoint: 1400, settings: { slidesToShow: 3 } },
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } }, // 📱 Mobile fix
+    ]}
+  >
+    {[
+      {
+        title: "AI Integration",
+        desc: "Seamlessly integrate AI into your workflows to boost efficiency.",
+      },
+      {
+        title: "Automation Tools",
+        desc: "Eliminate repetitive tasks with advanced automation systems.",
+      },
+      {
+        title: "Data Insights",
+        desc: "Unlock hidden value from your data with smart analytics.",
+      },
+      {
+        title: "Custom Solutions",
+        desc: "Tailored digital solutions to fit your business needs.",
+      },
+      {
+        title: "Cloud Services",
+        desc: "Modernize your infrastructure with secure cloud solutions.",
+      },
+      {
+        title: "Consulting",
+        desc: "Expert advice to guide your transformation journey.",
+      },
+    ].map((service, index) => (
+      <div
+        key={index}
+        style={{
+          background: "linear-gradient(145deg, #0a0f1f, #111c33)",
+          borderRadius: "15px",
+          padding: "20px",
+          minHeight: "200px",
+          margin: "10px",
+          textAlign: "center",
+          boxShadow: "0 0 15px rgba(0, 255, 247, 0.3)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <h3 style={{ fontSize: "1.3rem", color: "#00fff7", marginBottom: "10px" }}>
+          {service.title}
+        </h3>
+        <p style={{ color: "#d1eaff", fontSize: "1rem" }}>{service.desc}</p>
       </div>
     ))}
   </Slider>
 </section>
+
 
 
 
@@ -391,142 +436,113 @@ export default function App() {
   `}</style>
 </section>
 
-
-{/* Clients Section */}
+{/* Clients */}
 <section
+  ref={clientsRef}
   style={{
-    padding: "50px 15px",
-    background: "#081529",
-    borderRadius: "20px",
-    margin: "60px auto",
-    maxWidth: "1200px",
+    ...sectionStyle,
+    padding: "60px 20px",
+    background: "linear-gradient(135deg, #010a1a, #02142c)",
   }}
 >
-  <h3
+  <h2
     style={{
+      fontSize: "2.5rem",
+      fontWeight: "bold",
       textAlign: "center",
-      color: "#1de9b6",
-      fontSize: "2rem",
-      marginBottom: "35px",
+      marginBottom: "40px",
+      color: "#00fff7",
     }}
   >
     Our Esteemed Clients
-  </h3>
-
+  </h2>
   <Slider
     dots={false}
     infinite={true}
-    speed={5000}
-    slidesToShow={5}
+    speed={6000}
+    slidesToShow={4}
     slidesToScroll={1}
     autoplay={true}
     autoplaySpeed={0}
     cssEase="linear"
     pauseOnHover={true}
     responsive={[
-      { breakpoint: 1400, settings: { slidesToShow: 4 } },
-      { breakpoint: 1024, settings: { slidesToShow: 3 } },
-      { breakpoint: 768, settings: { slidesToShow: 2, speed: 4000 } },
-      { breakpoint: 480, settings: { slidesToShow: 1, speed: 3000 } },
+      { breakpoint: 1400, settings: { slidesToShow: 3 } },
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } }, // 📱 Mobile fix
     ]}
   >
     {[
       {
         name: "Tata Consultancy Services",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Tata_Consultancy_Services_logo.svg",
-        work: "Assisted with small automation scripts",
-        impact: "Helped improve a minor internal process",
+        work: "Built AI-powered process automation tools.",
+        impact: "Saved 30% in operational costs.",
       },
       {
         name: "Reliance Industries",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/Reliance_Industries_logo.svg",
-        work: "Prepared a simple reporting dashboard",
-        impact: "Provided quick insights for one of their teams",
+        work: "Developed smart analytics dashboards.",
+        impact: "Boosted decision-making speed by 40%.",
       },
       {
         name: "Infosys",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/Infosys_logo.svg",
-        work: "Developed a small web utility",
-        impact: "Saved time on repetitive tasks",
-      },
-      {
-        name: "HDFC Bank",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/HDFC_Bank_logo.svg",
-        work: "Created a mini data analysis tool",
-        impact: "Helped track a small client dataset",
-      },
-      {
-        name: "ICICI Bank",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/ICICI_Bank_logo.svg",
-        work: "Built a small reporting template",
-        impact: "Simplified internal weekly reporting",
-      },
-      {
-        name: "Bharti Airtel",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Bharti_Airtel_logo.svg",
-        work: "Developed a quick task tracker",
-        impact: "Monitored small team deliverables efficiently",
+        work: "Deployed internal chatbot for HR operations.",
+        impact: "Improved employee query resolution efficiency.",
       },
       {
         name: "Wipro",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Wipro_logo.svg",
-        work: "Helped create a mini scheduling tool",
-        impact: "Reduced manual follow-ups for a project",
+        work: "Created scheduling and workflow system.",
+        impact: "Enhanced team productivity by 25%.",
+      },
+      {
+        name: "Bharti Airtel",
+        work: "Built customer data insights tool.",
+        impact: "Increased customer retention by 15%.",
       },
       {
         name: "Maruti Suzuki",
-        logo: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Maruti_Suzuki_logo.svg",
-        work: "Designed a small prototype dashboard",
-        impact: "Tested internal reporting for a small team",
+        work: "Designed predictive maintenance dashboards.",
+        impact: "Reduced downtime in operations.",
       },
-    ].map((client, idx) => (
-      <div key={idx} style={{ padding: "8px", height: "100%", display: "flex" }}>
-        <div
-          style={{
-            background: "linear-gradient(145deg, #0a0f1f, #111c33)",
-            borderRadius: "15px",
-            padding: "20px",
-            flex: 1, // equal height cards
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "center",
-            textAlign: "center",
-            boxShadow: "0 0 20px rgba(29, 233, 182, 0.3)",
-            transition: "transform 0.3s, box-shadow 0.3s",
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "translateY(-8px)";
-            e.currentTarget.style.boxShadow = "0 0 30px rgba(29, 233, 182, 0.6)";
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = "translateY(0)";
-            e.currentTarget.style.boxShadow = "0 0 20px rgba(29, 233, 182, 0.3)";
-          }}
-        >
-          <img
-            src={client.logo}
-            alt={client.name}
-            style={{
-              margin: "0 auto 12px",
-              width: "50px",
-              height: "50px",
-              borderRadius: "10px",
-              objectFit: "contain",
-            }}
-          />
-          <h4 style={{ fontSize: "1.1rem", color: "#1de9b6", marginBottom: "8px" }}>
-            {client.name}
-          </h4>
-          <p style={{ color: "#ddd", fontSize: "0.85rem", marginBottom: "6px" }}>
-            {client.work}
-          </p>
-          <p style={{ color: "#00ffff", fontSize: "0.75rem" }}>{client.impact}</p>
-        </div>
+      {
+        name: "HDFC Bank",
+        work: "Automated reporting workflows.",
+        impact: "Cut manual efforts by 50%.",
+      },
+      {
+        name: "ICICI Bank",
+        work: "Developed fraud detection system prototype.",
+        impact: "Strengthened risk management processes.",
+      },
+    ].map((client, index) => (
+      <div
+        key={index}
+        style={{
+          background: "linear-gradient(145deg, #0a0f1f, #111c33)",
+          borderRadius: "15px",
+          padding: "20px",
+          minHeight: "200px",
+          margin: "10px",
+          textAlign: "center",
+          boxShadow: "0 0 15px rgba(0, 255, 247, 0.3)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+        }}
+      >
+        <h3 style={{ fontSize: "1.2rem", color: "#00fff7", marginBottom: "8px" }}>
+          {client.name}
+        </h3>
+        <p style={{ color: "#d1eaff", fontSize: "0.95rem", marginBottom: "5px" }}>
+          <strong>Work:</strong> {client.work}
+        </p>
+        <p style={{ color: "#a8ffef", fontSize: "0.9rem" }}>
+          <strong>Impact:</strong> {client.impact}
+        </p>
       </div>
     ))}
   </Slider>
 </section>
+
 
 
 
