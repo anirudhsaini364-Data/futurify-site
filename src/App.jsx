@@ -246,6 +246,7 @@ export default function App() {
     autoplay={true}
     autoplaySpeed={3000}
     pauseOnHover={true}
+    centerMode={false}
     responsive={[
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
       { breakpoint: 768, settings: { slidesToShow: 1 } },
@@ -253,48 +254,47 @@ export default function App() {
     ]}
   >
     {[
-      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows to boost efficiency.", color: "#1de9b6" },
-      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation systems.", color: "#f7971e" },
-      { title: "Data Insights", desc: "Unlock hidden value from your data with smart analytics.", color: "#ff5f6d" },
-      { title: "Custom Solutions", desc: "Tailored digital solutions to fit your business needs.", color: "#00c6ff" },
-      { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", color: "#f00000" },
-      { title: "Consulting", desc: "Expert advice to guide your transformation journey.", color: "#ffde59" },
+      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows to boost efficiency.", icon: "🤖" },
+      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation systems.", icon: "⚙️" },
+      { title: "Data Insights", desc: "Unlock hidden value from your data with smart analytics.", icon: "📊" },
+      { title: "Custom Solutions", desc: "Tailored digital solutions to fit your business needs.", icon: "🛠️" },
+      { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️" },
+      { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡" },
     ].map((service, idx) => (
-      <div
-        key={idx}
-        style={{
-          padding: "25px 20px",
-          borderRadius: "20px",
-          minHeight: "220px",
-          textAlign: "center",
-          background: `linear-gradient(145deg, ${service.color}33, #102b45)`,
-          boxShadow: "0 8px 20px rgba(0, 255, 247, 0.3)",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          transition: "transform 0.3s, box-shadow 0.3s",
-          margin: "0 10px", // space between slides
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "translateY(-10px)";
-          e.currentTarget.style.boxShadow = "0 15px 30px rgba(0,255,247,0.5)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "translateY(0)";
-          e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 255, 247, 0.3)";
-        }}
-      >
-        <h3 style={{ fontSize: "1.4rem", color: service.color, marginBottom: "12px" }}>
-          {service.title}
-        </h3>
-        <p style={{ color: "#d1eaff", fontSize: "1rem", lineHeight: 1.5 }}>
-          {service.desc}
-        </p>
+      <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
+        <div
+          className="service-card"
+          style={{
+            background: "linear-gradient(145deg, #111111, #1a1a1a)",
+            padding: "35px",
+            borderRadius: "20px",
+            width: "100%",
+            minHeight: "220px",
+            textAlign: "center",
+            boxShadow: "0 0 30px rgba(0, 255, 255, 0.4)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            transition: "transform 0.3s, box-shadow 0.3s",
+          }}
+        >
+          <div style={{ fontSize: "3rem", marginBottom: "15px" }}>{service.icon}</div>
+          <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00ffff" }}>
+            {service.title}
+          </h3>
+          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.6 }}>{service.desc}</p>
+        </div>
       </div>
     ))}
   </Slider>
-</section>
 
+  <style jsx>{`
+    .service-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 0 45px rgba(0, 255, 255, 0.7);
+    }
+  `}</style>
+</section>
 
 
 {/* About */}
