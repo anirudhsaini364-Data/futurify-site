@@ -26,6 +26,7 @@ export default function App() {
   const aboutRef = useRef(null);
   const whyRef = useRef(null);
   const contactRef = useRef(null);
+  const clientsRef = useRef(null);
 
   const scrollToSection = (ref) => {
     if (!ref) {
@@ -215,8 +216,7 @@ export default function App() {
           </div>
         </section>
 
-   {/* Services */}
-<section
+   <section
   ref={servicesRef}
   style={{
     ...sectionStyle,
@@ -235,73 +235,106 @@ export default function App() {
   >
     Our Services
   </h2>
+
   <Slider
     dots={false}
     infinite={true}
-    speed={6000}
-    slidesToShow={4}
+    speed={2000}
+    slidesToShow={3}
     slidesToScroll={1}
     autoplay={true}
-    autoplaySpeed={0}
+    autoplaySpeed={2500}
     cssEase="linear"
     pauseOnHover={true}
     responsive={[
       { breakpoint: 1400, settings: { slidesToShow: 3 } },
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } }, // 📱 Mobile fix
+      { breakpoint: 768, settings: { slidesToShow: 1 } },
     ]}
   >
     {[
       {
         title: "AI Integration",
         desc: "Seamlessly integrate AI into your workflows to boost efficiency.",
+        icon: "🤖",
+        color: "#00fff7",
       },
       {
         title: "Automation Tools",
         desc: "Eliminate repetitive tasks with advanced automation systems.",
+        icon: "⚙️",
+        color: "#1de9b6",
       },
       {
         title: "Data Insights",
         desc: "Unlock hidden value from your data with smart analytics.",
+        icon: "📊",
+        color: "#f7971e",
       },
       {
         title: "Custom Solutions",
         desc: "Tailored digital solutions to fit your business needs.",
+        icon: "🛠️",
+        color: "#ff5f6d",
       },
       {
         title: "Cloud Services",
         desc: "Modernize your infrastructure with secure cloud solutions.",
+        icon: "☁️",
+        color: "#00c6ff",
       },
       {
         title: "Consulting",
         desc: "Expert advice to guide your transformation journey.",
+        icon: "💡",
+        color: "#ffdd00",
       },
     ].map((service, index) => (
       <div
         key={index}
         style={{
-          background: "linear-gradient(145deg, #0a0f1f, #111c33)",
-          borderRadius: "15px",
-          padding: "20px",
-          minHeight: "200px",
+          background: "#111c33",
+          borderRadius: "20px",
+          padding: "30px 20px",
           margin: "10px",
-          textAlign: "center",
-          boxShadow: "0 0 15px rgba(0, 255, 247, 0.3)",
+          minHeight: "250px",
           display: "flex",
           flexDirection: "column",
+          alignItems: "center",
           justifyContent: "center",
+          textAlign: "center",
+          boxShadow: `0 8px 20px ${service.color}55`,
+          transition: "all 0.3s ease",
+          cursor: "pointer",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "translateY(-10px)";
+          e.currentTarget.style.boxShadow = `0 15px 30px ${service.color}99`;
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.boxShadow = `0 8px 20px ${service.color}55`;
         }}
       >
-        <h3 style={{ fontSize: "1.3rem", color: "#00fff7", marginBottom: "10px" }}>
+        <div
+          style={{
+            fontSize: "3rem",
+            marginBottom: "20px",
+            color: service.color,
+          }}
+        >
+          {service.icon}
+        </div>
+        <h3 style={{ fontSize: "1.5rem", color: "#fff", marginBottom: "12px" }}>
           {service.title}
         </h3>
-        <p style={{ color: "#d1eaff", fontSize: "1rem" }}>{service.desc}</p>
+        <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.5 }}>
+          {service.desc}
+        </p>
       </div>
     ))}
   </Slider>
 </section>
-
-
 
 
 {/* About */}
@@ -436,6 +469,7 @@ export default function App() {
   `}</style>
 </section>
 
+
 {/* Clients */}
 <section
   ref={clientsRef}
@@ -456,6 +490,7 @@ export default function App() {
   >
     Our Esteemed Clients
   </h2>
+
   <Slider
     dots={false}
     infinite={true}
@@ -469,7 +504,7 @@ export default function App() {
     responsive={[
       { breakpoint: 1400, settings: { slidesToShow: 3 } },
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } }, // 📱 Mobile fix
+      { breakpoint: 768, settings: { slidesToShow: 1 } },
     ]}
   >
     {[
@@ -542,6 +577,7 @@ export default function App() {
     ))}
   </Slider>
 </section>
+
 
 
 
