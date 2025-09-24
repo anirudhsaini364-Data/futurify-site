@@ -316,7 +316,7 @@ export default function App() {
       { title: "Cloud Services", desc: "Modernize infrastructure with secure cloud solutions.", icon: "☁️", gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" },
       { title: "Consulting", desc: "Expert strategic advice to guide your transformation.", icon: "💡", gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" },
     ].map((service, idx) => (
-      <div key={idx} style={{ padding: "0 60px", boxSizing: "border-box" }}>
+      <div key={idx} style={{ padding: "0 150px", boxSizing: "border-box" }}>
         <div
           className="service-card"
           style={{
