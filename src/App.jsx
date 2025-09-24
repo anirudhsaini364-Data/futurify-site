@@ -216,7 +216,7 @@ export default function App() {
           </div>
         </section>
 
-        {/* Services */}
+ {/* Services */}
 <section
   ref={servicesRef}
   style={{
@@ -242,10 +242,10 @@ export default function App() {
     dots={true}
     infinite={true}
     speed={6000}          
-    slidesToShow={4}      
+    slidesToShow={4}       // desktop: 4 cards
     slidesToScroll={1}
     autoplay={true}
-    autoplaySpeed={0}     
+    autoplaySpeed={0}      
     cssEase="linear"      
     pauseOnHover={false}  
     centerMode={false}
@@ -264,31 +264,33 @@ export default function App() {
       { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️" },
       { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡" },
     ].map((service, idx) => (
-      <div key={idx} style={{ padding: "0 8px", boxSizing: "border-box" }}>
+      <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
         <div
           className="service-card"
           style={{
             background: "rgba(0,255,255,0.05)",
-            backdropFilter: "blur(14px)",
+            backdropFilter: "blur(16px)",
             borderRadius: "20px",
-            height: "320px",
+            minHeight: "320px",
+            width: "100%",
+            maxWidth: "320px",  // limit max width
             textAlign: "center",
-            boxShadow: "0 10px 35px rgba(0,255,255,0.25)",
+            boxShadow: "0 10px 40px rgba(0,255,255,0.25)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            padding: "25px",
+            padding: "30px 20px",
             transition: "transform 0.4s, box-shadow 0.4s",
             border: "1px solid rgba(0,255,255,0.15)",
           }}
         >
-          <div style={{ fontSize: "3rem", marginBottom: "15px", textShadow: "0 0 12px #00fff7" }}>
+          <div style={{ fontSize: "3rem", marginBottom: "15px", textShadow: "0 0 15px #00fff7" }}>
             {service.icon}
           </div>
           <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00fff7", textShadow: "0 0 10px #00fff7" }}>
             {service.title}
           </h3>
-          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.6 }}>
+          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.6, wordBreak: "break-word" }}>
             {service.desc}
           </p>
         </div>
@@ -299,13 +301,12 @@ export default function App() {
   <style jsx>{`
     .service-card:hover {
       transform: translateY(-15px);
-      box-shadow: 0 18px 45px rgba(0, 255, 255, 0.5);
+      box-shadow: 0 18px 50px rgba(0, 255, 255, 0.5);
     }
 
-    /* Slick track flex & gap for spacing */
     .slick-track {
       display: flex !important;
-      gap: 16px; /* ~1 finger gap */
+      gap: 16px; 
     }
 
     .slick-slide {
@@ -315,16 +316,23 @@ export default function App() {
     }
 
     .slick-list {
-      margin: 0 -8px; /* adjust negative margin to account for slide padding */
+      margin: 0 -10px; 
     }
 
+    /* Mobile adjustments */
     @media (max-width: 768px) {
       .slick-slide > div {
-        width: 100% !important;
-        max-width: 100% !important;
+        width: 90% !important;  /* take most of screen */
+        max-width: 300px !important;
       }
-      .slick-track {
-        gap: 12px; /* smaller gap for mobile */
+
+      .service-card {
+        padding: 25px 15px !important;
+        min-height: 340px !important;
+      }
+
+      .service-card p {
+        font-size: 0.95rem !important;
       }
     }
   `}</style>
