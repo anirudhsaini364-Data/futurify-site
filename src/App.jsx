@@ -246,10 +246,11 @@ export default function App() {
     autoplay={true}
     autoplaySpeed={3000}
     pauseOnHover={true}
+    centerMode={false}
     responsive={[
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
-      { breakpoint: 480, settings: { slidesToShow: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 1, centerMode: false } },
+      { breakpoint: 480, settings: { slidesToShow: 1, centerMode: false } },
     ]}
   >
     {[
@@ -268,7 +269,7 @@ export default function App() {
             padding: "35px",
             borderRadius: "20px",
             width: "100%",
-            minHeight: "240px",
+            height: "300px",       // fixed height for all cards
             textAlign: "center",
             boxShadow: "0 0 30px rgba(0, 255, 255, 0.4)",
             display: "flex",
@@ -281,7 +282,9 @@ export default function App() {
           <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00ffff" }}>
             {service.title}
           </h3>
-          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.6 }}>{service.desc}</p>
+          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.6 }}>
+            {service.desc}
+          </p>
         </div>
       </div>
     ))}
