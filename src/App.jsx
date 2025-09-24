@@ -241,13 +241,13 @@ export default function App() {
   <Slider
     dots={true}
     infinite={true}
-    speed={6000}               // smooth continuous sliding
-    slidesToShow={4}           // desktop view
+    speed={6000}            // smooth continuous sliding
+    slidesToShow={4}        // desktop view
     slidesToScroll={1}
     autoplay={true}
-    autoplaySpeed={0}          // no pause between slides
+    autoplaySpeed={0}       // no pause between slides
     cssEase="linear"
-    pauseOnHover={false}       // do not pause on hover
+    pauseOnHover={false}
     centerMode={false}
     responsive={[
       { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
@@ -268,8 +268,8 @@ export default function App() {
         <div
           className="service-card"
           style={{
-            background: "rgba(0,255,255,0.05)",
-            backdropFilter: "blur(14px)",
+            background: "rgba(0,255,255,0.08)",
+            backdropFilter: "blur(6px)",
             borderRadius: "20px",
             height: "320px",
             minWidth: "250px",
@@ -290,7 +290,7 @@ export default function App() {
           <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00fff7", textShadow: "0 0 10px #00fff7" }}>
             {service.title}
           </h3>
-          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.6 }}>
+          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.5 }}>
             {service.desc}
           </p>
         </div>
@@ -317,22 +317,25 @@ export default function App() {
     }
 
     .slick-list {
-      margin: 0 -8px; /* offset inner slide padding */
+      margin: 0 -8px;
     }
 
+    /* Mobile fixes */
     @media (max-width: 768px) {
       .slick-slide > div {
-        width: 90% !important;
+        width: 100% !important;
         max-width: 300px !important;
       }
 
       .service-card {
-        padding: 25px 15px !important;
+        padding: 20px !important;
         min-height: 340px !important;
+        backdrop-filter: blur(4px); /* reduce blur for mobile */
       }
 
       .service-card p {
         font-size: 0.95rem !important;
+        line-height: 1.4 !important;
       }
     }
   `}</style>
