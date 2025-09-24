@@ -237,7 +237,21 @@ export default function App() {
     Our Services
   </h2>
 
-  <div className="services-grid">
+  <Slider
+    dots={true}
+    infinite={true}
+    speed={800}
+    slidesToShow={3}
+    slidesToScroll={1}
+    autoplay={true}
+    autoplaySpeed={3000}
+    pauseOnHover={true}
+    responsive={[
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1, centerMode: true, centerPadding: "20px" } },
+      { breakpoint: 480, settings: { slidesToShow: 1, centerMode: true, centerPadding: "10px" } },
+    ]}
+  >
     {[
       { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows to boost efficiency.", color: "#1de9b6" },
       { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation systems.", color: "#f7971e" },
@@ -246,58 +260,39 @@ export default function App() {
       { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", color: "#f00000" },
       { title: "Consulting", desc: "Expert advice to guide your transformation journey.", color: "#ffde59" },
     ].map((service, idx) => (
-      <div key={idx} className="service-card">
-        <h3 style={{ fontSize: "1.5rem", marginBottom: "12px", color: service.color }}>
+      <div
+        key={idx}
+        style={{
+          background: "linear-gradient(145deg, #0a1a2f, #102b45)", // matching blue-ish vibe
+          borderRadius: "20px",
+          padding: "30px 25px",
+          minHeight: "220px",
+          margin: "10px",
+          textAlign: "center",
+          boxShadow: "0 8px 20px rgba(0, 255, 247, 0.3)",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          transition: "transform 0.3s, box-shadow 0.3s",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.transform = "translateY(-10px)";
+          e.currentTarget.style.boxShadow = "0 15px 30px rgba(0,255,247,0.5)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.boxShadow = "0 8px 20px rgba(0, 255, 247, 0.3)";
+        }}
+      >
+        <h3 style={{ fontSize: "1.4rem", color: service.color, marginBottom: "12px" }}>
           {service.title}
         </h3>
-        <p style={{ color: "#d1eaff", fontSize: "1rem", lineHeight: 1.6 }}>
+        <p style={{ color: "#d1eaff", fontSize: "1rem", lineHeight: 1.5 }}>
           {service.desc}
         </p>
       </div>
     ))}
-  </div>
-
-  <style jsx>{`
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      justify-items: center;
-    }
-
-    .service-card {
-      background: linear-gradient(145deg, #111111, #1a1a1a);
-      padding: 30px 25px;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 320px;
-      text-align: center;
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .service-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 0 45px rgba(0, 255, 255, 0.7);
-    }
-
-    /* Tablet */
-    @media (max-width: 1024px) {
-      .services-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    /* Mobile */
-    @media (max-width: 768px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      .service-card {
-        padding: 25px;
-      }
-    }
-  `}</style>
+  </Slider>
 </section>
 
 
