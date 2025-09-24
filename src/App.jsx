@@ -230,7 +230,6 @@ export default function App() {
             </button>
           </div>
         </section>
-
 {/* Services */}
 <section
   ref={servicesRef}
@@ -255,7 +254,7 @@ export default function App() {
       pointerEvents: "none",
     }}
   />
-  
+
   <h2
     style={{
       fontSize: "2.8rem",
@@ -274,13 +273,12 @@ export default function App() {
   >
     Our Services
   </h2>
-  
+
   <p
     style={{
       textAlign: "center",
       color: "#94a3b8",
       fontSize: "1.1rem",
-      marginBottom: "50px",
       maxWidth: "600px",
       margin: "0 auto 50px",
       position: "relative",
@@ -293,90 +291,28 @@ export default function App() {
   <Slider
     dots={true}
     infinite={true}
-    speed={8000}             // slower, more elegant
-    slidesToShow={4}         // desktop
+    speed={8000}
+    slidesToShow={4}
     slidesToScroll={1}
     autoplay={true}
-    autoplaySpeed={0}        // continuous
+    autoplaySpeed={0} // continuous
     cssEase="linear"
-    pauseOnHover={true}      // pause on hover for better UX
+    pauseOnHover={false} // no pause
     centerMode={false}
     responsive={[
-      { 
-        breakpoint: 1200, 
-        settings: { 
-          slidesToShow: 3, 
-          slidesToScroll: 1,
-          speed: 7000
-        } 
-      },
-      { 
-        breakpoint: 1024, 
-        settings: { 
-          slidesToShow: 2, 
-          slidesToScroll: 1,
-          speed: 6000
-        } 
-      },
-      { 
-        breakpoint: 768, 
-        settings: { 
-          slidesToShow: 1, 
-          slidesToScroll: 1, 
-          centerMode: true, 
-          centerPadding: "40px", // one finger gap (approximately 40px)
-          speed: 5000
-        } 
-      },
-      { 
-        breakpoint: 480, 
-        settings: { 
-          slidesToShow: 1, 
-          slidesToScroll: 1, 
-          centerMode: true, 
-          centerPadding: "30px", // adjusted for smaller screens
-          speed: 5000
-        } 
-      },
+      { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1, speed: 7000 } },
+      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1, speed: 6000 } },
+      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px", speed: 5000 } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "30px", speed: 5000 } },
     ]}
   >
     {[
-      { 
-        title: "AI Integration", 
-        desc: "Seamlessly integrate cutting-edge AI into your existing workflows and processes.", 
-        icon: "🤖",
-        gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
-      },
-      { 
-        title: "Automation Tools", 
-        desc: "Eliminate repetitive tasks with intelligent automation solutions.", 
-        icon: "⚙️",
-        gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
-      },
-      { 
-        title: "Data Insights", 
-        desc: "Unlock hidden value from your data with advanced analytics and visualization.", 
-        icon: "📊",
-        gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
-      },
-      { 
-        title: "Custom Solutions", 
-        desc: "Bespoke digital solutions tailored specifically to your business needs.", 
-        icon: "🛠️",
-        gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
-      },
-      { 
-        title: "Cloud Services", 
-        desc: "Modernize your infrastructure with secure, scalable cloud solutions.", 
-        icon: "☁️",
-        gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)"
-      },
-      { 
-        title: "Consulting", 
-        desc: "Expert strategic advice to guide your digital transformation journey.", 
-        icon: "💡",
-        gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
-      },
+      { title: "AI Integration", desc: "Seamlessly integrate cutting-edge AI into your workflows.", icon: "🤖", gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
+      { title: "Automation Tools", desc: "Eliminate repetitive tasks with intelligent automation.", icon: "⚙️", gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" },
+      { title: "Data Insights", desc: "Unlock hidden value from your data with advanced analytics.", icon: "📊", gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" },
+      { title: "Custom Solutions", desc: "Bespoke digital solutions tailored to your business.", icon: "🛠️", gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" },
+      { title: "Cloud Services", desc: "Modernize infrastructure with secure cloud solutions.", icon: "☁️", gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" },
+      { title: "Consulting", desc: "Expert strategic advice to guide your transformation.", icon: "💡", gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" },
     ].map((service, idx) => (
       <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
         <div
@@ -412,40 +348,38 @@ export default function App() {
               borderRadius: "24px 24px 0 0",
             }}
           />
-          
-          <div 
-            style={{ 
-              fontSize: "4rem", 
-              marginBottom: "20px", 
+
+          <div
+            style={{
+              fontSize: "4rem",
+              marginBottom: "20px",
               textShadow: "0 0 15px #00fff7",
               filter: "drop-shadow(0 0 10px rgba(0,255,247,0.3))",
-              transform: "scale(1)",
-              transition: "transform 0.3s ease"
             }}
           >
             {service.icon}
           </div>
-          
-          <h3 
-            style={{ 
-              fontSize: "1.6rem", 
-              marginBottom: "15px", 
-              color: "#ffffff", 
+
+          <h3
+            style={{
+              fontSize: "1.6rem",
+              marginBottom: "15px",
+              color: "#ffffff",
               textShadow: "0 0 10px rgba(0,255,247,0.5)",
               fontWeight: "700",
-              letterSpacing: "-0.02em"
+              letterSpacing: "-0.02em",
             }}
           >
             {service.title}
           </h3>
-          
-          <p 
-            style={{ 
-              color: "#cbd5e1", 
-              fontSize: "1rem", 
+
+          <p
+            style={{
+              color: "#cbd5e1",
+              fontSize: "1rem",
               lineHeight: 1.6,
               margin: 0,
-              fontWeight: "400"
+              fontWeight: "400",
             }}
           >
             {service.desc}
@@ -454,87 +388,32 @@ export default function App() {
       </div>
     ))}
   </Slider>
-  
+
   <style jsx>{`
     .service-card:hover {
       transform: translateY(-20px) scale(1.02);
       box-shadow: 0 25px 60px rgba(0, 255, 255, 0.3), 0 10px 25px rgba(0,0,0,0.2);
       border-color: rgba(0,255,255,0.4);
     }
-    
-    .service-card:hover div:first-of-type {
-      transform: scale(1.1) rotate(5deg);
-    }
-    
-    /* Enhanced slider styling */
-    .slick-track {
-      display: flex !important;
-    }
-    
     .slick-slide {
       display: flex !important;
       justify-content: center;
       box-sizing: border-box;
     }
-    
-    .slick-list {
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-    }
-    
-    /* Custom dots styling */
-    .slick-dots {
-      bottom: -50px;
-    }
-    
-    .slick-dots li button:before {
-      color: #00fff7;
-      font-size: 12px;
-      opacity: 0.5;
-    }
-    
-    .slick-dots li.slick-active button:before {
-      opacity: 1;
-      color: #00fff7;
-      text-shadow: 0 0 10px #00fff7;
-    }
-    
-    /* Mobile optimizations */
     @media (max-width: 768px) {
       .service-card {
-        min-width: calc(100vw - 80px) !important; /* One finger gap on each side */
+        min-width: calc(100vw - 80px) !important; /* One finger gap */
         max-width: calc(100vw - 80px) !important;
         height: 350px !important;
         margin: 0 auto;
       }
-      
-      .slick-center .service-card {
-        transform: scale(1);
-      }
-      
-      .slick-track {
-        gap: 0 !important;
-      }
     }
-    
     @media (max-width: 480px) {
       .service-card {
-        min-width: calc(100vw - 60px) !important; /* Slightly smaller gap for very small screens */
+        min-width: calc(100vw - 60px) !important;
         max-width: calc(100vw - 60px) !important;
         padding: 25px 20px !important;
       }
-    }
-    
-    /* Enhanced animations */
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-5px); }
-    }
-    
-    .service-card {
-      animation: float 6s ease-in-out infinite;
-      animation-delay: calc(var(--index) * 0.5s);
     }
   `}</style>
 </section>
