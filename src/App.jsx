@@ -252,8 +252,8 @@ export default function App() {
     responsive={[
       { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
       { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } },
+      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
     ]}
   >
     {[
@@ -264,12 +264,12 @@ export default function App() {
       { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️" },
       { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡" },
     ].map((service, idx) => (
-      <div key={idx} style={{ padding: "0 8px", boxSizing: "border-box" }}>
+      <div key={idx} style={{ padding: "0 12px", boxSizing: "border-box" }}>
         <div
           className="service-card"
           style={{
             background: "rgba(0,255,255,0.08)",
-            backdropFilter: "blur(6px)",
+            backdropFilter: "blur(14px)",
             borderRadius: "20px",
             height: "320px",
             minWidth: "250px",
@@ -314,15 +314,15 @@ export default function App() {
       display: flex !important;
       justify-content: center;
       box-sizing: border-box;
-      padding: 0 8px;
+      padding: 0 12px;
     }
 
-    /* Remove negative margin on mobile to prevent overlap */
+    /* No negative margins on slick-list */
     .slick-list {
       margin: 0;
     }
 
-    /* Mobile fixes */
+    /* Mobile fixes: keep PC styling exactly, 1 card only */
     @media (max-width: 768px) {
       .slick-slide > div {
         width: 100% !important;
@@ -330,14 +330,8 @@ export default function App() {
       }
 
       .service-card {
-        padding: 20px !important;
-        min-height: 340px !important;
-        backdrop-filter: blur(3px); /* reduce blur for mobile */
-      }
-
-      .service-card p {
-        font-size: 0.95rem !important;
-        line-height: 1.4 !important;
+        min-width: 100% !important; /* fill mobile width */
+        max-width: 100% !important;
       }
     }
   `}</style>
