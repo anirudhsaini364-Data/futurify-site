@@ -230,6 +230,8 @@ export default function App() {
             </button>
           </div>
         </section>
+
+        
 {/* Services */}
 <section
   ref={servicesRef}
@@ -297,7 +299,7 @@ export default function App() {
     autoplay={true}
     autoplaySpeed={0} // continuous
     cssEase="linear"
-    pauseOnHover={false} // no pause
+    pauseOnHover={false}
     centerMode={false}
     responsive={[
       { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1, speed: 7000 } },
@@ -334,9 +336,10 @@ export default function App() {
             border: "1px solid rgba(0,255,255,0.2)",
             position: "relative",
             overflow: "hidden",
+            margin: "0 10px", // card gap
           }}
         >
-          {/* Card gradient overlay */}
+          {/* Glowing top gradient line */}
           <div
             style={{
               position: "absolute",
@@ -346,6 +349,8 @@ export default function App() {
               height: "4px",
               background: service.gradient,
               borderRadius: "24px 24px 0 0",
+              boxShadow: `0 0 20px ${service.gradient.split(' ')[1]}90, 0 0 40px ${service.gradient.split(' ')[1]}50`,
+              animation: "glow 2s ease-in-out infinite alternate",
             }}
           />
 
@@ -390,24 +395,33 @@ export default function App() {
   </Slider>
 
   <style jsx>{`
+    @keyframes glow {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
     .service-card:hover {
       transform: translateY(-20px) scale(1.02);
       box-shadow: 0 25px 60px rgba(0, 255, 255, 0.3), 0 10px 25px rgba(0,0,0,0.2);
       border-color: rgba(0,255,255,0.4);
     }
+
     .slick-slide {
       display: flex !important;
       justify-content: center;
       box-sizing: border-box;
     }
+
     @media (max-width: 768px) {
       .service-card {
-        min-width: calc(100vw - 80px) !important; /* One finger gap */
+        min-width: calc(100vw - 80px) !important; /* one finger gap */
         max-width: calc(100vw - 80px) !important;
         height: 350px !important;
         margin: 0 auto;
       }
     }
+
     @media (max-width: 480px) {
       .service-card {
         min-width: calc(100vw - 60px) !important;
@@ -417,7 +431,6 @@ export default function App() {
     }
   `}</style>
 </section>
-
 
 
 
