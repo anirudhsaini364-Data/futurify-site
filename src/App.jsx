@@ -241,11 +241,11 @@ export default function App() {
   <Slider
     dots={true}
     infinite={true}
-    speed={6000}            // smooth continuous sliding
-    slidesToShow={4}        // desktop view
+    speed={6000}             // smooth continuous sliding
+    slidesToShow={4}         // desktop
     slidesToScroll={1}
     autoplay={true}
-    autoplaySpeed={0}       // continuous
+    autoplaySpeed={0}        // continuous
     cssEase="linear"
     pauseOnHover={false}
     centerMode={false}
@@ -264,7 +264,7 @@ export default function App() {
       { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️" },
       { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡" },
     ].map((service, idx) => (
-      <div key={idx} style={{ padding: "0 12px", boxSizing: "border-box" }}>
+      <div key={idx} style={{ padding: "0 8px", boxSizing: "border-box" }}>
         <div
           className="service-card"
           style={{
@@ -307,22 +307,21 @@ export default function App() {
     /* Gap between cards */
     .slick-track {
       display: flex !important;
-      gap: 16px; /* one-finger gap */
+      gap: 16px; /* one-finger gap for all screens */
     }
 
     .slick-slide {
       display: flex !important;
       justify-content: center;
       box-sizing: border-box;
-      padding: 0 12px;
+      padding: 0 8px;
     }
 
-    /* No negative margins on slick-list */
     .slick-list {
       margin: 0;
     }
 
-    /* Mobile fixes: keep PC styling exactly, 1 card only */
+    /* Mobile fixes: maintain PC styling, 1 card only, with gap */
     @media (max-width: 768px) {
       .slick-slide > div {
         width: 100% !important;
@@ -330,7 +329,7 @@ export default function App() {
       }
 
       .service-card {
-        min-width: 100% !important; /* fill mobile width */
+        min-width: 100% !important;
         max-width: 100% !important;
       }
     }
