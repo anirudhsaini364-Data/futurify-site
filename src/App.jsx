@@ -245,15 +245,15 @@ export default function App() {
     slidesToShow={4}        // desktop view
     slidesToScroll={1}
     autoplay={true}
-    autoplaySpeed={0}       // no pause between slides
+    autoplaySpeed={0}       // continuous
     cssEase="linear"
     pauseOnHover={false}
     centerMode={false}
     responsive={[
       { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
       { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } },
     ]}
   >
     {[
@@ -304,9 +304,10 @@ export default function App() {
       box-shadow: 0 18px 50px rgba(0, 255, 255, 0.5);
     }
 
+    /* Gap between cards */
     .slick-track {
       display: flex !important;
-      gap: 16px; /* one finger gap */
+      gap: 16px; /* one-finger gap */
     }
 
     .slick-slide {
@@ -316,21 +317,22 @@ export default function App() {
       padding: 0 8px;
     }
 
+    /* Remove negative margin on mobile to prevent overlap */
     .slick-list {
-      margin: 0 -8px;
+      margin: 0;
     }
 
     /* Mobile fixes */
     @media (max-width: 768px) {
       .slick-slide > div {
         width: 100% !important;
-        max-width: 300px !important;
+        max-width: 100% !important;
       }
 
       .service-card {
         padding: 20px !important;
         min-height: 340px !important;
-        backdrop-filter: blur(4px); /* reduce blur for mobile */
+        backdrop-filter: blur(3px); /* reduce blur for mobile */
       }
 
       .service-card p {
