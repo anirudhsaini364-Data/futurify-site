@@ -263,7 +263,7 @@ export default function App() {
       <div
         key={index}
         style={{
-          background: "linear-gradient(145deg, #0a1a33, #111c44)",
+          background: "linear-gradient(145deg, #0a1a33, #111c44)", // dark-blue gradient
           borderRadius: "20px",
           padding: "25px 15px",
           margin: "10px",
@@ -273,17 +273,8 @@ export default function App() {
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          boxShadow: `0 8px 25px ${service.color}55`,
-          transition: "all 0.3s ease",
-          cursor: "pointer",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "translateY(-10px)";
-          e.currentTarget.style.boxShadow = `0 15px 35px ${service.color}99`;
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "translateY(0)";
-          e.currentTarget.style.boxShadow = `0 8px 25px ${service.color}55`;
+          boxShadow: `0 10px 25px ${service.color}55`, // permanent shadow
+          transition: "transform 0.3s ease, box-shadow 0.3s ease",
         }}
       >
         <div
