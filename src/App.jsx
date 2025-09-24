@@ -405,7 +405,9 @@ export default function App() {
                       border: "1px solid rgba(0,255,255,0.25)",
                       position: "relative",
                       overflow: "hidden",
-                      cursor: "pointer"
+                      cursor: "pointer",
+                      margin: "0 auto",
+                      maxWidth: "280px"
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = "translateY(-15px) scale(1.03)";
