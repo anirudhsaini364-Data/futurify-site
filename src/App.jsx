@@ -71,33 +71,68 @@ export default function App() {
     }
   };
 
-  const serviceCards = [
-    { title: "Web Development", desc: "Enterprise-grade web apps with scalable architecture.", icon: "💻", color: "#00c6ff" },
-    { title: "AI & Data Science", desc: "AI solutions and analytics for smarter decisions.", icon: "🤖", color: "#f00000" },
-    { title: "Digital Marketing", desc: "Optimize digital presence with data-driven strategies.", icon: "📈", color: "#f7971e" },
-    { title: "Cloud Solutions", desc: "Secure, scalable cloud infrastructure.", icon: "☁️", color: "#00c6ff" },
-    { title: "UI/UX Design", desc: "Modern, intuitive interfaces.", icon: "🎨", color: "#ff5f6d" },
-    { title: "Automation Projects", desc: "Streamline workflows with AI-driven automation.", icon: "⚙️🤖", color: "#1de9b6" },
+  const servicesData = [
+    { title: "AI Integration", desc: "Seamlessly integrate cutting-edge AI into your workflows for enhanced automation.", icon: "🤖", gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
+    { title: "Web Development", desc: "Enterprise-grade web applications with modern frameworks and scalable architecture.", icon: "💻", gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" },
+    { title: "Data Analytics", desc: "Transform raw data into actionable insights with advanced machine learning models.", icon: "📊", gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" },
+    { title: "Cloud Solutions", desc: "Secure, scalable cloud infrastructure for modern business requirements.", icon: "☁️", gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" },
+    { title: "Automation Tools", desc: "Eliminate repetitive tasks with intelligent process automation solutions.", icon: "⚙️", gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" },
+    { title: "Digital Marketing", desc: "Data-driven marketing strategies to maximize your digital presence and ROI.", icon: "📈", gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" },
+    { title: "UI/UX Design", desc: "Modern, intuitive interfaces that deliver exceptional user experiences.", icon: "🎨", gradient: "linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)" },
+    { title: "Consulting", desc: "Expert strategic guidance to navigate digital transformation challenges.", icon: "💡", gradient: "linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)" },
   ];
 
-  const sliderSettings = {
+  const clientsData = [
+    { name: "Tata Consultancy Services", work: "Built AI-powered process automation tools", impact: "Saved 30% in operational costs" },
+    { name: "Reliance Industries", work: "Developed smart analytics dashboards", impact: "Boosted decision-making speed by 40%" },
+    { name: "Infosys", work: "Deployed internal chatbot for HR operations", impact: "Improved employee query resolution efficiency" },
+    { name: "Wipro", work: "Created scheduling and workflow system", impact: "Enhanced team productivity by 25%" },
+    { name: "Bharti Airtel", work: "Built customer data insights tool", impact: "Increased customer retention by 15%" },
+    { name: "Maruti Suzuki", work: "Designed predictive maintenance dashboards", impact: "Reduced downtime in operations" },
+    { name: "HDFC Bank", work: "Automated reporting workflows", impact: "Cut manual efforts by 50%" },
+    { name: "ICICI Bank", work: "Developed fraud detection system prototype", impact: "Strengthened risk management processes" },
+    { name: "Tech Mahindra", work: "Implemented ML-based quality assurance", impact: "Reduced defects by 35%" },
+    { name: "HCL Technologies", work: "Built real-time monitoring systems", impact: "Improved system uptime by 45%" },
+  ];
+
+  const servicesSliderSettings = {
     dots: true,
     infinite: true,
-    speed: 600,
-    slidesToShow: 3,
+    speed: 800,
+    slidesToShow: 5,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3500,
     pauseOnHover: true,
     responsive: [
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
+      { breakpoint: 1600, settings: { slidesToShow: 4, slidesToScroll: 1 } },
+      { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
+      { breakpoint: 900, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+      { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
+    ],
+  };
+
+  const clientsSliderSettings = {
+    dots: false,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    responsive: [
+      { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
+      { breakpoint: 900, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+      { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
     ],
   };
 
   const sectionStyle = {
     padding: "80px 20px",
-    maxWidth: "1200px",
+    maxWidth: "1400px",
     margin: "0 auto",
   };
 
@@ -108,8 +143,6 @@ export default function App() {
     color: "#00ffff",
     textAlign: "center",
   };
-
-  const textStyle = { color: "#ddd", fontSize: "1.2rem", lineHeight: 1.6 };
 
   return (
     <div style={{ position: "relative", minHeight: "100vh", backgroundColor: "#0a0f1f", fontFamily: "'Poppins', sans-serif", overflowX: "hidden" }}>
@@ -134,7 +167,7 @@ export default function App() {
         style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: -1 }}
       />
 
-      {/* Futuristic Navbar */}
+      {/* Enhanced Futuristic Navbar */}
       <nav
         style={{
           position: "fixed",
@@ -144,25 +177,27 @@ export default function App() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: window.innerWidth < 768 ? "15px 20px" : "20px 10px",
+          padding: window.innerWidth < 768 ? "15px 20px" : "20px 40px",
           background: "rgba(10,15,31,0.95)",
-          backdropFilter: "blur(20px)",
-          borderBottom: "1px solid rgba(0,255,255,0.2)",
+          backdropFilter: "blur(30px)",
+          borderBottom: "1px solid rgba(0,255,255,0.3)",
           zIndex: 100,
-          boxShadow: "0 4px 30px rgba(0,255,255,0.1)"
+          boxShadow: "0 8px 40px rgba(0,255,255,0.15), 0 0 80px rgba(29,233,182,0.1)"
         }}
       >
         <div
           style={{
             color: "#00ffff",
-            fontSize: window.innerWidth < 768 ? "1.8rem" : "2.2rem",
+            fontSize: window.innerWidth < 768 ? "1.8rem" : "2.4rem",
             fontWeight: "900",
-            textShadow: "0 0 20px #00ffff",
-            background: "linear-gradient(45deg, #00ffff, #1de9b6)",
+            textShadow: "0 0 30px #00ffff, 0 0 60px #1de9b6",
+            background: "linear-gradient(45deg, #00ffff, #1de9b6, #00ffff)",
+            backgroundSize: "200% 100%",
             backgroundClip: "text",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
-            letterSpacing: "-0.02em"
+            letterSpacing: "-0.02em",
+            animation: "gradientShift 3s ease-in-out infinite"
           }}
         >
           FUTURIFY
@@ -171,7 +206,7 @@ export default function App() {
         <div
           style={{
             display: "flex",
-            gap: window.innerWidth < 768 ? "15px" : "30px",
+            gap: window.innerWidth < 768 ? "15px" : "35px",
             alignItems: "center",
             flexWrap: "wrap"
           }}
@@ -182,31 +217,36 @@ export default function App() {
             { name: "About", ref: aboutRef },
             { name: "Why Us", ref: whyRef },
             { name: "Clients", ref: clientsRef },
-          ].map((item, idx) => (
+          ].map((item) => (
             <button
               key={item.name}
               onClick={() => scrollToSection(item.ref)}
               style={{
-                background: "transparent",
-                border: "none",
+                background: "rgba(0,255,255,0.05)",
+                border: "1px solid rgba(0,255,255,0.2)",
                 color: "#ffffff",
                 fontSize: window.innerWidth < 768 ? "0.9rem" : "1rem",
                 cursor: "pointer",
-                padding: "8px 16px",
-                borderRadius: "8px",
-                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                padding: "10px 20px",
+                borderRadius: "12px",
+                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
                 position: "relative",
-                fontWeight: "500"
+                fontWeight: "500",
+                overflow: "hidden"
               }}
               onMouseEnter={(e) => {
-                e.target.style.color = "#00ffff";
-                e.target.style.textShadow = "0 0 10px #00ffff";
-                e.target.style.background = "rgba(0,255,255,0.1)";
+                e.target.style.color = "#000";
+                e.target.style.background = "linear-gradient(45deg, #00ffff, #1de9b6)";
+                e.target.style.borderColor = "#00ffff";
+                e.target.style.boxShadow = "0 0 20px rgba(0,255,255,0.5)";
+                e.target.style.transform = "translateY(-2px)";
               }}
               onMouseLeave={(e) => {
                 e.target.style.color = "#ffffff";
-                e.target.style.textShadow = "none";
-                e.target.style.background = "transparent";
+                e.target.style.background = "rgba(0,255,255,0.05)";
+                e.target.style.borderColor = "rgba(0,255,255,0.2)";
+                e.target.style.boxShadow = "none";
+                e.target.style.transform = "translateY(0)";
               }}
             >
               {item.name}
@@ -216,376 +256,340 @@ export default function App() {
       </nav>
 
       <div style={{ position: "relative", zIndex: 10 }}>
-
-        
-        {/* Hero */}
-        <section style={{ paddingTop: "120px", minHeight: "80vh", display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "40px", textAlign: "center" }}>
+        {/* Enhanced Hero Section */}
+        <section style={{ 
+          paddingTop: "120px", 
+          minHeight: "90vh", 
+          display: "flex", 
+          flexWrap: "wrap", 
+          justifyContent: "center", 
+          alignItems: "center", 
+          gap: "40px", 
+          textAlign: "center",
+          background: "radial-gradient(ellipse at center, rgba(0,255,255,0.1) 0%, transparent 70%)"
+        }}>
           <div style={{ flex: "1 1 400px", minWidth: "300px" }}>
-            <h2 style={{ fontSize: "3.5rem", fontWeight: 700, color: "#00ffff", textShadow: "0 0 8px #00ffff, 0 0 20px #1de9b6", marginBottom: "20px" }}>Build Your Digital Future</h2>
-            <p style={{ color: "#ddd", fontSize: "1.2rem", maxWidth: "700px", margin: "0 auto 30px auto" }}>
-              Cutting-edge solutions in <span style={{ color: "#1de9b6" }}>Web Development</span>, <span style={{ color: "#1de9b6" }}>AI & Data Science</span>, and <span style={{ color: "#1de9b6" }}>Digital Marketing</span>.
+            <h1 style={{ 
+              fontSize: window.innerWidth < 768 ? "2.8rem" : "4rem", 
+              fontWeight: 900, 
+              color: "#00ffff", 
+              textShadow: "0 0 20px #00ffff, 0 0 40px #1de9b6, 0 0 80px rgba(0,255,255,0.3)", 
+              marginBottom: "25px",
+              background: "linear-gradient(45deg, #00ffff, #1de9b6, #00ffff)",
+              backgroundSize: "200% 100%",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              animation: "gradientShift 4s ease-in-out infinite"
+            }}>
+              Build Your Digital Future
+            </h1>
+            <p style={{ 
+              color: "#cbd5e1", 
+              fontSize: "1.3rem", 
+              maxWidth: "700px", 
+              margin: "0 auto 35px auto",
+              lineHeight: 1.7,
+              textShadow: "0 2px 10px rgba(0,0,0,0.5)"
+            }}>
+              Cutting-edge solutions in <span style={{ color: "#1de9b6", fontWeight: "600" }}>Web Development</span>, 
+              <span style={{ color: "#1de9b6", fontWeight: "600" }}> AI & Data Science</span>, and 
+              <span style={{ color: "#1de9b6", fontWeight: "600" }}> Digital Marketing</span>.
             </p>
-            <button onClick={() => setShowFormPopup(true)} style={{ padding: "12px 28px", background: "linear-gradient(90deg, #00ffff, #1de9b6)", border: "none", borderRadius: "12px", fontWeight: "bold", color: "#000", cursor: "pointer", fontSize: "1rem", boxShadow: "0 0 15px #00ffff, 0 0 25px #1de9b6" }}>
+            <button 
+              onClick={() => setShowFormPopup(true)} 
+              style={{ 
+                padding: "15px 35px", 
+                background: "linear-gradient(45deg, #00ffff, #1de9b6)", 
+                border: "none", 
+                borderRadius: "15px", 
+                fontWeight: "bold", 
+                color: "#000", 
+                cursor: "pointer", 
+                fontSize: "1.1rem", 
+                boxShadow: "0 0 25px #00ffff, 0 0 50px #1de9b6",
+                transition: "all 0.3s ease",
+                transform: "perspective(1000px) rotateX(0deg)"
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = "perspective(1000px) rotateX(-10deg) scale(1.05)";
+                e.target.style.boxShadow = "0 10px 35px #00ffff, 0 15px 60px #1de9b6";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "perspective(1000px) rotateX(0deg) scale(1)";
+                e.target.style.boxShadow = "0 0 25px #00ffff, 0 0 50px #1de9b6";
+              }}
+            >
               Start Building
             </button>
           </div>
         </section>
 
-{/* Services */}
-<section
-  ref={servicesRef}
-  style={{
-    ...sectionStyle,
-    padding: "60px 20px",
-    background: "linear-gradient(135deg, #020d1f 0%, #041830 50%, #0a1a35 100%)",
-    position: "relative",
-    overflow: "hidden",
-  }}
->
-  {/* Background pattern */}
-  <div
-    style={{
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundImage: `radial-gradient(circle at 25% 25%, rgba(0,255,247,0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 75% 75%, rgba(0,255,247,0.05) 0%, transparent 50%)`,
-      pointerEvents: "none",
-    }}
-  />
-
-  <h2
-    style={{
-      fontSize: "2.8rem",
-      fontWeight: "900",
-      textAlign: "center",
-      marginBottom: "20px",
-      color: "#00fff7",
-      textShadow: "0 0 20px #00fff7, 0 0 40px #00fff799",
-      background: "linear-gradient(45deg, #00fff7, #7dd3fc)",
-      backgroundClip: "text",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-      position: "relative",
-      zIndex: 1,
-    }}
-  >
-    Our Services
-  </h2>
-
-  <p
-    style={{
-      textAlign: "center",
-      color: "#94a3b8",
-      fontSize: "1.1rem",
-      maxWidth: "600px",
-      margin: "0 auto 50px",
-      position: "relative",
-      zIndex: 1,
-    }}
-  >
-    Transforming businesses with cutting-edge technology solutions
-  </p>
-
-  <Slider
-    dots={true}
-    infinite={true}
-    speed={8000}
-    slidesToShow={4}
-    slidesToScroll={1}
-    autoplay={true}
-    autoplaySpeed={0} // continuous
-    cssEase="linear"
-    pauseOnHover={false} // no pause
-    centerMode={true}    // important for gaps
-    centerPadding="60px" // visible gaps on desktop
-    responsive={[
-      { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1, centerMode: true, centerPadding: "40px", speed: 7000 } },
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1, centerMode: true, centerPadding: "30px", speed: 6000 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px", speed: 5000 } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "30px", speed: 5000 } },
-    ]}
-  >
-    {[
-      { title: "AI Integration", desc: "Seamlessly integrate cutting-edge AI into your workflows.", icon: "🤖", gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)" },
-      { title: "Automation Tools", desc: "Eliminate repetitive tasks with intelligent automation.", icon: "⚙️", gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)" },
-      { title: "Data Insights", desc: "Unlock hidden value from your data with advanced analytics.", icon: "📊", gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)" },
-      { title: "Custom Solutions", desc: "Bespoke digital solutions tailored to your business.", icon: "🛠️", gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)" },
-      { title: "Cloud Services", desc: "Modernize infrastructure with secure cloud solutions.", icon: "☁️", gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" },
-      { title: "Consulting", desc: "Expert strategic advice to guide your transformation.", icon: "💡", gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" },
-    ].map((service, idx) => (
-      <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
-        <div
-          className="service-card"
+        {/* Enhanced Services Section */}
+        <section
+          ref={servicesRef}
           style={{
-            background: "rgba(0,255,255,0.06)",
-            backdropFilter: "blur(15px)",
-            borderRadius: "24px",
-            height: "380px",
-            minWidth: "260px",
-            maxWidth: "280px",
-            textAlign: "center",
-            boxShadow: "0 15px 45px rgba(0,255,255,0.15), 0 5px 15px rgba(0,0,0,0.1)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            padding: "30px 25px",
-            transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-            border: "1px solid rgba(0,255,255,0.2)",
+            ...sectionStyle,
+            padding: "80px 20px",
+            background: "linear-gradient(135deg, #020d1f 0%, #041830 50%, #0a1a35 100%)",
             position: "relative",
             overflow: "hidden",
-            margin: "0 auto",
           }}
         >
-          {/* Card gradient overlay */}
           <div
             style={{
               position: "absolute",
               top: 0,
               left: 0,
               right: 0,
-              height: "4px",
-              background: service.gradient,
-              borderRadius: "24px 24px 0 0",
-              animation: "glow 2s ease-in-out infinite alternate",
+              bottom: 0,
+              backgroundImage: `radial-gradient(circle at 25% 25%, rgba(0,255,247,0.08) 0%, transparent 50%),
+                                radial-gradient(circle at 75% 75%, rgba(29,233,182,0.08) 0%, transparent 50%)`,
+              pointerEvents: "none",
             }}
           />
 
-          <div
+          <h2
             style={{
-              fontSize: "4rem",
-              marginBottom: "20px",
-              textShadow: "0 0 15px #00fff7",
-              filter: "drop-shadow(0 0 10px rgba(0,255,247,0.3))",
+              fontSize: "3.2rem",
+              fontWeight: "900",
+              textAlign: "center",
+              marginBottom: "25px",
+              color: "#00fff7",
+              textShadow: "0 0 30px #00fff7, 0 0 60px #00fff799",
+              background: "linear-gradient(45deg, #00fff7, #7dd3fc, #1de9b6)",
+              backgroundSize: "200% 100%",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              position: "relative",
+              zIndex: 1,
+              animation: "gradientShift 5s ease-in-out infinite"
             }}
           >
-            {service.icon}
-          </div>
-
-          <h3
-            style={{
-              fontSize: "1.6rem",
-              marginBottom: "15px",
-              color: "#ffffff",
-              textShadow: "0 0 10px rgba(0,255,247,0.5)",
-              fontWeight: "700",
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {service.title}
-          </h3>
+            Our Services
+          </h2>
 
           <p
             style={{
-              color: "#cbd5e1",
-              fontSize: "1rem",
-              lineHeight: 1.6,
-              margin: 0,
-              fontWeight: "400",
+              textAlign: "center",
+              color: "#94a3b8",
+              fontSize: "1.2rem",
+              maxWidth: "650px",
+              margin: "0 auto 60px",
+              position: "relative",
+              zIndex: 1,
+              lineHeight: 1.6
             }}
           >
-            {service.desc}
+            Transforming businesses with cutting-edge technology solutions
           </p>
-        </div>
-      </div>
-    ))}
-  </Slider>
 
-  <style jsx>{`
-    .service-card:hover {
-      transform: translateY(-20px) scale(1.02);
-      box-shadow: 0 25px 60px rgba(0, 255, 255, 0.3), 0 10px 25px rgba(0,0,0,0.2);
-      border-color: rgba(0,255,255,0.4);
-    }
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <Slider {...servicesSliderSettings}>
+              {servicesData.map((service, idx) => (
+                <div key={idx} style={{ padding: "0 8px" }}>
+                  <div
+                    style={{
+                      background: "rgba(0,255,255,0.08)",
+                      backdropFilter: "blur(20px)",
+                      borderRadius: "24px",
+                      height: "340px",
+                      textAlign: "center",
+                      boxShadow: "0 20px 60px rgba(0,255,255,0.2), 0 8px 25px rgba(0,0,0,0.15)",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      padding: "30px 20px",
+                      transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                      border: "1px solid rgba(0,255,255,0.25)",
+                      position: "relative",
+                      overflow: "hidden",
+                      cursor: "pointer"
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-15px) scale(1.03)";
+                      e.currentTarget.style.boxShadow = "0 30px 80px rgba(0, 255, 255, 0.4), 0 15px 35px rgba(0,0,0,0.3)";
+                      e.currentTarget.style.borderColor = "rgba(0,255,255,0.5)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0) scale(1)";
+                      e.currentTarget.style.boxShadow = "0 20px 60px rgba(0,255,255,0.2), 0 8px 25px rgba(0,0,0,0.15)";
+                      e.currentTarget.style.borderColor = "rgba(0,255,255,0.25)";
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: "4px",
+                        background: service.gradient,
+                        borderRadius: "24px 24px 0 0",
+                        animation: "pulse 3s ease-in-out infinite"
+                      }}
+                    />
 
-    .slick-slide {
-      display: flex !important;
-      justify-content: center;
-      box-sizing: border-box;
-    }
+                    <div
+                      style={{
+                        fontSize: "3.5rem",
+                        marginBottom: "20px",
+                        textShadow: "0 0 20px #00fff7",
+                        filter: "drop-shadow(0 0 15px rgba(0,255,247,0.4))",
+                      }}
+                    >
+                      {service.icon}
+                    </div>
 
-    .slick-list {
-      overflow: hidden;
-    }
+                    <h3
+                      style={{
+                        fontSize: "1.4rem",
+                        marginBottom: "15px",
+                        color: "#ffffff",
+                        textShadow: "0 0 15px rgba(0,255,247,0.6)",
+                        fontWeight: "700",
+                        letterSpacing: "-0.02em",
+                      }}
+                    >
+                      {service.title}
+                    </h3>
 
-    .slick-dots {
-      bottom: -50px;
-    }
+                    <p
+                      style={{
+                        color: "#cbd5e1",
+                        fontSize: "0.95rem",
+                        lineHeight: 1.5,
+                        margin: 0,
+                        fontWeight: "400",
+                        opacity: 0.9
+                      }}
+                    >
+                      {service.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
+        </section>
 
-    .slick-dots li button:before {
-      color: #00fff7;
-      font-size: 12px;
-      opacity: 0.5;
-    }
+        {/* About Section */}
+        <section
+          ref={aboutRef}
+          style={{
+            ...sectionStyle,
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            gap: "50px",
+            padding: "80px 20px",
+          }}
+        >
+          <img
+            src="https://images.unsplash.com/photo-1581090700227-1d7f0ee6d8f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8dGVjaG5vbG9neXxlbnwwfHx8fDE2OTUyMzYyNTY&ixlib=rb-4.0.3&q=80&w=500"
+            alt="About"
+            style={{
+              borderRadius: "25px",
+              maxWidth: "500px",
+              flex: "1 1 400px",
+              boxShadow: "0 0 40px rgba(0,255,255,0.3), 0 0 80px rgba(29,233,182,0.2)",
+              width: "100%",
+              filter: "brightness(1.1) contrast(1.1)",
+            }}
+          />
+          <div style={{ flex: "1 1 500px" }}>
+            <h3 style={{ fontSize: "3.2rem", marginBottom: "25px", color: "#00ffff", textShadow: "0 0 25px #00ffff" }}>
+              Who We Are
+            </h3>
+            <p style={{ color: "#e2e8f0", fontSize: "1.15rem", lineHeight: 1.8, marginBottom: "20px" }}>
+              At Futurify, we are a dedicated team of visionaries, technologists, and strategists
+              who thrive at the intersection of innovation and business growth. With years of
+              experience across industries, we specialize in building intelligent, scalable,
+              and secure digital solutions that empower organizations to achieve their
+              strategic goals.  
+            </p>
+            <p style={{ color: "#e2e8f0", fontSize: "1.15rem", lineHeight: 1.8, marginBottom: "20px" }}>
+              Our expertise spans cutting-edge <span style={{ color: "#1de9b6", fontWeight: "600" }}>web development</span>,
+              <span style={{ color: "#1de9b6", fontWeight: "600" }}> AI & data science</span>, <span style={{ color: "#1de9b6", fontWeight: "600" }}>cloud infrastructure</span>,
+              <span style={{ color: "#1de9b6", fontWeight: "600" }}> digital marketing</span>, and <span style={{ color: "#1de9b6", fontWeight: "600" }}>automation solutions</span>.
+              By combining deep technical knowledge with creative design and strategic thinking,
+              we craft solutions that are not only functional but transformative.  
+            </p>
+            <p style={{ color: "#1de9b6", fontSize: "1.05rem", marginTop: "25px", fontWeight: "500", textShadow: "0 0 10px rgba(29,233,182,0.3)" }}>
+              Partner with us, and together we will create a digital future that is innovative,
+              resilient, and impactful.
+            </p>
+          </div>
+        </section>
 
-    .slick-dots li.slick-active button:before {
-      opacity: 1;
-      color: #00fff7;
-      text-shadow: 0 0 10px #00fff7;
-    }
+        {/* Why Choose Us Section */}
+        <section
+          ref={whyRef}
+          style={{
+            ...sectionStyle,
+            background: "linear-gradient(135deg, #0a0f1f 0%, #081529 100%)",
+            borderRadius: "25px",
+            marginBottom: "40px",
+            padding: "80px 20px",
+            boxShadow: "0 0 60px rgba(0,255,255,0.1)"
+          }}
+        >
+          <h3 style={{ ...headingStyle, color: "#1de9b6", fontSize: "3.2rem", textShadow: "0 0 25px #1de9b6" }}>Why Choose Us</h3>
 
-    @media (max-width: 768px) {
-      .service-card {
-        min-width: calc(100vw - 80px) !important;
-        max-width: calc(100vw - 80px) !important;
-        height: 350px !important;
-        backdrop-filter: blur(10px) !important; /* reduce blur on mobile */
-      }
-    }
-
-    @media (max-width: 480px) {
-      .service-card {
-        min-width: calc(100vw - 60px) !important;
-        max-width: calc(100vw - 60px) !important;
-        padding: 25px 20px !important;
-        backdrop-filter: blur(8px) !important; /* clearer on very small screens */
-      }
-    }
-
-    @keyframes glow {
-      0% { opacity: 0.6; }
-      50% { opacity: 1; }
-      100% { opacity: 0.6; }
-    }
-  `}</style>
-</section>
-
-
-
-
-{/* About */}
-<section
-  ref={aboutRef}
-  style={{
-    ...sectionStyle,
-    display: "flex",
-    flexWrap: "wrap",
-    alignItems: "center",
-    gap: "40px",
-    padding: "60px 20px",
-  }}
->
-  <img
-  src="https://images.unsplash.com/photo-1581090700227-1d7f0ee6d8f7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8dGVjaG5vbG9neXxlbnwwfHx8fDE2OTUyMzYyNTY&ixlib=rb-4.0.3&q=80&w=500"
-    alt="About"
-    style={{
-      borderRadius: "20px",
-      maxWidth: "500px",
-      flex: "1 1 400px",
-      boxShadow: "0 0 25px #00ffff",
-      width: "100%",
-    }}
-  />
-  <div style={{ flex: "1 1 500px" }}>
-    <h3 style={{ fontSize: "3rem", marginBottom: "20px", color: "#00ffff" }}>
-      Who We Are
-    </h3>
-    <p style={{ color: "#ddd", fontSize: "1.2rem", lineHeight: 1.8 }}>
-      At Futurify, we are a dedicated team of visionaries, technologists, and strategists
-      who thrive at the intersection of innovation and business growth. With years of
-      experience across industries, we specialize in building intelligent, scalable,
-      and secure digital solutions that empower organizations to achieve their
-      strategic goals.  
-    </p>
-    <p style={{ color: "#ddd", fontSize: "1.2rem", lineHeight: 1.8, marginTop: "15px" }}>
-      Our expertise spans cutting-edge <span style={{ color: "#1de9b6" }}>web development</span>,
-      <span style={{ color: "#1de9b6" }}> AI & data science</span>, <span style={{ color: "#1de9b6" }}>cloud infrastructure</span>,
-      <span style={{ color: "#1de9b6" }}> digital marketing</span>, and <span style={{ color: "#1de9b6" }}>automation solutions</span>.
-      By combining deep technical knowledge with creative design and strategic thinking,
-      we craft solutions that are not only functional but transformative.  
-    </p>
-    <p style={{ color: "#ddd", fontSize: "1.2rem", lineHeight: 1.8, marginTop: "15px" }}>
-      We believe in a collaborative approach, working closely with our clients to
-      understand their unique challenges and opportunities. Every project we undertake
-      is a journey, from conceptualization to deployment, ensuring optimal performance,
-      user engagement, and measurable business outcomes. Our mission is to empower
-      companies to stay ahead in the fast-evolving digital landscape with futuristic,
-      sustainable, and intelligent solutions.  
-    </p>
-    <p style={{ color: "#1de9b6", fontSize: "1rem", marginTop: "20px" }}>
-      Partner with us, and together we will create a digital future that is innovative,
-      resilient, and impactful.
-    </p>
-  </div>
-</section>
-
-
-    {/* Why Choose Us */}
-<section
-  ref={whyRef}
-  style={{
-    ...sectionStyle,
-    background: "linear-gradient(135deg, #0a0f1f 0%, #081529 100%)",
-    borderRadius: "20px",
-    marginBottom: "40px",
-    padding: "60px 20px",
-  }}
->
-  <h3 style={{ ...headingStyle, color: "#1de9b6" }}>Why Choose Us</h3>
-
-  <div className="why-grid">
-    {[
-      { title: "Innovation", icon: "🚀", desc: "We push the boundaries of technology..." },
-      { title: "Scalability", icon: "📈", desc: "Our solutions grow with your business..." },
-      { title: "Security", icon: "🔒", desc: "We implement enterprise-grade security protocols..." },
-      { title: "Support", icon: "🛠️", desc: "Our dedicated 24/7 support ensures..." },
-      { title: "Reliability", icon: "✅", desc: "We deliver consistent, dependable solutions..." },
-      { title: "Future-Ready", icon: "🌐", desc: "We anticipate the evolving tech landscape..." },
-    ].map((feature, idx) => (
-      <div key={idx} className="why-card">
-        <div style={{ fontSize: "3rem", marginBottom: "15px" }}>{feature.icon}</div>
-        <h4 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00ffff" }}>
-          {feature.title}
-        </h4>
-        <p style={{ color: "#ddd", fontSize: "1.05rem", lineHeight: 1.6 }}>{feature.desc}</p>
-      </div>
-    ))}
-  </div>
-
-  <style jsx>{`
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr); /* desktop unchanged */
-      gap: 25px;
-      justify-items: center;
-    }
-
-    .why-card {
-      background: linear-gradient(145deg, #111111, #1a1a1a);
-      padding: 35px;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 320px;
-      text-align: center;
-      box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .why-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 0 45px rgba(0, 255, 255, 0.7);
-    }
-
-    /* Tablet */
-    @media (max-width: 1024px) {
-      .why-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    /* Mobile */
-    @media (max-width: 768px) {
-      .why-grid {
-        grid-template-columns: 1fr;
-      }
-      .why-card {
-        padding: 25px;
-      }
-    }
-  `}</style>
-</section>
+          <div style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
+            gap: "30px",
+            justifyItems: "center",
+            maxWidth: "1200px",
+            margin: "0 auto"
+          }}>
+            {[
+              { title: "Innovation", icon: "🚀", desc: "We push the boundaries of technology to deliver next-generation solutions..." },
+              { title: "Scalability", icon: "📈", desc: "Our solutions grow seamlessly with your business requirements..." },
+              { title: "Security", icon: "🔒", desc: "We implement enterprise-grade security protocols for maximum protection..." },
+              { title: "Support", icon: "🛠️", desc: "Our dedicated 24/7 support ensures your success at every step..." },
+              { title: "Reliability", icon: "✅", desc: "We deliver consistent, dependable solutions you can trust..." },
+              { title: "Future-Ready", icon: "🌐", desc: "We anticipate the evolving tech landscape and prepare you for tomorrow..." },
+            ].map((feature, idx) => (
+              <div 
+                key={idx} 
+                style={{
+                  background: "linear-gradient(145deg, rgba(17,17,17,0.8), rgba(26,26,26,0.8))",
+                  backdropFilter: "blur(20px)",
+                  padding: "40px",
+                  borderRadius: "20px",
+                  width: "100%",
+                  maxWidth: "350px",
+                  textAlign: "center",
+                  boxShadow: "0 0 40px rgba(0, 255, 255, 0.3)",
+                  transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                  border: "1px solid rgba(0,255,255,0.2)",
+                  cursor: "pointer"
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = "translateY(-15px) scale(1.02)";
+                  e.currentTarget.style.boxShadow = "0 0 60px rgba(0, 255, 255, 0.5)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = "translateY(0) scale(1)";
+                  e.currentTarget.style.boxShadow = "0 0 40px rgba(0, 255, 255, 0.3)";
+                }}
+              >
+                <div style={{ fontSize: "3.5rem", marginBottom: "20px", filter: "drop-shadow(0 0 10px #00ffff)" }}>
+                  {feature.icon}
+                </div>
+                <h4 style={{ fontSize: "1.6rem", marginBottom: "18px", color: "#00ffff", textShadow: "0 0 15px #00ffff" }}>
+                  {feature.title}
+                </h4>
+                <p style={{ color: "#cbd5e1", fontSize: "1.05rem", lineHeight: 1.6 }}>
+                  {feature.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
 
 
 {/* Clients */}
