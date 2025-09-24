@@ -226,7 +226,7 @@ export default function App() {
 >
   <h2
     style={{
-      fontSize: "2.2rem",
+      fontSize: "2.5rem",
       fontWeight: "bold",
       textAlign: "center",
       marginBottom: "40px",
@@ -253,8 +253,8 @@ export default function App() {
     ]}
   >
     {[
-      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows.", icon: "🤖", color: "#00fff7" },
-      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation systems.", icon: "⚙️", color: "#1de9b6" },
+      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows.", icon: "🤖", color: "#1de9b6" },
+      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation systems.", icon: "⚙️", color: "#00fff7" },
       { title: "Data Insights", desc: "Unlock hidden value from your data with smart analytics.", icon: "📊", color: "#f7971e" },
       { title: "Custom Solutions", desc: "Tailored digital solutions to fit your business needs.", icon: "🛠️", color: "#ff5f6d" },
       { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️", color: "#00c6ff" },
@@ -263,32 +263,32 @@ export default function App() {
       <div
         key={index}
         style={{
-          background: "#111c33",
+          background: "linear-gradient(145deg, #0a1a33, #111c44)",
           borderRadius: "20px",
           padding: "25px 15px",
           margin: "10px",
-          minHeight: "250px",
+          minHeight: "280px",
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           textAlign: "center",
-          boxShadow: `0 8px 20px ${service.color}55`,
+          boxShadow: `0 8px 25px ${service.color}55`,
           transition: "all 0.3s ease",
           cursor: "pointer",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "translateY(-8px)";
-          e.currentTarget.style.boxShadow = `0 15px 30px ${service.color}99`;
+          e.currentTarget.style.transform = "translateY(-10px)";
+          e.currentTarget.style.boxShadow = `0 15px 35px ${service.color}99`;
         }}
         onMouseLeave={(e) => {
           e.currentTarget.style.transform = "translateY(0)";
-          e.currentTarget.style.boxShadow = `0 8px 20px ${service.color}55`;
+          e.currentTarget.style.boxShadow = `0 8px 25px ${service.color}55`;
         }}
       >
         <div
           style={{
-            fontSize: window.innerWidth < 480 ? "2.5rem" : "3rem", // smaller icons on mobile
+            fontSize: window.innerWidth < 480 ? "2.5rem" : "3rem",
             marginBottom: "15px",
             color: service.color,
           }}
@@ -308,7 +308,7 @@ export default function App() {
         <p
           style={{
             color: "#ddd",
-            fontSize: window.innerWidth < 480 ? "0.9rem" : "1rem",
+            fontSize: window.innerWidth < 480 ? "0.95rem" : "1rem",
             lineHeight: 1.4,
           }}
         >
