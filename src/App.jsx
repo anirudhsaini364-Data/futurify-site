@@ -258,7 +258,7 @@ export default function App() {
         settings: { slidesToShow: 2, slidesToScroll: 1, centerMode: false } 
       },
       { 
-        breakpoint: 768, 
+        breakpoint: 900, 
         settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } 
       },
       { 
