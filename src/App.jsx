@@ -133,7 +133,6 @@ export default function App() {
         style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: -1 }}
       />
 
-<<<<<<< HEAD
  {/* Navbar */}
 <nav
   style={{
@@ -192,29 +191,6 @@ export default function App() {
 </nav>
 
 
-=======
-      {/* Navbar */}
-      <nav style={{ position: "fixed", top: 0, left: 0, width: "100%", display: "flex", justifyContent: "space-between", alignItems: "center", padding: "15px 20px", backgroundColor: "rgba(0,0,0,0.85)", zIndex: 50, flexWrap: "wrap" }}>
-        <h1 style={{ color: "#00ffff", fontSize: "1.5rem", fontWeight: "bold", textShadow: "0 0 10px #00ffff", margin: 0 }}>Futurify</h1>
-        <div style={{ display: "flex", gap: "20px", flexWrap: "wrap", justifyContent: "flex-end", flexGrow: 1 }}>
-          {[
-            { name: "Home", ref: null },
-            { name: "Services", ref: servicesRef },
-            { name: "About", ref: aboutRef },
-            { name: "Why Choose Us", ref: whyRef },
-            { name: "Contact Us", ref: contactRef },
-          ].map((item) => (
-            <span key={item.name} style={{ cursor: "pointer", color: "#fff", textShadow: "0 0 5px #00ffff", transition: "0.3s" }}
-              onClick={() => scrollToSection(item.ref)}
-              onMouseEnter={(e) => (e.target.style.color = "#1de9b6")}
-              onMouseLeave={(e) => (e.target.style.color = "#fff")}
-            >
-              {item.name}
-            </span>
-          ))}
-        </div>
-      </nav>
->>>>>>> c8a530a9b93b1bc1b2aa03f1d9ea32558be2c624
 
       <div style={{ position: "relative", zIndex: 10 }}>
         {/* Hero */}
@@ -230,7 +206,6 @@ export default function App() {
           </div>
         </section>
 
-<<<<<<< HEAD
     {/* Services */}
 <section ref={servicesRef} style={{ ...sectionStyle, padding: "60px 20px" }}>
   <h3 style={{ ...headingStyle, color: "#1de9b6", marginBottom: "30px" }}>Our Services</h3>
@@ -538,50 +513,6 @@ export default function App() {
             }}
           />
           <h4
-=======
-        {/* Services */}
-        <section ref={servicesRef} style={sectionStyle}>
-          <h3 style={headingStyle}>Our Services</h3>
-          <Slider {...sliderSettings}>
-            {serviceCards.map((service, idx) => (
-              <div key={idx} style={{ padding: "10px" }}>
-                <div style={{ background: `linear-gradient(135deg, ${service.color} 0%, #111 100%)`, padding: "30px", borderRadius: "20px", textAlign: "center", minHeight: "280px", display: "flex", flexDirection: "column", justifyContent: "center", boxShadow: `0 0 25px ${service.color}` }}>
-                  <div style={{ fontSize: "3rem", marginBottom: "15px" }}>{service.icon}</div>
-                  <h4 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#fff" }}>{service.title}</h4>
-                  <p style={{ color: "#ddd" }}>{service.desc}</p>
-                </div>
-              </div>
-            ))}
-          </Slider>
-        </section>
-
-        {/* About */}
-        <section ref={aboutRef} style={{ ...sectionStyle, display: "flex", flexWrap: "wrap", alignItems: "center", gap: "40px" }}>
-          <img src="https://source.unsplash.com/500x400/?technology,futuristic" alt="About" style={{ borderRadius: "20px", maxWidth: "500px", flex: "1 1 400px", boxShadow: "0 0 25px #00ffff", width: "100%" }} />
-          <div style={{ flex: "1 1 400px" }}>
-            <h3 style={{ fontSize: "3rem", marginBottom: "20px", color: "#00ffff" }}>
-              Who We Are
-            </h3>
-            <p style={textStyle}>
-              We are innovators, developers, and strategists passionate about transforming businesses with futuristic technology.
-              Stay ahead in the digital era with our cutting-edge solutions tailored for your growth.
-            </p>
-          </div>
-        </section>
-
-        {/* Why Choose Us */}
-        <section
-          ref={whyRef}
-          style={{
-            ...sectionStyle,
-            backgroundColor: "#0c132b",
-            borderRadius: "20px",
-            marginBottom: "40px",
-          }}
-        >
-          <h3 style={headingStyle}>Why Choose Us</h3>
-          <div
->>>>>>> c8a530a9b93b1bc1b2aa03f1d9ea32558be2c624
             style={{
               fontSize: "1.2rem",
               color: "#1de9b6",
