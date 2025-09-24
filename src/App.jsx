@@ -591,135 +591,199 @@ export default function App() {
           </div>
         </section>
 
+        {/* Enhanced Clients Section */}
+        <section
+          ref={clientsRef}
+          style={{
+            ...sectionStyle,
+            padding: "80px 20px",
+            background: "linear-gradient(135deg, #010a1a, #02142c)",
+            position: "relative",
+            overflow: "hidden"
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: `radial-gradient(circle at 30% 30%, rgba(0,255,247,0.06) 0%, transparent 50%),
+                                radial-gradient(circle at 70% 70%, rgba(29,233,182,0.06) 0%, transparent 50%)`,
+              pointerEvents: "none",
+            }}
+          />
 
-{/* Clients */}
-<section
-  ref={clientsRef}
-  style={{
-    ...sectionStyle,
-    padding: "60px 20px",
-    background: "linear-gradient(135deg, #010a1a, #02142c)",
-  }}
->
-  <h2
-    style={{
-      fontSize: "2.5rem",
-      fontWeight: "bold",
-      textAlign: "center",
-      marginBottom: "40px",
-      color: "#00fff7",
-    }}
-  >
-    Our Esteemed Clients
-  </h2>
+          <h2
+            style={{
+              fontSize: "3rem",
+              fontWeight: "900",
+              textAlign: "center",
+              marginBottom: "50px",
+              color: "#00fff7",
+              textShadow: "0 0 30px #00fff7",
+              background: "linear-gradient(45deg, #00fff7, #7dd3fc, #1de9b6)",
+              backgroundSize: "200% 100%",
+              backgroundClip: "text",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              animation: "gradientShift 5s ease-in-out infinite",
+              position: "relative",
+              zIndex: 1
+            }}
+          >
+            Our Esteemed Clients
+          </h2>
 
-  <Slider
-    dots={false}
-    infinite={true}
-    speed={6000}
-    slidesToShow={4}
-    slidesToScroll={1}
-    autoplay={true}
-    autoplaySpeed={0}
-    cssEase="linear"
-    pauseOnHover={true}
-    responsive={[
-      { breakpoint: 1400, settings: { slidesToShow: 3 } },
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
-    ]}
-  >
-    {[
-      {
-        name: "Tata Consultancy Services",
-        work: "Built AI-powered process automation tools.",
-        impact: "Saved 30% in operational costs.",
-      },
-      {
-        name: "Reliance Industries",
-        work: "Developed smart analytics dashboards.",
-        impact: "Boosted decision-making speed by 40%.",
-      },
-      {
-        name: "Infosys",
-        work: "Deployed internal chatbot for HR operations.",
-        impact: "Improved employee query resolution efficiency.",
-      },
-      {
-        name: "Wipro",
-        work: "Created scheduling and workflow system.",
-        impact: "Enhanced team productivity by 25%.",
-      },
-      {
-        name: "Bharti Airtel",
-        work: "Built customer data insights tool.",
-        impact: "Increased customer retention by 15%.",
-      },
-      {
-        name: "Maruti Suzuki",
-        work: "Designed predictive maintenance dashboards.",
-        impact: "Reduced downtime in operations.",
-      },
-      {
-        name: "HDFC Bank",
-        work: "Automated reporting workflows.",
-        impact: "Cut manual efforts by 50%.",
-      },
-      {
-        name: "ICICI Bank",
-        work: "Developed fraud detection system prototype.",
-        impact: "Strengthened risk management processes.",
-      },
-    ].map((client, index) => (
-      <div
-        key={index}
-        style={{
-          background: "linear-gradient(145deg, #0a0f1f, #111c33)",
-          borderRadius: "15px",
-          padding: "20px",
-          minHeight: "200px",
-          margin: "10px",
-          textAlign: "center",
-          boxShadow: "0 0 15px rgba(0, 255, 247, 0.3)",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-        }}
-      >
-        <h3 style={{ fontSize: "1.2rem", color: "#00fff7", marginBottom: "8px" }}>
-          {client.name}
-        </h3>
-        <p style={{ color: "#d1eaff", fontSize: "0.95rem", marginBottom: "5px" }}>
-          <strong>Work:</strong> {client.work}
-        </p>
-        <p style={{ color: "#a8ffef", fontSize: "0.9rem" }}>
-          <strong>Impact:</strong> {client.impact}
-        </p>
-      </div>
-    ))}
-  </Slider>
-</section>
+          <div style={{ position: "relative", zIndex: 1 }}>
+            <Slider {...clientsSliderSettings}>
+              {clientsData.map((client, index) => (
+                <div key={index} style={{ padding: "0 10px" }}>
+                  <div
+                    style={{
+                      background: "rgba(0,255,255,0.08)",
+                      backdropFilter: "blur(20px)",
+                      borderRadius: "20px",
+                      minHeight: "220px",
+                      textAlign: "center",
+                      boxShadow: "0 15px 45px rgba(0, 255, 247, 0.2)",
+                      display: "flex",
+                      flexDirection: "column",
+                      justifyContent: "center",
+                      padding: "25px 20px",
+                      transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                      border: "1px solid rgba(0,255,255,0.25)",
+                      position: "relative",
+                      overflow: "hidden",
+                      cursor: "pointer"
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = "translateY(-10px) scale(1.02)";
+                      e.currentTarget.style.boxShadow = "0 25px 60px rgba(0, 255, 247, 0.35)";
+                      e.currentTarget.style.borderColor = "rgba(0,255,255,0.5)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = "translateY(0) scale(1)";
+                      e.currentTarget.style.boxShadow = "0 15px 45px rgba(0, 255, 247, 0.2)";
+                      e.currentTarget.style.borderColor = "rgba(0,255,255,0.25)";
+                    }}
+                  >
+                    <div
+                      style={{
+                        position: "absolute",
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: "3px",
+                        background: "linear-gradient(90deg, #00fff7, #1de9b6)",
+                        borderRadius: "20px 20px 0 0",
+                        animation: "pulse 2s ease-in-out infinite"
+                      }}
+                    />
 
+                    <h3 style={{ 
+                      fontSize: "1.25rem", 
+                      color: "#00fff7", 
+                      marginBottom: "12px",
+                      textShadow: "0 0 15px rgba(0,255,247,0.5)",
+                      fontWeight: "700"
+                    }}>
+                      {client.name}
+                    </h3>
+                    <p style={{ 
+                      color: "#cbd5e1", 
+                      fontSize: "0.95rem", 
+                      marginBottom: "8px",
+                      lineHeight: 1.4
+                    }}>
+                      <strong style={{ color: "#a8ffef" }}>Work:</strong> {client.work}
+                    </p>
+                    <p style={{ 
+                      color: "#a8ffef", 
+                      fontSize: "0.9rem",
+                      lineHeight: 1.4
+                    }}>
+                      <strong>Impact:</strong> {client.impact}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
+        </section>
 
-
-
-
-        {/* Footer */}
+        {/* Enhanced Footer */}
         <footer
           ref={contactRef}
           style={{
-            padding: "60px 20px",
+            padding: "80px 20px 60px",
             textAlign: "center",
-            backgroundColor: "#111",
+            background: "linear-gradient(135deg, #0a0f1f 0%, #111c33 100%)",
             color: "#fff",
-            borderTop: "2px solid #00ffff",
+            borderTop: "2px solid rgba(0,255,255,0.3)",
+            boxShadow: "0 -10px 40px rgba(0,255,255,0.1)"
           }}
         >
-          <p>&copy; 2025 Futurify. All Rights Reserved.</p>
+          <div style={{ marginBottom: "40px" }}>
+            <h3 style={{
+              fontSize: "2.5rem",
+              color: "#00ffff",
+              textShadow: "0 0 25px #00ffff",
+              marginBottom: "20px",
+              fontWeight: "700"
+            }}>
+              Ready to Transform Your Business?
+            </h3>
+            <p style={{ 
+              color: "#cbd5e1", 
+              fontSize: "1.1rem", 
+              maxWidth: "600px", 
+              margin: "0 auto 30px",
+              lineHeight: 1.6
+            }}>
+              Let's build something extraordinary together. Contact us today to start your digital transformation journey.
+            </p>
+            <button
+              onClick={() => setShowFormPopup(true)}
+              style={{
+                padding: "15px 35px",
+                background: "linear-gradient(45deg, #00ffff, #1de9b6)",
+                border: "none",
+                borderRadius: "12px",
+                fontWeight: "bold",
+                color: "#000",
+                cursor: "pointer",
+                fontSize: "1.1rem",
+                boxShadow: "0 0 25px rgba(0,255,255,0.5)",
+                transition: "all 0.3s ease"
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = "scale(1.05)";
+                e.target.style.boxShadow = "0 0 35px rgba(0,255,255,0.7)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "scale(1)";
+                e.target.style.boxShadow = "0 0 25px rgba(0,255,255,0.5)";
+              }}
+            >
+              Get Started Now
+            </button>
+          </div>
+          
+          <div style={{ 
+            borderTop: "1px solid rgba(0,255,255,0.2)", 
+            paddingTop: "30px",
+            color: "#94a3b8"
+          }}>
+            <p style={{ margin: 0, fontSize: "1rem" }}>
+              &copy; 2025 Futurify. All Rights Reserved. | Powered by Innovation
+            </p>
+          </div>
         </footer>
       </div>
 
-      {/* Popup Form */}
+      {/* Enhanced Popup Form */}
       {showFormPopup && (
         <div
           style={{
@@ -728,38 +792,60 @@ export default function App() {
             left: 0,
             width: "100%",
             height: "100%",
-            background: "rgba(0,0,0,0.85)",
+            background: "rgba(0,0,0,0.9)",
+            backdropFilter: "blur(10px)",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             zIndex: 200,
             padding: "20px",
+            animation: "fadeIn 0.3s ease-in-out"
           }}
         >
           <div
             style={{
-              background: "#0c132b",
-              padding: "40px",
-              borderRadius: "25px",
-              maxWidth: "500px",
+              background: "linear-gradient(145deg, #0c132b, #1a1f3a)",
+              padding: "50px",
+              borderRadius: "30px",
+              maxWidth: "550px",
               width: "100%",
-              boxShadow: "0 0 30px #00ffff",
+              boxShadow: "0 0 60px rgba(0,255,255,0.4), 0 0 120px rgba(29,233,182,0.2)",
+              border: "1px solid rgba(0,255,255,0.3)",
+              position: "relative",
+              overflow: "hidden"
             }}
           >
+            <div
+              style={{
+                position: "absolute",
+                top: 0,
+                left: 0,
+                right: 0,
+                height: "4px",
+                background: "linear-gradient(90deg, #00ffff, #1de9b6)",
+                borderRadius: "30px 30px 0 0"
+              }}
+            />
+
             <h3
               style={{
                 color: "#00ffff",
-                marginBottom: "20px",
+                marginBottom: "15px",
                 textAlign: "center",
+                fontSize: "2rem",
+                fontWeight: "700",
+                textShadow: "0 0 20px #00ffff"
               }}
             >
               Start Your Project
             </h3>
             <p
               style={{
-                color: "#ddd",
-                marginBottom: "20px",
+                color: "#cbd5e1",
+                marginBottom: "30px",
                 textAlign: "center",
+                fontSize: "1.05rem",
+                lineHeight: 1.5
               }}
             >
               Share your project details and our team will get back to you with futuristic solutions.
@@ -767,7 +853,7 @@ export default function App() {
 
             <form
               onSubmit={handleSubmit}
-              style={{ display: "flex", flexDirection: "column", gap: "15px" }}
+              style={{ display: "flex", flexDirection: "column", gap: "20px" }}
             >
               <input
                 required
@@ -776,12 +862,22 @@ export default function App() {
                 value={formData.name}
                 onChange={handleChange}
                 style={{
-                  padding: "12px",
-                  borderRadius: "10px",
-                  border: "none",
+                  padding: "15px",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(0,255,255,0.3)",
                   outline: "none",
-                  backgroundColor: "#111",
+                  backgroundColor: "rgba(17,17,17,0.8)",
                   color: "#fff",
+                  fontSize: "1rem",
+                  transition: "all 0.3s ease"
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#00ffff";
+                  e.target.style.boxShadow = "0 0 15px rgba(0,255,255,0.3)";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "rgba(0,255,255,0.3)";
+                  e.target.style.boxShadow = "none";
                 }}
               />
               <input
@@ -792,12 +888,22 @@ export default function App() {
                 value={formData.email}
                 onChange={handleChange}
                 style={{
-                  padding: "12px",
-                  borderRadius: "10px",
-                  border: "none",
+                  padding: "15px",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(0,255,255,0.3)",
                   outline: "none",
-                  backgroundColor: "#111",
+                  backgroundColor: "rgba(17,17,17,0.8)",
                   color: "#fff",
+                  fontSize: "1rem",
+                  transition: "all 0.3s ease"
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#00ffff";
+                  e.target.style.boxShadow = "0 0 15px rgba(0,255,255,0.3)";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "rgba(0,255,255,0.3)";
+                  e.target.style.boxShadow = "none";
                 }}
               />
               <input
@@ -808,12 +914,22 @@ export default function App() {
                 value={formData.phone}
                 onChange={handleChange}
                 style={{
-                  padding: "12px",
-                  borderRadius: "10px",
-                  border: "none",
+                  padding: "15px",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(0,255,255,0.3)",
                   outline: "none",
-                  backgroundColor: "#111",
+                  backgroundColor: "rgba(17,17,17,0.8)",
                   color: "#fff",
+                  fontSize: "1rem",
+                  transition: "all 0.3s ease"
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#00ffff";
+                  e.target.style.boxShadow = "0 0 15px rgba(0,255,255,0.3)";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "rgba(0,255,255,0.3)";
+                  e.target.style.boxShadow = "none";
                 }}
               />
               <textarea
@@ -824,57 +940,172 @@ export default function App() {
                 onChange={handleChange}
                 rows={4}
                 style={{
-                  padding: "12px",
-                  borderRadius: "10px",
-                  border: "none",
+                  padding: "15px",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(0,255,255,0.3)",
                   outline: "none",
-                  backgroundColor: "#111",
+                  backgroundColor: "rgba(17,17,17,0.8)",
                   color: "#fff",
                   resize: "none",
+                  fontSize: "1rem",
+                  transition: "all 0.3s ease"
+                }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = "#00ffff";
+                  e.target.style.boxShadow = "0 0 15px rgba(0,255,255,0.3)";
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = "rgba(0,255,255,0.3)";
+                  e.target.style.boxShadow = "none";
                 }}
               />
 
-              <ReCAPTCHA
-                sitekey="6LcDYtIrAAAAAHJVn0jJ9JfZrqwKr2IJSROPkcNN"
-                onChange={handleCaptchaChange}
-              />
+              <div style={{ display: "flex", justifyContent: "center" }}>
+                <ReCAPTCHA
+                  sitekey="6LcDYtIrAAAAAHJVn0jJ9JfZrqwKr2IJSROPkcNN"
+                  onChange={handleCaptchaChange}
+                  theme="dark"
+                />
+              </div>
+              
               <button
                 type="submit"
                 style={{
-                  padding: "12px",
+                  padding: "15px",
                   borderRadius: "12px",
                   border: "none",
                   fontWeight: "bold",
-                  background: "linear-gradient(90deg,#00ffff,#1de9b6)",
+                  background: "linear-gradient(45deg, #00ffff, #1de9b6)",
                   cursor: "pointer",
                   color: "#000",
-                  boxShadow: "0 0 15px #00ffff, 0 0 25px #1de9b6",
+                  boxShadow: "0 0 25px rgba(0,255,255,0.5)",
+                  fontSize: "1.1rem",
+                  transition: "all 0.3s ease"
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = "scale(1.02)";
+                  e.target.style.boxShadow = "0 0 35px rgba(0,255,255,0.7)";
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = "scale(1)";
+                  e.target.style.boxShadow = "0 0 25px rgba(0,255,255,0.5)";
                 }}
               >
-                Submit
+                Submit Project Details
               </button>
+              
               {message && (
-                <p style={{ color: "#1de9b6", textAlign: "center" }}>{message}</p>
+                <p style={{ 
+                  color: message.includes("Error") ? "#ff6b6b" : "#1de9b6", 
+                  textAlign: "center", 
+                  fontWeight: "500",
+                  textShadow: "0 0 10px currentColor"
+                }}>
+                  {message}
+                </p>
               )}
             </form>
+            
             <button
               onClick={() => setShowFormPopup(false)}
               style={{
-                marginTop: "20px",
+                position: "absolute",
+                top: "20px",
+                right: "25px",
                 background: "transparent",
                 color: "#00ffff",
                 border: "none",
                 cursor: "pointer",
-                fontSize: "1rem",
-                textDecoration: "underline",
+                fontSize: "1.5rem",
+                fontWeight: "bold",
+                width: "35px",
+                height: "35px",
+                borderRadius: "50%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                transition: "all 0.3s ease"
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.background = "rgba(0,255,255,0.2)";
+                e.target.style.transform = "scale(1.1)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.background = "transparent";
+                e.target.style.transform = "scale(1)";
               }}
             >
-              Close
+              ×
             </button>
           </div>
         </div>
       )}
+
+      <style jsx global>{`
+        @keyframes gradientShift {
+          0%, 100% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+        }
+
+        @keyframes pulse {
+          0%, 100% { opacity: 0.6; }
+          50% { opacity: 1; }
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; transform: scale(0.95); }
+          to { opacity: 1; transform: scale(1); }
+        }
+
+        .slick-dots {
+          bottom: -60px !important;
+        }
+
+        .slick-dots li button:before {
+          color: #00fff7 !important;
+          font-size: 14px !important;
+          opacity: 0.6 !important;
+        }
+
+        .slick-dots li.slick-active button:before {
+          opacity: 1 !important;
+          color: #00fff7 !important;
+          text-shadow: 0 0 15px #00fff7 !important;
+        }
+
+        .slick-slide > div {
+          height: 100%;
+        }
+
+        .slick-track {
+          display: flex;
+          align-items: stretch;
+        }
+
+        @media (max-width: 768px) {
+          .slick-dots {
+            bottom: -50px !important;
+          }
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: #0a0f1f;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background: linear-gradient(135deg, #00ffff, #1de9b6);
+          border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+          background: linear-gradient(135deg, #1de9b6, #00ffff);
+        }
+      `}</style>
     </div>
   );
 }
-
