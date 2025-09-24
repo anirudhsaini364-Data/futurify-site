@@ -243,7 +243,7 @@ export default function App() {
     dots={true}
     infinite={true}
     speed={600}
-    slidesToShow={5}
+    slidesToShow={1}
     slidesToScroll={1}
     autoplay={true}
     autoplaySpeed={3000}
