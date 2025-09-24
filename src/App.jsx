@@ -215,7 +215,6 @@ export default function App() {
             </button>
           </div>
         </section>
-
 {/* Services */}
 <section
   ref={servicesRef}
@@ -242,29 +241,17 @@ export default function App() {
     dots={true}
     infinite={true}
     speed={600}
-    slidesToShow={4}  // Desktop default
+    slidesToShow={4} // desktop
     slidesToScroll={1}
     autoplay={true}
     autoplaySpeed={3000}
     pauseOnHover={true}
     centerMode={false}
     responsive={[
-      { 
-        breakpoint: 1200, 
-        settings: { slidesToShow: 3, slidesToScroll: 1, centerMode: false } 
-      },
-      { 
-        breakpoint: 1024, 
-        settings: { slidesToShow: 2, slidesToScroll: 1, centerMode: false } 
-      },
-      { 
-        breakpoint: 900, 
-        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } 
-      },
-      { 
-        breakpoint: 480, 
-        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } 
-      },
+      { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1, centerMode: false } },
+      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1, centerMode: false } },
+      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } },
     ]}
   >
     {[
@@ -323,15 +310,19 @@ export default function App() {
       margin: 0 -12px;
     }
 
-    /* Mobile: enforce only 1 card per view */
+    /* Force mobile slides to full width */
     @media (max-width: 768px) {
-      .slick-slide > div {
+      .slick-slide {
         width: 100% !important;
         max-width: 100% !important;
+      }
+      .slick-track {
+        display: flex !important;
       }
     }
   `}</style>
 </section>
+
 
 
 
