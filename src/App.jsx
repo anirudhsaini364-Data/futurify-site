@@ -216,10 +216,7 @@ export default function App() {
           </div>
         </section>
 
-
-
-        
-{/* Services */}
+        {/* Services */}
 <section
   ref={servicesRef}
   style={{
@@ -244,13 +241,13 @@ export default function App() {
   <Slider
     dots={true}
     infinite={true}
-    speed={6000}           // total duration for one scroll
-    slidesToShow={4}       // desktop default
+    speed={6000}          
+    slidesToShow={4}      
     slidesToScroll={1}
     autoplay={true}
-    autoplaySpeed={0}      // start immediately after previous slide
-    cssEase="linear"       // smooth continuous scrolling
-    pauseOnHover={false}   // no pause
+    autoplaySpeed={0}     
+    cssEase="linear"      
+    pauseOnHover={false}  
     centerMode={false}
     responsive={[
       { breakpoint: 1200, settings: { slidesToShow: 3 } },
@@ -267,15 +264,14 @@ export default function App() {
       { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️" },
       { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡" },
     ].map((service, idx) => (
-      <div key={idx} style={{ padding: "0 12px", boxSizing: "border-box" }}>
+      <div key={idx} style={{ padding: "0 8px", boxSizing: "border-box" }}>
         <div
           className="service-card"
           style={{
             background: "rgba(0,255,255,0.05)",
             backdropFilter: "blur(14px)",
             borderRadius: "20px",
-            width: "100%",          // same width for all
-            height: "320px",        // fixed height
+            height: "320px",
             textAlign: "center",
             boxShadow: "0 10px 35px rgba(0,255,255,0.25)",
             display: "flex",
@@ -306,6 +302,12 @@ export default function App() {
       box-shadow: 0 18px 45px rgba(0, 255, 255, 0.5);
     }
 
+    /* Slick track flex & gap for spacing */
+    .slick-track {
+      display: flex !important;
+      gap: 16px; /* ~1 finger gap */
+    }
+
     .slick-slide {
       display: flex !important;
       justify-content: center;
@@ -313,21 +315,20 @@ export default function App() {
     }
 
     .slick-list {
-      margin: 0 -12px;
+      margin: 0 -8px; /* adjust negative margin to account for slide padding */
     }
 
     @media (max-width: 768px) {
-      .slick-slide {
+      .slick-slide > div {
         width: 100% !important;
         max-width: 100% !important;
       }
       .slick-track {
-        display: flex !important;
+        gap: 12px; /* smaller gap for mobile */
       }
     }
   `}</style>
 </section>
-
 
 
 
