@@ -216,7 +216,7 @@ export default function App() {
           </div>
         </section>
 
-{/* Services */}
+/* Services */
 <section
   ref={servicesRef}
   style={{
@@ -240,16 +240,30 @@ export default function App() {
   <Slider
     dots={true}
     infinite={true}
-    speed={600}
-    slidesToShow={3}
+    speed={800}           // slightly slower for smoothness
+    slidesToShow={5}      // default for desktop
     slidesToScroll={1}
     autoplay={true}
-    autoplaySpeed={3000}
+    autoplaySpeed={2500}
     pauseOnHover={true}
+    centerMode={false}     // no need for centering on desktop
     responsive={[
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
+      {
+        breakpoint: 1200,
+        settings: { slidesToShow: 4, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" },
+      },
+      {
+        breakpoint: 480,
+        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "10px" },
+      },
     ]}
   >
     {[
@@ -262,6 +276,7 @@ export default function App() {
     ].map((service, idx) => (
       <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
         <div
+          className="service-card"
           style={{
             background: `linear-gradient(145deg, ${service.color}, #1a1a1a)`,
             borderRadius: "20px",
@@ -297,6 +312,8 @@ export default function App() {
       display: flex;
       justify-content: center;
       width: 100% !important;
+      padding: 0 1rem; /* 2rem total gap between cards */
+      box-sizing: border-box;
     }
 
     .service-card:hover {
