@@ -325,7 +325,7 @@ export default function App() {
             borderRadius: "24px",
             height: "380px",
             minWidth: "280px",
-            maxWidth: "340px",
+            maxWidth: "300px",
             textAlign: "center",
             boxShadow: "0 15px 45px rgba(0,255,255,0.15), 0 5px 15px rgba(0,0,0,0.1)",
             display: "flex",
