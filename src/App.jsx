@@ -222,120 +222,307 @@ export default function App() {
   style={{
     ...sectionStyle,
     padding: "60px 20px",
-    background: "linear-gradient(135deg, #020d1f 0%, #041830 100%)",
+    background: "linear-gradient(135deg, #020d1f 0%, #041830 50%, #0a1a35 100%)",
+    position: "relative",
+    overflow: "hidden",
   }}
 >
+  {/* Background pattern */}
+  <div
+    style={{
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundImage: `radial-gradient(circle at 25% 25%, rgba(0,255,247,0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 75% 75%, rgba(0,255,247,0.05) 0%, transparent 50%)`,
+      pointerEvents: "none",
+    }}
+  />
+  
   <h2
     style={{
-      fontSize: "2.5rem",
-      fontWeight: "bold",
+      fontSize: "2.8rem",
+      fontWeight: "900",
       textAlign: "center",
-      marginBottom: "50px",
+      marginBottom: "20px",
       color: "#00fff7",
-      textShadow: "0 0 15px #00fff7",
+      textShadow: "0 0 20px #00fff7, 0 0 40px #00fff799",
+      background: "linear-gradient(45deg, #00fff7, #7dd3fc)",
+      backgroundClip: "text",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      position: "relative",
+      zIndex: 1,
     }}
   >
     Our Services
   </h2>
+  
+  <p
+    style={{
+      textAlign: "center",
+      color: "#94a3b8",
+      fontSize: "1.1rem",
+      marginBottom: "50px",
+      maxWidth: "600px",
+      margin: "0 auto 50px",
+      position: "relative",
+      zIndex: 1,
+    }}
+  >
+    Transforming businesses with cutting-edge technology solutions
+  </p>
 
   <Slider
     dots={true}
     infinite={true}
-    speed={6000}             // smooth continuous sliding
+    speed={8000}             // slower, more elegant
     slidesToShow={4}         // desktop
     slidesToScroll={1}
     autoplay={true}
     autoplaySpeed={0}        // continuous
     cssEase="linear"
-    pauseOnHover={false}
+    pauseOnHover={true}      // pause on hover for better UX
     centerMode={false}
     responsive={[
-      { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "5%" } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "5%" } },
+      { 
+        breakpoint: 1200, 
+        settings: { 
+          slidesToShow: 3, 
+          slidesToScroll: 1,
+          speed: 7000
+        } 
+      },
+      { 
+        breakpoint: 1024, 
+        settings: { 
+          slidesToShow: 2, 
+          slidesToScroll: 1,
+          speed: 6000
+        } 
+      },
+      { 
+        breakpoint: 768, 
+        settings: { 
+          slidesToShow: 1, 
+          slidesToScroll: 1, 
+          centerMode: true, 
+          centerPadding: "40px", // one finger gap (approximately 40px)
+          speed: 5000
+        } 
+      },
+      { 
+        breakpoint: 480, 
+        settings: { 
+          slidesToShow: 1, 
+          slidesToScroll: 1, 
+          centerMode: true, 
+          centerPadding: "30px", // adjusted for smaller screens
+          speed: 5000
+        } 
+      },
     ]}
   >
     {[
-      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows.", icon: "🤖" },
-      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation.", icon: "⚙️" },
-      { title: "Data Insights", desc: "Unlock hidden value from your data with smart analytics.", icon: "📊" },
-      { title: "Custom Solutions", desc: "Tailored digital solutions to fit your business needs.", icon: "🛠️" },
-      { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️" },
-      { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡" },
+      { 
+        title: "AI Integration", 
+        desc: "Seamlessly integrate cutting-edge AI into your existing workflows and processes.", 
+        icon: "🤖",
+        gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+      },
+      { 
+        title: "Automation Tools", 
+        desc: "Eliminate repetitive tasks with intelligent automation solutions.", 
+        icon: "⚙️",
+        gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+      },
+      { 
+        title: "Data Insights", 
+        desc: "Unlock hidden value from your data with advanced analytics and visualization.", 
+        icon: "📊",
+        gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+      },
+      { 
+        title: "Custom Solutions", 
+        desc: "Bespoke digital solutions tailored specifically to your business needs.", 
+        icon: "🛠️",
+        gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
+      },
+      { 
+        title: "Cloud Services", 
+        desc: "Modernize your infrastructure with secure, scalable cloud solutions.", 
+        icon: "☁️",
+        gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)"
+      },
+      { 
+        title: "Consulting", 
+        desc: "Expert strategic advice to guide your digital transformation journey.", 
+        icon: "💡",
+        gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
+      },
     ].map((service, idx) => (
-      <div key={idx} style={{ padding: "0 8px", boxSizing: "border-box" }}>
+      <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
         <div
           className="service-card"
           style={{
-            background: "rgba(0,255,255,0.08)",
-            backdropFilter: "blur(14px)",
-            borderRadius: "20px",
-            height: "320px",
-            minWidth: "250px",
-            maxWidth: "320px",
+            background: "rgba(0,255,255,0.06)",
+            backdropFilter: "blur(20px)",
+            borderRadius: "24px",
+            height: "380px",
+            minWidth: "280px",
+            maxWidth: "340px",
             textAlign: "center",
-            boxShadow: "0 10px 35px rgba(0,255,255,0.25)",
+            boxShadow: "0 15px 45px rgba(0,255,255,0.15), 0 5px 15px rgba(0,0,0,0.1)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            padding: "25px",
-            transition: "transform 0.4s, box-shadow 0.4s",
-            border: "1px solid rgba(0,255,255,0.15)",
+            padding: "30px 25px",
+            transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+            border: "1px solid rgba(0,255,255,0.2)",
+            position: "relative",
+            overflow: "hidden",
           }}
         >
-          <div style={{ fontSize: "3rem", marginBottom: "15px", textShadow: "0 0 12px #00fff7" }}>
+          {/* Card gradient overlay */}
+          <div
+            style={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              right: 0,
+              height: "4px",
+              background: service.gradient,
+              borderRadius: "24px 24px 0 0",
+            }}
+          />
+          
+          <div 
+            style={{ 
+              fontSize: "4rem", 
+              marginBottom: "20px", 
+              textShadow: "0 0 15px #00fff7",
+              filter: "drop-shadow(0 0 10px rgba(0,255,247,0.3))",
+              transform: "scale(1)",
+              transition: "transform 0.3s ease"
+            }}
+          >
             {service.icon}
           </div>
-          <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00fff7", textShadow: "0 0 10px #00fff7" }}>
+          
+          <h3 
+            style={{ 
+              fontSize: "1.6rem", 
+              marginBottom: "15px", 
+              color: "#ffffff", 
+              textShadow: "0 0 10px rgba(0,255,247,0.5)",
+              fontWeight: "700",
+              letterSpacing: "-0.02em"
+            }}
+          >
             {service.title}
           </h3>
-          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.5 }}>
+          
+          <p 
+            style={{ 
+              color: "#cbd5e1", 
+              fontSize: "1rem", 
+              lineHeight: 1.6,
+              margin: 0,
+              fontWeight: "400"
+            }}
+          >
             {service.desc}
           </p>
         </div>
       </div>
     ))}
   </Slider>
-
+  
   <style jsx>{`
     .service-card:hover {
-      transform: translateY(-15px);
-      box-shadow: 0 18px 50px rgba(0, 255, 255, 0.5);
+      transform: translateY(-20px) scale(1.02);
+      box-shadow: 0 25px 60px rgba(0, 255, 255, 0.3), 0 10px 25px rgba(0,0,0,0.2);
+      border-color: rgba(0,255,255,0.4);
     }
-
-    /* Gap between cards */
+    
+    .service-card:hover div:first-of-type {
+      transform: scale(1.1) rotate(5deg);
+    }
+    
+    /* Enhanced slider styling */
     .slick-track {
       display: flex !important;
-      gap: 16px; /* consistent gap for all screens */
     }
-
+    
     .slick-slide {
       display: flex !important;
       justify-content: center;
       box-sizing: border-box;
-      padding: 0 8px;
     }
-
+    
     .slick-list {
       margin: 0;
+      padding: 0;
+      overflow: hidden;
     }
-
-    /* Mobile: 1 card fills 90% of screen, centered */
+    
+    /* Custom dots styling */
+    .slick-dots {
+      bottom: -50px;
+    }
+    
+    .slick-dots li button:before {
+      color: #00fff7;
+      font-size: 12px;
+      opacity: 0.5;
+    }
+    
+    .slick-dots li.slick-active button:before {
+      opacity: 1;
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7;
+    }
+    
+    /* Mobile optimizations */
     @media (max-width: 768px) {
-      .slick-slide > div {
-        width: 90% !important;
-        max-width: 90% !important;
-      }
-
       .service-card {
-        min-width: 90% !important;
-        max-width: 90% !important;
+        min-width: calc(100vw - 80px) !important; /* One finger gap on each side */
+        max-width: calc(100vw - 80px) !important;
+        height: 350px !important;
+        margin: 0 auto;
       }
+      
+      .slick-center .service-card {
+        transform: scale(1);
+      }
+      
+      .slick-track {
+        gap: 0 !important;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .service-card {
+        min-width: calc(100vw - 60px) !important; /* Slightly smaller gap for very small screens */
+        max-width: calc(100vw - 60px) !important;
+        padding: 25px 20px !important;
+      }
+    }
+    
+    /* Enhanced animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
+    }
+    
+    .service-card {
+      animation: float 6s ease-in-out infinite;
+      animation-delay: calc(var(--index) * 0.5s);
     }
   `}</style>
 </section>
-
 
 
 
