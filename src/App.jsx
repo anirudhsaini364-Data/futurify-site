@@ -215,113 +215,46 @@ export default function App() {
             </button>
           </div>
         </section>
-
-/* Services */
-<section
-  ref={servicesRef}
-  style={{
-    ...sectionStyle,
-    padding: "60px 20px",
-    background: "linear-gradient(135deg, #020d1f, #041830)",
-  }}
+<Slider
+  dots={true}
+  infinite={true}
+  speed={600}             
+  slidesToShow={3}        // desktop
+  slidesToScroll={1}
+  autoplay={true}
+  autoplaySpeed={3000}
+  pauseOnHover={true}
+  responsive={[
+    { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+    { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+  ]}
 >
-  <h2
-    style={{
-      fontSize: "2.5rem",
-      fontWeight: "bold",
-      textAlign: "center",
-      marginBottom: "40px",
-      color: "#00fff7",
-    }}
-  >
-    Our Services
-  </h2>
-
-  <Slider
-    dots={true}
-    infinite={true}
-    speed={800}           // slightly slower for smoothness
-    slidesToShow={5}      // default for desktop
-    slidesToScroll={1}
-    autoplay={true}
-    autoplaySpeed={2500}
-    pauseOnHover={true}
-    centerMode={false}     // no need for centering on desktop
-    responsive={[
-      {
-        breakpoint: 1200,
-        settings: { slidesToShow: 4, slidesToScroll: 1 },
-      },
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 3, slidesToScroll: 1 },
-      },
-      {
-        breakpoint: 768,
-        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" },
-      },
-      {
-        breakpoint: 480,
-        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "10px" },
-      },
-    ]}
-  >
-    {[
-      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows.", icon: "🤖", color: "#1a1f36" },
-      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation.", icon: "⚙️", color: "#223344" },
-      { title: "Data Insights", desc: "Unlock hidden value from your data with smart analytics.", icon: "📊", color: "#2a2f4a" },
-      { title: "Custom Solutions", desc: "Tailored digital solutions to fit your business needs.", icon: "🛠️", color: "#3a3f5c" },
-      { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️", color: "#254466" },
-      { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡", color: "#1b334d" },
-    ].map((service, idx) => (
-      <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
-        <div
-          className="service-card"
-          style={{
-            background: `linear-gradient(145deg, ${service.color}, #1a1a1a)`,
-            borderRadius: "20px",
-            minHeight: "300px",
-            textAlign: "center",
-            boxShadow: "0 0 30px rgba(0, 255, 255, 0.4)",
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            padding: "25px",
-            transition: "transform 0.3s, box-shadow 0.3s",
-          }}
-        >
-          <div style={{ fontSize: "3rem", marginBottom: "15px" }}>{service.icon}</div>
-          <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00ffff" }}>
-            {service.title}
-          </h3>
-          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.5 }}>
-            {service.desc}
-          </p>
-        </div>
+  {serviceCards.map((service, idx) => (
+    <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
+      <div
+        style={{
+          background: service.color,
+          borderRadius: "20px",
+          minHeight: "300px", // same height
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          padding: "25px",
+          boxShadow: "0 0 30px rgba(0,255,255,0.4)",
+          transition: "transform 0.3s, box-shadow 0.3s",
+        }}
+      >
+        <div style={{ fontSize: "3rem", marginBottom: "15px" }}>{service.icon}</div>
+        <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00ffff" }}>
+          {service.title}
+        </h3>
+        <p style={{ color: "#ddd", fontSize: "1rem" }}>{service.desc}</p>
       </div>
-    ))}
-  </Slider>
-
-  <style jsx>{`
-    .slick-slide {
-      display: flex !important;
-      justify-content: center;
-    }
-
-    .slick-slide > div {
-      display: flex;
-      justify-content: center;
-      width: 100% !important;
-      padding: 0 1rem; /* 2rem total gap between cards */
-      box-sizing: border-box;
-    }
-
-    .service-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 0 45px rgba(0, 255, 255, 0.7);
-    }
-  `}</style>
-</section>
+    </div>
+  ))}
+</Slider>
 
 {/* About */}
 <section
