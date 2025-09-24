@@ -222,7 +222,7 @@ export default function App() {
   style={{
     ...sectionStyle,
     padding: "60px 20px",
-    background: "linear-gradient(135deg, #020d1f, #041830)",
+    background: "linear-gradient(135deg, #010a1a, #02142c)",
   }}
 >
   <h2
@@ -248,24 +248,33 @@ export default function App() {
     pauseOnHover={true}
     centerMode={false}
     responsive={[
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
+      {
+        breakpoint: 1024,
+        settings: { slidesToShow: 2, slidesToScroll: 1, centerMode: false },
+      },
+      {
+        breakpoint: 768,
+        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false },
+      },
+      {
+        breakpoint: 480,
+        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false },
+      },
     ]}
   >
     {[
-      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows.", icon: "🤖", color: "#1b2430" },
-      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation.", icon: "⚙️", color: "#223344" },
-      { title: "Data Insights", desc: "Unlock hidden value from your data with smart analytics.", icon: "📊", color: "#2c3545" },
-      { title: "Custom Solutions", desc: "Tailored digital solutions to fit your business needs.", icon: "🛠️", color: "#36415a" },
-      { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️", color: "#254466" },
-      { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡", color: "#1b334d" },
+      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows.", icon: "🤖", color: "#0b1b2b" },
+      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation.", icon: "⚙️", color: "#112d44" },
+      { title: "Data Insights", desc: "Unlock hidden value from your data with smart analytics.", icon: "📊", color: "#1a3b5c" },
+      { title: "Custom Solutions", desc: "Tailored digital solutions to fit your business needs.", icon: "🛠️", color: "#1f4a73" },
+      { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️", color: "#0d3f66" },
+      { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡", color: "#0a2d4b" },
     ].map((service, idx) => (
       <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
         <div
           className="service-card"
           style={{
-            background: `linear-gradient(145deg, ${service.color}, #111827)`,
+            background: `linear-gradient(145deg, ${service.color}, #0a0f1a)`,
             borderRadius: "20px",
             height: "300px",
             textAlign: "center",
@@ -305,6 +314,7 @@ export default function App() {
       margin: 0 -10px;
     }
 
+    /* Mobile fix: force one card */
     @media (max-width: 768px) {
       .slick-slide > div {
         width: 100% !important;
@@ -312,6 +322,7 @@ export default function App() {
     }
   `}</style>
 </section>
+
 
 {/* About */}
 <section
