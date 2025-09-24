@@ -226,7 +226,7 @@ export default function App() {
 >
   <h2
     style={{
-      fontSize: "2.5rem",
+      fontSize: "2.2rem",
       fontWeight: "bold",
       textAlign: "center",
       marginBottom: "40px",
@@ -237,7 +237,7 @@ export default function App() {
   </h2>
 
   <Slider
-    dots={false}
+    dots={true}
     infinite={true}
     speed={2000}
     slidesToShow={3}
@@ -249,53 +249,23 @@ export default function App() {
     responsive={[
       { breakpoint: 1400, settings: { slidesToShow: 3 } },
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } }, // Mobile: 1 card per slide
     ]}
   >
     {[
-      {
-        title: "AI Integration",
-        desc: "Seamlessly integrate AI into your workflows to boost efficiency.",
-        icon: "🤖",
-        color: "#00fff7",
-      },
-      {
-        title: "Automation Tools",
-        desc: "Eliminate repetitive tasks with advanced automation systems.",
-        icon: "⚙️",
-        color: "#1de9b6",
-      },
-      {
-        title: "Data Insights",
-        desc: "Unlock hidden value from your data with smart analytics.",
-        icon: "📊",
-        color: "#f7971e",
-      },
-      {
-        title: "Custom Solutions",
-        desc: "Tailored digital solutions to fit your business needs.",
-        icon: "🛠️",
-        color: "#ff5f6d",
-      },
-      {
-        title: "Cloud Services",
-        desc: "Modernize your infrastructure with secure cloud solutions.",
-        icon: "☁️",
-        color: "#00c6ff",
-      },
-      {
-        title: "Consulting",
-        desc: "Expert advice to guide your transformation journey.",
-        icon: "💡",
-        color: "#ffdd00",
-      },
+      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows.", icon: "🤖", color: "#00fff7" },
+      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation systems.", icon: "⚙️", color: "#1de9b6" },
+      { title: "Data Insights", desc: "Unlock hidden value from your data with smart analytics.", icon: "📊", color: "#f7971e" },
+      { title: "Custom Solutions", desc: "Tailored digital solutions to fit your business needs.", icon: "🛠️", color: "#ff5f6d" },
+      { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️", color: "#00c6ff" },
+      { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡", color: "#ffdd00" },
     ].map((service, index) => (
       <div
         key={index}
         style={{
           background: "#111c33",
           borderRadius: "20px",
-          padding: "30px 20px",
+          padding: "25px 15px",
           margin: "10px",
           minHeight: "250px",
           display: "flex",
@@ -308,7 +278,7 @@ export default function App() {
           cursor: "pointer",
         }}
         onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "translateY(-10px)";
+          e.currentTarget.style.transform = "translateY(-8px)";
           e.currentTarget.style.boxShadow = `0 15px 30px ${service.color}99`;
         }}
         onMouseLeave={(e) => {
@@ -318,17 +288,30 @@ export default function App() {
       >
         <div
           style={{
-            fontSize: "3rem",
-            marginBottom: "20px",
+            fontSize: window.innerWidth < 480 ? "2.5rem" : "3rem", // smaller icons on mobile
+            marginBottom: "15px",
             color: service.color,
           }}
         >
           {service.icon}
         </div>
-        <h3 style={{ fontSize: "1.5rem", color: "#fff", marginBottom: "12px" }}>
+        <h3
+          style={{
+            fontSize: window.innerWidth < 480 ? "1.2rem" : "1.5rem",
+            color: "#fff",
+            marginBottom: "10px",
+            lineHeight: 1.3,
+          }}
+        >
           {service.title}
         </h3>
-        <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.5 }}>
+        <p
+          style={{
+            color: "#ddd",
+            fontSize: window.innerWidth < 480 ? "0.9rem" : "1rem",
+            lineHeight: 1.4,
+          }}
+        >
           {service.desc}
         </p>
       </div>
