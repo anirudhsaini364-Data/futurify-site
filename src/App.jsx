@@ -144,7 +144,7 @@ export default function App() {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: window.innerWidth < 768 ? "15px 20px" : "20px 40px",
+          padding: window.innerWidth < 768 ? "15px 20px" : "20px 10px",
           background: "rgba(10,15,31,0.95)",
           backdropFilter: "blur(20px)",
           borderBottom: "1px solid rgba(0,255,255,0.2)",
