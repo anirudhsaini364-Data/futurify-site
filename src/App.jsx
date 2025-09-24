@@ -222,7 +222,7 @@ export default function App() {
   style={{
     ...sectionStyle,
     padding: "60px 20px",
-    background: "linear-gradient(135deg, #010a1a, #02142c)",
+    background: "linear-gradient(135deg, #020d1f 0%, #041830 100%)",
   }}
 >
   <h2
@@ -230,8 +230,9 @@ export default function App() {
       fontSize: "2.5rem",
       fontWeight: "bold",
       textAlign: "center",
-      marginBottom: "40px",
+      marginBottom: "50px",
       color: "#00fff7",
+      textShadow: "0 0 15px #00fff7",
     }}
   >
     Our Services
@@ -240,7 +241,7 @@ export default function App() {
   <Slider
     dots={true}
     infinite={true}
-    speed={1000}
+    speed={600}
     slidesToShow={3}
     slidesToScroll={1}
     autoplay={true}
@@ -248,49 +249,44 @@ export default function App() {
     pauseOnHover={true}
     centerMode={false}
     responsive={[
-      {
-        breakpoint: 1024,
-        settings: { slidesToShow: 2, slidesToScroll: 1, centerMode: false },
-      },
-      {
-        breakpoint: 768,
-        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false },
-      },
-      {
-        breakpoint: 480,
-        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false },
-      },
+      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
     ]}
   >
     {[
-      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows.", icon: "🤖", color: "#0b1b2b" },
-      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation.", icon: "⚙️", color: "#112d44" },
-      { title: "Data Insights", desc: "Unlock hidden value from your data with smart analytics.", icon: "📊", color: "#1a3b5c" },
-      { title: "Custom Solutions", desc: "Tailored digital solutions to fit your business needs.", icon: "🛠️", color: "#1f4a73" },
-      { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️", color: "#0d3f66" },
-      { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡", color: "#0a2d4b" },
+      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows.", icon: "🤖" },
+      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation.", icon: "⚙️" },
+      { title: "Data Insights", desc: "Unlock hidden value from your data with smart analytics.", icon: "📊" },
+      { title: "Custom Solutions", desc: "Tailored digital solutions to fit your business needs.", icon: "🛠️" },
+      { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️" },
+      { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡" },
     ].map((service, idx) => (
       <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
         <div
           className="service-card"
           style={{
-            background: `linear-gradient(145deg, ${service.color}, #0a0f1a)`,
+            background: "rgba(0,255,255,0.05)",
+            backdropFilter: "blur(12px)",
             borderRadius: "20px",
-            height: "300px",
+            height: "320px",
             textAlign: "center",
-            boxShadow: "0 0 25px rgba(0, 255, 255, 0.3)",
+            boxShadow: "0 8px 30px rgba(0,255,255,0.2)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             padding: "25px",
-            transition: "transform 0.3s, box-shadow 0.3s",
+            transition: "transform 0.4s, box-shadow 0.4s",
+            border: "1px solid rgba(0,255,255,0.2)",
           }}
         >
-          <div style={{ fontSize: "3rem", marginBottom: "15px" }}>{service.icon}</div>
-          <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00ffff" }}>
+          <div style={{ fontSize: "3rem", marginBottom: "15px", textShadow: "0 0 12px #00fff7" }}>
+            {service.icon}
+          </div>
+          <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00fff7", textShadow: "0 0 8px #00fff7" }}>
             {service.title}
           </h3>
-          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.5 }}>
+          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.6 }}>
             {service.desc}
           </p>
         </div>
@@ -300,10 +296,11 @@ export default function App() {
 
   <style jsx>{`
     .service-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 0 45px rgba(0, 255, 255, 0.6);
+      transform: translateY(-15px);
+      box-shadow: 0 15px 40px rgba(0, 255, 255, 0.5);
     }
 
+    /* Fix slick-slide width so mobile shows only one card */
     .slick-slide {
       display: flex !important;
       justify-content: center;
@@ -311,13 +308,12 @@ export default function App() {
     }
 
     .slick-list {
-      margin: 0 -10px;
+      margin: 0 -10px; /* gap between slides */
     }
 
-    /* Mobile fix: force one card */
     @media (max-width: 768px) {
       .slick-slide > div {
-        width: 100% !important;
+        width: 100% !important; /* only 1 card */
       }
     }
   `}</style>
