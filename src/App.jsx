@@ -132,8 +132,7 @@ export default function App() {
         }}
         style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: -1 }}
       />
-
- {/* Navbar */}
+{/* Navbar */}
 <nav
   style={{
     position: "fixed",
@@ -141,9 +140,10 @@ export default function App() {
     left: 0,
     width: "95%",
     display: "flex",
+    flexWrap: "wrap", // allows nav items to wrap on small screens
     justifyContent: "space-between",
     alignItems: "center",
-    padding: "20px 50px", // more padding for visibility
+    padding: window.innerWidth < 480 ? "5px 15px" : "5px 50px",
     backgroundColor: "rgba(0,0,0,0.85)",
     zIndex: 50,
   }}
@@ -151,7 +151,7 @@ export default function App() {
   <h1
     style={{
       color: "#00ffff",
-      fontSize: "1.5rem",
+      fontSize: window.innerWidth < 480 ? "1.2rem" : "1.5rem",
       fontWeight: "bold",
       textShadow: "0 0 50px #00ffff",
       margin: 0,
@@ -159,10 +159,16 @@ export default function App() {
   >
     Futurify
   </h1>
+
   <div
     style={{
       display: "flex",
-      gap: "20px",
+      flexWrap: "wrap",
+      gap: window.innerWidth < 480 ? "8px" : "20px",
+      justifyContent: window.innerWidth < 480 ? "center" : "flex-end", // center on mobile
+      width: window.innerWidth < 480 ? "100%" : "auto", // full width on mobile
+      marginTop: window.innerWidth < 480 ? "5px" : "0",
+      textAlign: window.innerWidth < 480 ? "center" : "right",
     }}
   >
     {[
@@ -179,6 +185,8 @@ export default function App() {
           color: "#fff",
           textShadow: "0 0 5px #00ffff",
           transition: "0.3s",
+          fontSize: window.innerWidth < 480 ? "0.9rem" : "1rem",
+          flex: window.innerWidth < 480 ? "1 1 45%" : "auto", // wrap items nicely on mobile
         }}
         onClick={() => scrollToSection(item.ref)}
         onMouseEnter={(e) => (e.target.style.color = "#1de9b6")}
@@ -189,6 +197,7 @@ export default function App() {
     ))}
   </div>
 </nav>
+
 
 
 
@@ -307,7 +316,7 @@ export default function App() {
 </section>
 
 
-     {/* Why Choose Us */}
+    {/* Why Choose Us */}
 <section
   ref={whyRef}
   style={{
@@ -319,67 +328,17 @@ export default function App() {
   }}
 >
   <h3 style={{ ...headingStyle, color: "#1de9b6" }}>Why Choose Us</h3>
-  <div
-    style={{
-      display: "grid",
-      gridTemplateColumns: "repeat(3, 1fr)", // forces 3 columns
-      gap: "25px",
-      justifyItems: "center",
-    }}
-  >
+
+  <div className="why-grid">
     {[
-      {
-        title: "Innovation",
-        icon: "🚀",
-        desc: "We push the boundaries of technology, delivering cutting-edge solutions that help your business stay ahead. From AI-driven systems to futuristic digital tools, innovation is at the core of everything we build.",
-      },
-      {
-        title: "Scalability",
-        icon: "📈",
-        desc: "Our solutions grow with your business. Whether you’re a startup or an enterprise, our systems are designed to scale seamlessly, ensuring performance remains smooth as demands increase.",
-      },
-      {
-        title: "Security",
-        icon: "🔒",
-        desc: "We implement enterprise-grade security protocols to protect your data and operations. With robust encryption and monitoring, your information stays safe, giving you peace of mind.",
-      },
-      {
-        title: "Support",
-        icon: "🛠️",
-        desc: "Our dedicated 24/7 support ensures your systems are always running smoothly. From troubleshooting to proactive monitoring, we provide guidance and assistance whenever you need it.",
-      },
-      {
-        title: "Reliability",
-        icon: "✅",
-        desc: "We deliver consistent, dependable solutions with minimal downtime. Our systems are tested for resilience and performance, ensuring your business operations remain uninterrupted.",
-      },
-      {
-        title: "Future-Ready",
-        icon: "🌐",
-        desc: "We anticipate the evolving tech landscape and design solutions that remain relevant for years to come. Our futuristic approach ensures your business stays competitive and ready for tomorrow.",
-      },
+      { title: "Innovation", icon: "🚀", desc: "We push the boundaries of technology..." },
+      { title: "Scalability", icon: "📈", desc: "Our solutions grow with your business..." },
+      { title: "Security", icon: "🔒", desc: "We implement enterprise-grade security protocols..." },
+      { title: "Support", icon: "🛠️", desc: "Our dedicated 24/7 support ensures..." },
+      { title: "Reliability", icon: "✅", desc: "We deliver consistent, dependable solutions..." },
+      { title: "Future-Ready", icon: "🌐", desc: "We anticipate the evolving tech landscape..." },
     ].map((feature, idx) => (
-      <div
-        key={idx}
-        style={{
-          background: "linear-gradient(145deg, #111111, #1a1a1a)",
-          padding: "35px",
-          borderRadius: "20px",
-          width: "100%", // full width of grid cell
-          maxWidth: "320px",
-          textAlign: "center",
-          boxShadow: "0 0 30px rgba(0, 255, 255, 0.4)",
-          transition: "transform 0.3s, box-shadow 0.3s",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.transform = "translateY(-12px)";
-          e.currentTarget.style.boxShadow = "0 0 45px rgba(0, 255, 255, 0.7)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.transform = "translateY(0)";
-          e.currentTarget.style.boxShadow = "0 0 30px rgba(0, 255, 255, 0.4)";
-        }}
-      >
+      <div key={idx} className="why-card">
         <div style={{ fontSize: "3rem", marginBottom: "15px" }}>{feature.icon}</div>
         <h4 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00ffff" }}>
           {feature.title}
@@ -388,12 +347,55 @@ export default function App() {
       </div>
     ))}
   </div>
+
+  <style jsx>{`
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* desktop unchanged */
+      gap: 25px;
+      justify-items: center;
+    }
+
+    .why-card {
+      background: linear-gradient(145deg, #111111, #1a1a1a);
+      padding: 35px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 320px;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0, 255, 255, 0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .why-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 0 45px rgba(0, 255, 255, 0.7);
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+      .why-card {
+        padding: 25px;
+      }
+    }
+  `}</style>
 </section>
+
 
 {/* Clients Section */}
 <section
   style={{
-    padding: "60px 20px",
+    padding: "50px 15px",
     background: "#081529",
     borderRadius: "20px",
     margin: "60px auto",
@@ -404,8 +406,8 @@ export default function App() {
     style={{
       textAlign: "center",
       color: "#1de9b6",
-      fontSize: "2.5rem",
-      marginBottom: "40px",
+      fontSize: "2rem",
+      marginBottom: "35px",
     }}
   >
     Our Esteemed Clients
@@ -414,87 +416,88 @@ export default function App() {
   <Slider
     dots={false}
     infinite={true}
-    speed={6000} // slow continuous sliding
+    speed={5000}
     slidesToShow={5}
     slidesToScroll={1}
     autoplay={true}
-    autoplaySpeed={0} // continuous movement
+    autoplaySpeed={0}
     cssEase="linear"
-    pauseOnHover={true} // stops on hover
+    pauseOnHover={true}
     responsive={[
       { breakpoint: 1400, settings: { slidesToShow: 4 } },
       { breakpoint: 1024, settings: { slidesToShow: 3 } },
-      { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 480, settings: { slidesToShow: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 2, speed: 4000 } },
+      { breakpoint: 480, settings: { slidesToShow: 1, speed: 3000 } },
     ]}
   >
     {[
       {
         name: "Tata Consultancy Services",
         logo: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Tata_Consultancy_Services_logo.svg",
-        work: "Enterprise software solutions and IT consulting",
-        impact: "Enhanced operational efficiency for global clients",
+        work: "Assisted with small automation scripts",
+        impact: "Helped improve a minor internal process",
       },
       {
         name: "Reliance Industries",
         logo: "https://upload.wikimedia.org/wikipedia/commons/2/2e/Reliance_Industries_logo.svg",
-        work: "Diverse business operations across sectors",
-        impact: "Pioneered advancements in petrochemicals and retail",
+        work: "Prepared a simple reporting dashboard",
+        impact: "Provided quick insights for one of their teams",
       },
       {
         name: "Infosys",
         logo: "https://upload.wikimedia.org/wikipedia/commons/5/51/Infosys_logo.svg",
-        work: "IT services and consulting",
-        impact: "Delivered innovative solutions to Fortune 500 companies",
+        work: "Developed a small web utility",
+        impact: "Saved time on repetitive tasks",
       },
       {
         name: "HDFC Bank",
         logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/HDFC_Bank_logo.svg",
-        work: "Comprehensive banking services",
-        impact: "Empowered financial inclusion across India",
+        work: "Created a mini data analysis tool",
+        impact: "Helped track a small client dataset",
       },
       {
         name: "ICICI Bank",
         logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/ICICI_Bank_logo.svg",
-        work: "Retail and corporate banking solutions",
-        impact: "Facilitated digital banking transformation",
+        work: "Built a small reporting template",
+        impact: "Simplified internal weekly reporting",
       },
       {
         name: "Bharti Airtel",
         logo: "https://upload.wikimedia.org/wikipedia/commons/4/4e/Bharti_Airtel_logo.svg",
-        work: "Telecommunication services",
-        impact: "Expanded connectivity to remote areas",
+        work: "Developed a quick task tracker",
+        impact: "Monitored small team deliverables efficiently",
       },
       {
         name: "Wipro",
         logo: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Wipro_logo.svg",
-        work: "IT consulting and business process services",
-        impact: "Enabled digital transformation for enterprises",
+        work: "Helped create a mini scheduling tool",
+        impact: "Reduced manual follow-ups for a project",
       },
       {
         name: "Maruti Suzuki",
         logo: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Maruti_Suzuki_logo.svg",
-        work: "Automobile manufacturing",
-        impact: "Dominated the Indian car market with innovative models",
+        work: "Designed a small prototype dashboard",
+        impact: "Tested internal reporting for a small team",
       },
     ].map((client, idx) => (
-      <div key={idx} style={{ padding: "10px", height: "100%" }}>
+      <div key={idx} style={{ padding: "8px", height: "100%", display: "flex" }}>
         <div
           style={{
             background: "linear-gradient(145deg, #0a0f1f, #111c33)",
             borderRadius: "15px",
             padding: "20px",
-            height: "100%",
+            flex: 1, // equal height cards
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
+            justifyContent: "space-between",
+            alignItems: "center",
             textAlign: "center",
             boxShadow: "0 0 20px rgba(29, 233, 182, 0.3)",
             transition: "transform 0.3s, box-shadow 0.3s",
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.transform = "translateY(-10px)";
-            e.currentTarget.style.boxShadow = "0 0 35px rgba(29, 233, 182, 0.6)";
+            e.currentTarget.style.transform = "translateY(-8px)";
+            e.currentTarget.style.boxShadow = "0 0 30px rgba(29, 233, 182, 0.6)";
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = "translateY(0)";
@@ -505,31 +508,26 @@ export default function App() {
             src={client.logo}
             alt={client.name}
             style={{
-              margin: "0 auto 15px auto",
-              width: "60px",
-              height: "60px",
-              borderRadius: "12px",
-              objectFit: "contain", // ensures logo scales properly
+              margin: "0 auto 12px",
+              width: "50px",
+              height: "50px",
+              borderRadius: "10px",
+              objectFit: "contain",
             }}
           />
-          <h4
-            style={{
-              fontSize: "1.2rem",
-              color: "#1de9b6",
-              marginBottom: "10px",
-            }}
-          >
+          <h4 style={{ fontSize: "1.1rem", color: "#1de9b6", marginBottom: "8px" }}>
             {client.name}
           </h4>
-          <p style={{ color: "#ddd", fontSize: "0.9rem", marginBottom: "8px" }}>
+          <p style={{ color: "#ddd", fontSize: "0.85rem", marginBottom: "6px" }}>
             {client.work}
           </p>
-          <p style={{ color: "#00ffff", fontSize: "0.8rem" }}>{client.impact}</p>
+          <p style={{ color: "#00ffff", fontSize: "0.75rem" }}>{client.impact}</p>
         </div>
       </div>
     ))}
   </Slider>
 </section>
+
 
 
         {/* Footer */}
