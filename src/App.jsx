@@ -218,113 +218,18 @@ export default function App() {
       <div style={{ position: "relative", zIndex: 10 }}>
 
         
-         {/* Enhanced Hero Section */}
-<section
-  style={{
-    paddingTop: "140px",
-    minHeight: "100vh",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    textAlign: "center",
-    position: "relative",
-    overflow: "hidden",
-  }}
->
-  {/* Animated background elements */}
-  <div
-    style={{
-      position: "absolute",
-      top: "20%",
-      left: "10%",
-      width: "300px",
-      height: "300px",
-      background: "radial-gradient(circle, rgba(0,255,255,0.1), transparent)",
-      borderRadius: "50%",
-      animation: "float 8s ease-in-out infinite",
-      transform: `translateY(${scrollY * -0.2}px)`,
-    }}
-  />
-  <div
-    style={{
-      position: "absolute",
-      top: "60%",
-      right: "15%",
-      width: "200px",
-      height: "200px",
-      background: "radial-gradient(circle, rgba(29,233,182,0.15), transparent)",
-      borderRadius: "50%",
-      animation: "float 6s ease-in-out infinite reverse",
-      transform: `translateY(${scrollY * -0.3}px)`,
-    }}
-  />
-
-  <div style={{ maxWidth: "900px", padding: "0 20px" }}>
-    <h1
-      style={{
-        fontSize: window.innerWidth < 768 ? "3rem" : "4.5rem",
-        fontWeight: "900",
-        background: "linear-gradient(135deg, #00ffff 0%, #1de9b6 50%, #7dd3fc 100%)",
-        backgroundClip: "text",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-        marginBottom: "30px",
-        letterSpacing: "-0.03em",
-        lineHeight: 1.1,
-        textShadow: "0 0 30px rgba(0,255,255,0.3)",
-      }}
-    >
-      Build Your Digital Future
-    </h1>
-
-    <p
-      style={{
-        color: "#cbd5e1",
-        fontSize: window.innerWidth < 768 ? "1.1rem" : "1.4rem",
-        lineHeight: 1.6,
-        maxWidth: "700px",
-        margin: "0 auto 40px auto",
-      }}
-    >
-      Cutting-edge solutions in{" "}
-      <span style={{ color: "#1de9b6", fontWeight: "600" }}>Web Development</span>,{" "}
-      <span style={{ color: "#1de9b6", fontWeight: "600" }}>AI & Data Science</span>, and{" "}
-      <span style={{ color: "#1de9b6", fontWeight: "600" }}>Digital Marketing</span>.
-    </p>
-
-    <button
-      onClick={() => setShowFormPopup(true)}
-      style={{
-        padding: "18px 40px",
-        background: "linear-gradient(135deg, #00ffff 0%, #1de9b6 100%)",
-        border: "none",
-        borderRadius: "50px",
-        fontWeight: "700",
-        color: "#000",
-        cursor: "pointer",
-        fontSize: "1.1rem",
-        boxShadow: "0 10px 30px rgba(0,255,255,0.4), 0 0 0 1px rgba(255,255,255,0.1)",
-        transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-        textTransform: "uppercase",
-        letterSpacing: "0.05em",
-      }}
-      onMouseEnter={(e) => {
-        e.target.style.transform = "translateY(-2px) scale(1.05)";
-        e.target.style.boxShadow =
-          "0 20px 40px rgba(0,255,255,0.6), 0 0 0 1px rgba(255,255,255,0.2)";
-      }}
-      onMouseLeave={(e) => {
-        e.target.style.transform = "translateY(0) scale(1)";
-        e.target.style.boxShadow =
-          "0 10px 30px rgba(0,255,255,0.4), 0 0 0 1px rgba(255,255,255,0.1)";
-      }}
-    >
-      Start Building
-    </button>
-  </div>
-</section> {/* <-- Properly closed here */}
-
+        {/* Hero */}
+        <section style={{ paddingTop: "120px", minHeight: "80vh", display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "40px", textAlign: "center" }}>
+          <div style={{ flex: "1 1 400px", minWidth: "300px" }}>
+            <h2 style={{ fontSize: "3.5rem", fontWeight: 700, color: "#00ffff", textShadow: "0 0 8px #00ffff, 0 0 20px #1de9b6", marginBottom: "20px" }}>Build Your Digital Future</h2>
+            <p style={{ color: "#ddd", fontSize: "1.2rem", maxWidth: "700px", margin: "0 auto 30px auto" }}>
+              Cutting-edge solutions in <span style={{ color: "#1de9b6" }}>Web Development</span>, <span style={{ color: "#1de9b6" }}>AI & Data Science</span>, and <span style={{ color: "#1de9b6" }}>Digital Marketing</span>.
+            </p>
+            <button onClick={() => setShowFormPopup(true)} style={{ padding: "12px 28px", background: "linear-gradient(90deg, #00ffff, #1de9b6)", border: "none", borderRadius: "12px", fontWeight: "bold", color: "#000", cursor: "pointer", fontSize: "1rem", boxShadow: "0 0 15px #00ffff, 0 0 25px #1de9b6" }}>
+              Start Building
+            </button>
+          </div>
+        </section>
 
 {/* Services */}
 <section
