@@ -133,76 +133,91 @@ export default function App() {
         }}
         style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: -1 }}
       />
-{/* Navbar */}
-<nav
-  style={{
-    position: "fixed",
-    top: 0,
-    left: 0,
-    width: "95%",
-    display: "flex",
-    flexWrap: "wrap", // allows nav items to wrap on small screens
-    justifyContent: "space-between",
-    alignItems: "center",
-    padding: window.innerWidth < 480 ? "5px 15px" : "5px 50px",
-    backgroundColor: "rgba(0,0,0,0.85)",
-    zIndex: 50,
-  }}
->
-  <h1
-    style={{
-      color: "#00ffff",
-      fontSize: window.innerWidth < 480 ? "1.2rem" : "1.5rem",
-      fontWeight: "bold",
-      textShadow: "0 0 50px #00ffff",
-      margin: 0,
-    }}
-  >
-    Futurify
-  </h1>
 
-  <div
-    style={{
-      display: "flex",
-      flexWrap: "wrap",
-      gap: window.innerWidth < 480 ? "8px" : "20px",
-      justifyContent: window.innerWidth < 480 ? "center" : "flex-end", // center on mobile
-      width: window.innerWidth < 480 ? "100%" : "auto", // full width on mobile
-      marginTop: window.innerWidth < 480 ? "5px" : "0",
-      textAlign: window.innerWidth < 480 ? "center" : "right",
-    }}
-  >
-    {[
-      { name: "Home", ref: null },
-      { name: "Services", ref: servicesRef },
-      { name: "About", ref: aboutRef },
-      { name: "Why Choose Us", ref: whyRef },
-      { name: "Clients", ref: contactRef },
-    ].map((item) => (
-      <span
-        key={item.name}
+      {/* Futuristic Navbar */}
+      <nav
         style={{
-          cursor: "pointer",
-          color: "#fff",
-          textShadow: "0 0 5px #00ffff",
-          transition: "0.3s",
-          fontSize: window.innerWidth < 480 ? "0.9rem" : "1rem",
-          flex: window.innerWidth < 480 ? "1 1 45%" : "auto", // wrap items nicely on mobile
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: window.innerWidth < 768 ? "15px 20px" : "20px 60px",
+          background: "rgba(10,15,31,0.95)",
+          backdropFilter: "blur(20px)",
+          borderBottom: "1px solid rgba(0,255,255,0.2)",
+          zIndex: 100,
+          boxShadow: "0 4px 30px rgba(0,255,255,0.1)"
         }}
-        onClick={() => scrollToSection(item.ref)}
-        onMouseEnter={(e) => (e.target.style.color = "#1de9b6")}
-        onMouseLeave={(e) => (e.target.style.color = "#fff")}
       >
-        {item.name}
-      </span>
-    ))}
-  </div>
-</nav>
+        <div
+          style={{
+            color: "#00ffff",
+            fontSize: window.innerWidth < 768 ? "1.8rem" : "2.2rem",
+            fontWeight: "900",
+            textShadow: "0 0 20px #00ffff",
+            background: "linear-gradient(45deg, #00ffff, #1de9b6)",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            letterSpacing: "-0.02em"
+          }}
+        >
+          FUTURIFY
+        </div>
 
-
-
+        <div
+          style={{
+            display: "flex",
+            gap: window.innerWidth < 768 ? "15px" : "30px",
+            alignItems: "center",
+            flexWrap: "wrap"
+          }}
+        >
+          {[
+            { name: "Home", ref: null },
+            { name: "Services", ref: servicesRef },
+            { name: "About", ref: aboutRef },
+            { name: "Why Us", ref: whyRef },
+            { name: "Clients", ref: clientsRef },
+          ].map((item, idx) => (
+            <button
+              key={item.name}
+              onClick={() => scrollToSection(item.ref)}
+              style={{
+                background: "transparent",
+                border: "none",
+                color: "#ffffff",
+                fontSize: window.innerWidth < 768 ? "0.9rem" : "1rem",
+                cursor: "pointer",
+                padding: "8px 16px",
+                borderRadius: "8px",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                position: "relative",
+                fontWeight: "500"
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.color = "#00ffff";
+                e.target.style.textShadow = "0 0 10px #00ffff";
+                e.target.style.background = "rgba(0,255,255,0.1)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.color = "#ffffff";
+                e.target.style.textShadow = "none";
+                e.target.style.background = "transparent";
+              }}
+            >
+              {item.name}
+            </button>
+          ))}
+        </div>
+      </nav>
 
       <div style={{ position: "relative", zIndex: 10 }}>
+
+        
         {/* Hero */}
         <section style={{ paddingTop: "120px", minHeight: "80vh", display: "flex", flexWrap: "wrap", justifyContent: "center", alignItems: "center", gap: "40px", textAlign: "center" }}>
           <div style={{ flex: "1 1 400px", minWidth: "300px" }}>
