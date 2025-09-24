@@ -215,6 +215,10 @@ export default function App() {
             </button>
           </div>
         </section>
+
+
+
+        
 {/* Services */}
 <section
   ref={servicesRef}
@@ -240,18 +244,19 @@ export default function App() {
   <Slider
     dots={true}
     infinite={true}
-    speed={600}
-    slidesToShow={4} // desktop
+    speed={6000}           // total duration for one scroll
+    slidesToShow={4}       // desktop default
     slidesToScroll={1}
     autoplay={true}
-    autoplaySpeed={3000}
-    pauseOnHover={true}
+    autoplaySpeed={0}      // start immediately after previous slide
+    cssEase="linear"       // smooth continuous scrolling
+    pauseOnHover={false}   // no pause
     centerMode={false}
     responsive={[
-      { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1, centerMode: false } },
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1, centerMode: false } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } },
+      { breakpoint: 1200, settings: { slidesToShow: 3 } },
+      { breakpoint: 1024, settings: { slidesToShow: 2 } },
+      { breakpoint: 768, settings: { slidesToShow: 1 } },
+      { breakpoint: 480, settings: { slidesToShow: 1 } },
     ]}
   >
     {[
@@ -269,7 +274,8 @@ export default function App() {
             background: "rgba(0,255,255,0.05)",
             backdropFilter: "blur(14px)",
             borderRadius: "20px",
-            height: "320px",
+            width: "100%",          // same width for all
+            height: "320px",        // fixed height
             textAlign: "center",
             boxShadow: "0 10px 35px rgba(0,255,255,0.25)",
             display: "flex",
@@ -310,7 +316,6 @@ export default function App() {
       margin: 0 -12px;
     }
 
-    /* Force mobile slides to full width */
     @media (max-width: 768px) {
       .slick-slide {
         width: 100% !important;
@@ -322,6 +327,7 @@ export default function App() {
     }
   `}</style>
 </section>
+
 
 
 
