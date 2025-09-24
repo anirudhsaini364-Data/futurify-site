@@ -246,7 +246,6 @@ export default function App() {
     autoplay={true}
     autoplaySpeed={3000}
     pauseOnHover={true}
-    centerMode={false}
     responsive={[
       { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
       { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
@@ -290,25 +289,24 @@ export default function App() {
   </Slider>
 
   <style jsx>{`
-    /* Hover effect like Why Choose Us */
     .service-card:hover {
       transform: translateY(-12px);
       box-shadow: 0 0 45px rgba(0, 255, 255, 0.7);
     }
 
-    /* Fix slick-slide width so mobile shows only one card */
+    /* Fix slide width and spacing */
     .slick-slide {
       display: flex !important;
       justify-content: center;
       box-sizing: border-box;
     }
 
-    /* Gap between slides on PC */
+    /* Consistent spacing between cards */
     .slick-list {
       margin: 0 -10px; /* negative padding to offset inner slide padding */
     }
 
-    /* Mobile fix: center padding + one card only */
+    /* Mobile: force one card visible */
     @media (max-width: 768px) {
       .slick-slide > div {
         width: 100% !important;
