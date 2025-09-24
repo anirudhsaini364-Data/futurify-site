@@ -240,17 +240,16 @@ export default function App() {
   <Slider
     dots={true}
     infinite={true}
-    speed={800}
+    speed={600}
     slidesToShow={3}
     slidesToScroll={1}
     autoplay={true}
     autoplaySpeed={3000}
     pauseOnHover={true}
-    centerMode={false}
     responsive={[
-      { breakpoint: 1024, settings: { slidesToShow: 2 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, centerMode: false } },
-      { breakpoint: 480, settings: { slidesToShow: 1, centerMode: false } },
+      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
     ]}
   >
     {[
@@ -261,15 +260,14 @@ export default function App() {
       { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️", color: "#254466" },
       { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡", color: "#1b334d" },
     ].map((service, idx) => (
-      <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
+      <div key={idx} style={{ width: "100%", padding: "0 10px", boxSizing: "border-box" }}>
         <div
           className="service-card"
           style={{
             background: `linear-gradient(145deg, ${service.color}, #1a1a1a)`,
             padding: "35px",
             borderRadius: "20px",
-            width: "100%",
-            height: "300px",       // fixed height for all cards
+            height: "300px",
             textAlign: "center",
             boxShadow: "0 0 30px rgba(0, 255, 255, 0.4)",
             display: "flex",
