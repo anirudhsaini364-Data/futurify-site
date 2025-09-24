@@ -262,11 +262,10 @@ export default function App() {
     ].map((service, idx) => (
       <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
         <div
-          className="service-card"
           style={{
             background: `linear-gradient(145deg, ${service.color}, #1a1a1a)`,
             borderRadius: "20px",
-            height: "300px",
+            minHeight: "300px",
             textAlign: "center",
             boxShadow: "0 0 30px rgba(0, 255, 255, 0.4)",
             display: "flex",
@@ -289,28 +288,20 @@ export default function App() {
   </Slider>
 
   <style jsx>{`
-    .service-card:hover {
-      transform: translateY(-12px);
-      box-shadow: 0 0 45px rgba(0, 255, 255, 0.7);
-    }
-
-    /* Fix slide width and spacing */
     .slick-slide {
       display: flex !important;
       justify-content: center;
-      box-sizing: border-box;
     }
 
-    /* Consistent spacing between cards */
-    .slick-list {
-      margin: 0 -10px; /* negative padding to offset inner slide padding */
+    .slick-slide > div {
+      display: flex;
+      justify-content: center;
+      width: 100% !important;
     }
 
-    /* Mobile: force one card visible */
-    @media (max-width: 768px) {
-      .slick-slide > div {
-        width: 100% !important;
-      }
+    .service-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 0 45px rgba(0, 255, 255, 0.7);
     }
   `}</style>
 </section>
