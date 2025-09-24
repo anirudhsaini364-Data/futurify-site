@@ -216,7 +216,6 @@ export default function App() {
           </div>
         </section>
 
-
 {/* Services */}
 <section
   ref={servicesRef}
@@ -243,16 +242,29 @@ export default function App() {
     dots={true}
     infinite={true}
     speed={600}
-    slidesToShow={1}
+    slidesToShow={4}  // Desktop default
     slidesToScroll={1}
     autoplay={true}
     autoplaySpeed={3000}
     pauseOnHover={true}
     centerMode={false}
     responsive={[
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1, centerMode: false } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } },
+      { 
+        breakpoint: 1200, 
+        settings: { slidesToShow: 3, slidesToScroll: 1, centerMode: false } 
+      },
+      { 
+        breakpoint: 1024, 
+        settings: { slidesToShow: 2, slidesToScroll: 1, centerMode: false } 
+      },
+      { 
+        breakpoint: 768, 
+        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } 
+      },
+      { 
+        breakpoint: 480, 
+        settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } 
+      },
     ]}
   >
     {[
@@ -301,7 +313,6 @@ export default function App() {
       box-shadow: 0 18px 45px rgba(0, 255, 255, 0.5);
     }
 
-    /* Ensure slick-slide flex and proper spacing */
     .slick-slide {
       display: flex !important;
       justify-content: center;
@@ -309,10 +320,10 @@ export default function App() {
     }
 
     .slick-list {
-      margin: 0 -12px; /* gap between slides */
+      margin: 0 -12px;
     }
 
-    /* Mobile: enforce one card per view */
+    /* Mobile: enforce only 1 card per view */
     @media (max-width: 768px) {
       .slick-slide > div {
         width: 100% !important;
@@ -321,6 +332,7 @@ export default function App() {
     }
   `}</style>
 </section>
+
 
 
 {/* About */}
