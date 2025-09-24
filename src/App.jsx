@@ -252,8 +252,8 @@ export default function App() {
     responsive={[
       { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
       { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "5%" } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "5%" } },
     ]}
   >
     {[
@@ -307,7 +307,7 @@ export default function App() {
     /* Gap between cards */
     .slick-track {
       display: flex !important;
-      gap: 16px; /* one-finger gap for all screens */
+      gap: 16px; /* consistent gap for all screens */
     }
 
     .slick-slide {
@@ -321,16 +321,16 @@ export default function App() {
       margin: 0;
     }
 
-    /* Mobile fixes: maintain PC styling, 1 card only, with gap */
+    /* Mobile: 1 card fills 90% of screen, centered */
     @media (max-width: 768px) {
       .slick-slide > div {
-        width: 100% !important;
-        max-width: 100% !important;
+        width: 90% !important;
+        max-width: 90% !important;
       }
 
       .service-card {
-        min-width: 100% !important;
-        max-width: 100% !important;
+        min-width: 90% !important;
+        max-width: 90% !important;
       }
     }
   `}</style>
