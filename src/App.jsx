@@ -246,26 +246,26 @@ export default function App() {
     autoplay={true}
     autoplaySpeed={3000}
     pauseOnHover={true}
+    centerMode={false}
     responsive={[
       { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
     ]}
   >
     {[
-      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows to boost efficiency.", icon: "🤖", color: "#1a1f36" },
-      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation systems.", icon: "⚙️", color: "#223344" },
+      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows.", icon: "🤖", color: "#1a1f36" },
+      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation.", icon: "⚙️", color: "#223344" },
       { title: "Data Insights", desc: "Unlock hidden value from your data with smart analytics.", icon: "📊", color: "#2a2f4a" },
       { title: "Custom Solutions", desc: "Tailored digital solutions to fit your business needs.", icon: "🛠️", color: "#3a3f5c" },
       { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️", color: "#254466" },
       { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡", color: "#1b334d" },
     ].map((service, idx) => (
-      <div key={idx} style={{ width: "100%", padding: "0 10px", boxSizing: "border-box" }}>
+      <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
         <div
           className="service-card"
           style={{
             background: `linear-gradient(145deg, ${service.color}, #1a1a1a)`,
-            padding: "35px",
             borderRadius: "20px",
             height: "300px",
             textAlign: "center",
@@ -273,6 +273,7 @@ export default function App() {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
+            padding: "25px",
             transition: "transform 0.3s, box-shadow 0.3s",
           }}
         >
@@ -280,7 +281,7 @@ export default function App() {
           <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00ffff" }}>
             {service.title}
           </h3>
-          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.6 }}>
+          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.5 }}>
             {service.desc}
           </p>
         </div>
@@ -289,13 +290,32 @@ export default function App() {
   </Slider>
 
   <style jsx>{`
+    /* Hover effect like Why Choose Us */
     .service-card:hover {
       transform: translateY(-12px);
       box-shadow: 0 0 45px rgba(0, 255, 255, 0.7);
     }
+
+    /* Fix slick-slide width so mobile shows only one card */
+    .slick-slide {
+      display: flex !important;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    /* Gap between slides on PC */
+    .slick-list {
+      margin: 0 -10px; /* negative padding to offset inner slide padding */
+    }
+
+    /* Mobile fix: center padding + one card only */
+    @media (max-width: 768px) {
+      .slick-slide > div {
+        width: 100% !important;
+      }
+    }
   `}</style>
 </section>
-
 
 {/* About */}
 <section
