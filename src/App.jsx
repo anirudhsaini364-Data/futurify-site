@@ -134,88 +134,90 @@ export default function App() {
         style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: -1 }}
       />
 
-      {/* Futuristic Navbar */}
-      <nav
+   {/* Futuristic Navbar */}
+<nav
+  style={{
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: window.innerWidth < 768 ? "15px 20px" : "20px 40px", // reduced right padding for PC
+    background: "rgba(10,15,31,0.95)",
+    backdropFilter: "blur(20px)",
+    borderBottom: "1px solid rgba(0,255,255,0.2)",
+    zIndex: 100,
+    boxShadow: "0 4px 30px rgba(0,255,255,0.1)",
+  }}
+>
+  <div
+    style={{
+      color: "#00ffff",
+      fontSize: window.innerWidth < 768 ? "1.8rem" : "2.2rem",
+      fontWeight: "900",
+      textShadow: "0 0 20px #00ffff",
+      background: "linear-gradient(45deg, #00ffff, #1de9b6)",
+      backgroundClip: "text",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      letterSpacing: "-0.02em",
+    }}
+  >
+    FUTURIFY
+  </div>
+
+  <div
+    style={{
+      display: "flex",
+      gap: window.innerWidth < 768 ? "15px" : "20px", // slightly smaller gap for PC
+      alignItems: "center",
+      flexWrap: "wrap",
+      justifyContent: window.innerWidth < 768 ? "flex-start" : "flex-end", // PC: buttons aligned right
+    }}
+  >
+    {[
+      { name: "Home", ref: null },
+      { name: "Services", ref: servicesRef },
+      { name: "About", ref: aboutRef },
+      { name: "Why Us", ref: whyRef },
+      { name: "Clients", ref: clientsRef },
+    ].map((item) => (
+      <button
+        key={item.name}
+        onClick={() => scrollToSection(item.ref)}
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: window.innerWidth < 768 ? "15px 20px" : "20px 60px",
-          background: "rgba(10,15,31,0.95)",
-          backdropFilter: "blur(20px)",
-          borderBottom: "1px solid rgba(0,255,255,0.2)",
-          zIndex: 100,
-          boxShadow: "0 4px 30px rgba(0,255,255,0.1)"
+          background: "transparent",
+          border: "none",
+          color: "#ffffff",
+          fontSize: window.innerWidth < 768 ? "0.9rem" : "1rem",
+          cursor: "pointer",
+          padding: "8px 16px",
+          borderRadius: "8px",
+          transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+          position: "relative",
+          fontWeight: "500",
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.color = "#00ffff";
+          e.target.style.textShadow = "0 0 10px #00ffff";
+          e.target.style.background = "rgba(0,255,255,0.1)";
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.color = "#ffffff";
+          e.target.style.textShadow = "none";
+          e.target.style.background = "transparent";
         }}
       >
-        <div
-          style={{
-            color: "#00ffff",
-            fontSize: window.innerWidth < 768 ? "1.8rem" : "2.2rem",
-            fontWeight: "900",
-            textShadow: "0 0 20px #00ffff",
-            background: "linear-gradient(45deg, #00ffff, #1de9b6)",
-            backgroundClip: "text",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            letterSpacing: "-0.02em"
-          }}
-        >
-          FUTURIFY
-        </div>
+        {item.name}
+      </button>
+    ))}
+  </div>
+</nav>
 
-        <div
-          style={{
-            display: "flex",
-            gap: window.innerWidth < 768 ? "15px" : "30px",
-            alignItems: "center",
-            flexWrap: "wrap"
-          }}
-        >
-          {[
-            { name: "Home", ref: null },
-            { name: "Services", ref: servicesRef },
-            { name: "About", ref: aboutRef },
-            { name: "Why Us", ref: whyRef },
-            { name: "Clients", ref: clientsRef },
-          ].map((item, idx) => (
-            <button
-              key={item.name}
-              onClick={() => scrollToSection(item.ref)}
-              style={{
-                background: "transparent",
-                border: "none",
-                color: "#ffffff",
-                fontSize: window.innerWidth < 768 ? "0.9rem" : "1rem",
-                cursor: "pointer",
-                padding: "8px 16px",
-                borderRadius: "8px",
-                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                position: "relative",
-                fontWeight: "500"
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.color = "#00ffff";
-                e.target.style.textShadow = "0 0 10px #00ffff";
-                e.target.style.background = "rgba(0,255,255,0.1)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.color = "#ffffff";
-                e.target.style.textShadow = "none";
-                e.target.style.background = "transparent";
-              }}
-            >
-              {item.name}
-            </button>
-          ))}
-        </div>
-      </nav>
+<div style={{ position: "relative", zIndex: 10 }} />
 
-      <div style={{ position: "relative", zIndex: 10 }}>
 
         
         {/* Hero */}
