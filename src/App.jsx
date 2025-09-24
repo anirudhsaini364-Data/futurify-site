@@ -216,6 +216,7 @@ export default function App() {
           </div>
         </section>
 
+
 {/* Services */}
 <section
   ref={servicesRef}
@@ -242,16 +243,16 @@ export default function App() {
     dots={true}
     infinite={true}
     speed={600}
-    slidesToShow={3}
+    slidesToShow={5}
     slidesToScroll={1}
     autoplay={true}
     autoplaySpeed={3000}
     pauseOnHover={true}
     centerMode={false}
     responsive={[
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
+      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1, centerMode: false } },
+      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: false } },
     ]}
   >
     {[
@@ -262,28 +263,28 @@ export default function App() {
       { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️" },
       { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡" },
     ].map((service, idx) => (
-      <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
+      <div key={idx} style={{ padding: "0 12px", boxSizing: "border-box" }}>
         <div
           className="service-card"
           style={{
             background: "rgba(0,255,255,0.05)",
-            backdropFilter: "blur(12px)",
+            backdropFilter: "blur(14px)",
             borderRadius: "20px",
             height: "320px",
             textAlign: "center",
-            boxShadow: "0 8px 30px rgba(0,255,255,0.2)",
+            boxShadow: "0 10px 35px rgba(0,255,255,0.25)",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             padding: "25px",
             transition: "transform 0.4s, box-shadow 0.4s",
-            border: "1px solid rgba(0,255,255,0.2)",
+            border: "1px solid rgba(0,255,255,0.15)",
           }}
         >
           <div style={{ fontSize: "3rem", marginBottom: "15px", textShadow: "0 0 12px #00fff7" }}>
             {service.icon}
           </div>
-          <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00fff7", textShadow: "0 0 8px #00fff7" }}>
+          <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00fff7", textShadow: "0 0 10px #00fff7" }}>
             {service.title}
           </h3>
           <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.6 }}>
@@ -297,10 +298,10 @@ export default function App() {
   <style jsx>{`
     .service-card:hover {
       transform: translateY(-15px);
-      box-shadow: 0 15px 40px rgba(0, 255, 255, 0.5);
+      box-shadow: 0 18px 45px rgba(0, 255, 255, 0.5);
     }
 
-    /* Fix slick-slide width so mobile shows only one card */
+    /* Ensure slick-slide flex and proper spacing */
     .slick-slide {
       display: flex !important;
       justify-content: center;
@@ -308,12 +309,14 @@ export default function App() {
     }
 
     .slick-list {
-      margin: 0 -10px; /* gap between slides */
+      margin: 0 -12px; /* gap between slides */
     }
 
+    /* Mobile: enforce one card per view */
     @media (max-width: 768px) {
       .slick-slide > div {
-        width: 100% !important; /* only 1 card */
+        width: 100% !important;
+        max-width: 100% !important;
       }
     }
   `}</style>
