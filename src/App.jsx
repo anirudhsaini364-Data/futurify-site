@@ -299,7 +299,7 @@ export default function App() {
     autoplay={true}
     autoplaySpeed={0} // continuous
     cssEase="linear"
-    pauseOnHover={false}
+    pauseOnHover={false} // no pause
     centerMode={false}
     responsive={[
       { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1, speed: 7000 } },
@@ -316,7 +316,7 @@ export default function App() {
       { title: "Cloud Services", desc: "Modernize infrastructure with secure cloud solutions.", icon: "☁️", gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)" },
       { title: "Consulting", desc: "Expert strategic advice to guide your transformation.", icon: "💡", gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)" },
     ].map((service, idx) => (
-      <div key={idx} style={{ padding: "0 100px", boxSizing: "border-box" }}>
+      <div key={idx} style={{ padding: "0 15px", boxSizing: "border-box" }}>
         <div
           className="service-card"
           style={{
@@ -325,7 +325,7 @@ export default function App() {
             borderRadius: "24px",
             height: "380px",
             minWidth: "280px",
-            maxWidth: "300px",
+            maxWidth: "300px", // reduced for visible gap
             textAlign: "center",
             boxShadow: "0 15px 45px rgba(0,255,255,0.15), 0 5px 15px rgba(0,0,0,0.1)",
             display: "flex",
@@ -336,10 +336,10 @@ export default function App() {
             border: "1px solid rgba(0,255,255,0.2)",
             position: "relative",
             overflow: "hidden",
-            margin: "0 10px", // card gap
+            margin: "0 10px", // visible gap between cards
           }}
         >
-          {/* Glowing top gradient line */}
+          {/* Card gradient overlay */}
           <div
             style={{
               position: "absolute",
@@ -349,7 +349,6 @@ export default function App() {
               height: "4px",
               background: service.gradient,
               borderRadius: "24px 24px 0 0",
-              boxShadow: `0 0 20px ${service.gradient.split(' ')[1]}90, 0 0 40px ${service.gradient.split(' ')[1]}50`,
               animation: "glow 2s ease-in-out infinite alternate",
             }}
           />
@@ -395,39 +394,60 @@ export default function App() {
   </Slider>
 
   <style jsx>{`
-    @keyframes glow {
-      0% { opacity: 0.6; }
-      50% { opacity: 1; }
-      100% { opacity: 0.6; }
-    }
-
     .service-card:hover {
       transform: translateY(-20px) scale(1.02);
       box-shadow: 0 25px 60px rgba(0, 255, 255, 0.3), 0 10px 25px rgba(0,0,0,0.2);
       border-color: rgba(0,255,255,0.4);
     }
 
+    /* Slider fixes */
     .slick-slide {
       display: flex !important;
       justify-content: center;
       box-sizing: border-box;
     }
 
+    .slick-list {
+      overflow: hidden;
+    }
+
+    /* Dots */
+    .slick-dots {
+      bottom: -50px;
+    }
+    .slick-dots li button:before {
+      color: #00fff7;
+      font-size: 12px;
+      opacity: 0.5;
+    }
+    .slick-dots li.slick-active button:before {
+      opacity: 1;
+      color: #00fff7;
+      text-shadow: 0 0 10px #00fff7;
+    }
+
+    /* Mobile optimizations */
     @media (max-width: 768px) {
       .service-card {
-        min-width: calc(100vw - 80px) !important; /* one finger gap */
+        min-width: calc(100vw - 80px) !important;
         max-width: calc(100vw - 80px) !important;
         height: 350px !important;
         margin: 0 auto;
       }
     }
-
     @media (max-width: 480px) {
       .service-card {
         min-width: calc(100vw - 60px) !important;
         max-width: calc(100vw - 60px) !important;
         padding: 25px 20px !important;
       }
+    }
+
+    /* Gradient glow animation */
+    @keyframes glow {
+      0% { opacity: 0.6; }
+      50% { opacity: 1; }
+      100% { opacity: 0.6; }
     }
   `}</style>
 </section>
