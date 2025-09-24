@@ -215,46 +215,103 @@ export default function App() {
             </button>
           </div>
         </section>
-<Slider
-  dots={true}
-  infinite={true}
-  speed={600}             
-  slidesToShow={3}        // desktop
-  slidesToScroll={1}
-  autoplay={true}
-  autoplaySpeed={3000}
-  pauseOnHover={true}
-  responsive={[
-    { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-    { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1 } },
-  ]}
+
+{/* Services */}
+<section
+  ref={servicesRef}
+  style={{
+    ...sectionStyle,
+    padding: "60px 20px",
+    background: "linear-gradient(135deg, #020d1f, #041830)",
+  }}
 >
-  {serviceCards.map((service, idx) => (
-    <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
-      <div
-        style={{
-          background: service.color,
-          borderRadius: "20px",
-          minHeight: "300px", // same height
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          textAlign: "center",
-          padding: "25px",
-          boxShadow: "0 0 30px rgba(0,255,255,0.4)",
-          transition: "transform 0.3s, box-shadow 0.3s",
-        }}
-      >
-        <div style={{ fontSize: "3rem", marginBottom: "15px" }}>{service.icon}</div>
-        <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00ffff" }}>
-          {service.title}
-        </h3>
-        <p style={{ color: "#ddd", fontSize: "1rem" }}>{service.desc}</p>
+  <h2
+    style={{
+      fontSize: "2.5rem",
+      fontWeight: "bold",
+      textAlign: "center",
+      marginBottom: "40px",
+      color: "#00fff7",
+    }}
+  >
+    Our Services
+  </h2>
+
+  <Slider
+    dots={true}
+    infinite={true}
+    speed={1000}
+    slidesToShow={3}
+    slidesToScroll={1}
+    autoplay={true}
+    autoplaySpeed={3000}
+    pauseOnHover={true}
+    centerMode={false}
+    responsive={[
+      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+      { breakpoint: 768, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
+      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
+    ]}
+  >
+    {[
+      { title: "AI Integration", desc: "Seamlessly integrate AI into your workflows.", icon: "🤖", color: "#1b2430" },
+      { title: "Automation Tools", desc: "Eliminate repetitive tasks with advanced automation.", icon: "⚙️", color: "#223344" },
+      { title: "Data Insights", desc: "Unlock hidden value from your data with smart analytics.", icon: "📊", color: "#2c3545" },
+      { title: "Custom Solutions", desc: "Tailored digital solutions to fit your business needs.", icon: "🛠️", color: "#36415a" },
+      { title: "Cloud Services", desc: "Modernize your infrastructure with secure cloud solutions.", icon: "☁️", color: "#254466" },
+      { title: "Consulting", desc: "Expert advice to guide your transformation journey.", icon: "💡", color: "#1b334d" },
+    ].map((service, idx) => (
+      <div key={idx} style={{ padding: "0 10px", boxSizing: "border-box" }}>
+        <div
+          className="service-card"
+          style={{
+            background: `linear-gradient(145deg, ${service.color}, #111827)`,
+            borderRadius: "20px",
+            height: "300px",
+            textAlign: "center",
+            boxShadow: "0 0 25px rgba(0, 255, 255, 0.3)",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            padding: "25px",
+            transition: "transform 0.3s, box-shadow 0.3s",
+          }}
+        >
+          <div style={{ fontSize: "3rem", marginBottom: "15px" }}>{service.icon}</div>
+          <h3 style={{ fontSize: "1.5rem", marginBottom: "15px", color: "#00ffff" }}>
+            {service.title}
+          </h3>
+          <p style={{ color: "#ddd", fontSize: "1rem", lineHeight: 1.5 }}>
+            {service.desc}
+          </p>
+        </div>
       </div>
-    </div>
-  ))}
-</Slider>
+    ))}
+  </Slider>
+
+  <style jsx>{`
+    .service-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 0 45px rgba(0, 255, 255, 0.6);
+    }
+
+    .slick-slide {
+      display: flex !important;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    .slick-list {
+      margin: 0 -10px;
+    }
+
+    @media (max-width: 768px) {
+      .slick-slide > div {
+        width: 100% !important;
+      }
+    }
+  `}</style>
+</section>
 
 {/* About */}
 <section
