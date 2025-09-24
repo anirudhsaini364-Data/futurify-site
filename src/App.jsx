@@ -246,7 +246,6 @@ export default function App() {
     autoplay={true}
     autoplaySpeed={3000}
     pauseOnHover={true}
-    centerMode={false} // remove centerMode to avoid mobile issues
     responsive={[
       { breakpoint: 1024, settings: { slidesToShow: 2 } },
       { breakpoint: 768, settings: { slidesToShow: 1 } },
@@ -264,19 +263,17 @@ export default function App() {
       <div
         key={idx}
         style={{
-          width: "90%", // ensures the card is visible in slider
-          maxWidth: "350px",
-          margin: "0 auto",
-          background: `linear-gradient(145deg, ${service.color}33, #102b45)`, // card gradient with slight color hint
+          padding: "25px 20px",
           borderRadius: "20px",
-          padding: "30px 25px",
           minHeight: "220px",
           textAlign: "center",
+          background: `linear-gradient(145deg, ${service.color}33, #102b45)`,
           boxShadow: "0 8px 20px rgba(0, 255, 247, 0.3)",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           transition: "transform 0.3s, box-shadow 0.3s",
+          margin: "0 10px", // space between slides
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.transform = "translateY(-10px)";
@@ -297,6 +294,7 @@ export default function App() {
     ))}
   </Slider>
 </section>
+
 
 
 {/* About */}
