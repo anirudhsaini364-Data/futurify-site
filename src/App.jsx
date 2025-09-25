@@ -96,40 +96,41 @@ export default function App() {
     { name: "HCL Technologies", work: "Built real-time monitoring systems", impact: "Improved system uptime by 45%" },
   ];
 
-  const servicesSliderSettings = {
-    dots: true,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3500,
-    pauseOnHover: true,
-    responsive: [
-      { breakpoint: 1600, settings: { slidesToShow: 4, slidesToScroll: 1 } },
-      { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
-      { breakpoint: 900, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
-    ],
-  };
+ const servicesSliderSettings = {
+  dots: true,
+  infinite: true,
+  speed: 800,
+  slidesToShow: 5,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3500,
+  pauseOnHover: true,
+  responsive: [
+    { breakpoint: 1600, settings: { slidesToShow: 4, slidesToScroll: 1 } },
+    { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
+    { breakpoint: 900, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+    { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
+    { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
+  ],
+};
 
   const clientsSliderSettings = {
-    dots: false,
-    infinite: true,
-    speed: 800,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    pauseOnHover: true,
-    responsive: [
-      { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
-      { breakpoint: 900, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
-      { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
-    ],
-  };
+  dots: false,
+  infinite: true,
+  speed: 800,
+  slidesToShow: 4,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  pauseOnHover: true,
+  responsive: [
+    { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
+    { breakpoint: 900, settings: { slidesToShow: 2, slidesToScroll: 1 } },
+    { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
+    { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
+  ],
+};
+
 
   const sectionStyle = {
     padding: "80px 20px",
