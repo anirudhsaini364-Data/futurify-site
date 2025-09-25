@@ -127,18 +127,31 @@ const servicesSliderSettings = {
   dots: true,
   infinite: true,
   speed: 800,
-  slidesToShow: 5, // default for big screens
+  slidesToShow: 5, // desktop default
   slidesToScroll: 1,
   autoplay: true,
   autoplaySpeed: 3500,
   pauseOnHover: true,
   responsive: [
-    { breakpoint: 1600, settings: { slidesToShow: 4 } },
-    { breakpoint: 1200, settings: { slidesToShow: 3 } },
-    { breakpoint: 900,  settings: { slidesToShow: 2 } },
-    { breakpoint: 768,  settings: { slidesToShow: 1 } }, // 👈 iPhone & most mobiles
-  ],
+    {
+      breakpoint: 1600,
+      settings: { slidesToShow: 4 }
+    },
+    {
+      breakpoint: 1200,
+      settings: { slidesToShow: 3 }
+    },
+    {
+      breakpoint: 900,
+      settings: { slidesToShow: 2 }
+    },
+    {
+      breakpoint: 768, // 👈 cover all mobile phones
+      settings: { slidesToShow: 1 }
+    }
+  ]
 };
+
 
 
 
@@ -1177,13 +1190,13 @@ const servicesSliderSettings = {
 .slick-slide {
   height: auto !important;
 }
+/* Force 1 card on small screens */
 @media (max-width: 768px) {
-
-  /* 👇 ensure cards always stretch full height */
- .slick-slide > div {
-  height: 100% !important;
-  display: flex !important;
+  .slick-slider .slick-slide {
+    width: 100% !important;
+  }
 }
+
 
 }
 
