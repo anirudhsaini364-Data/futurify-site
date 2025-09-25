@@ -29,6 +29,15 @@ export default function App() {
   const contactRef = useRef(null);
   const clientsRef = useRef(null);
 
+  const [sliderKey, setSliderKey] = useState(0);
+
+useEffect(() => {
+  if (window.innerWidth < 768) {
+    setTimeout(() => setSliderKey((prev) => prev + 1), 300);
+    setTimeout(() => setSliderKey((prev) => prev + 1), 1000); // second refresh
+  }
+}, []);
+
 
   useEffect(() => {
   // Force Slick to recalc widths on initial load (fixes squish on mobile)
@@ -336,156 +345,165 @@ export default function App() {
           </div>
         </section>
 
-     {/* Enhanced Services Section */}
-<section
-  ref={servicesRef}
-  style={{
-    ...sectionStyle,
-    padding: "80px 20px",
-    background: "linear-gradient(135deg, #020d1f 0%, #041830 50%, #0a1a35 100%)",
-    position: "relative",
-    overflow: "hidden",
-  }}
->
-  <div
-    style={{
-      position: "absolute",
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundImage: `radial-gradient(circle at 25% 25%, rgba(0,255,247,0.08) 0%, transparent 50%),
-                        radial-gradient(circle at 75% 75%, rgba(29,233,182,0.08) 0%, transparent 50%)`,
-      pointerEvents: "none",
-    }}
-  />
+           {/* Enhanced Services Section */}
+      <section
+        ref={servicesRef}
+        style={{
+          ...sectionStyle,
+          padding: "80px 20px",
+          background: "linear-gradient(135deg, #020d1f 0%, #041830 50%, #0a1a35 100%)",
+          position: "relative",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundImage: `radial-gradient(circle at 25% 25%, rgba(0,255,247,0.08) 0%, transparent 50%),
+                              radial-gradient(circle at 75% 75%, rgba(29,233,182,0.08) 0%, transparent 50%)`,
+            pointerEvents: "none",
+          }}
+        />
 
-  <h2
-    style={{
-      fontSize: "3.2rem",
-      fontWeight: "900",
-      textAlign: "center",
-      marginBottom: "25px",
-      color: "#00fff7",
-      textShadow: "0 0 30px #00fff7, 0 0 60px #00fff799",
-      background: "linear-gradient(45deg, #00fff7, #7dd3fc, #1de9b6)",
-      backgroundSize: "200% 100%",
-      backgroundClip: "text",
-      WebkitBackgroundClip: "text",
-      WebkitTextFillColor: "transparent",
-      position: "relative",
-      zIndex: 1,
-      animation: "gradientShift 5s ease-in-out infinite",
-    }}
-  >
-    Our Services
-  </h2>
+        <h2
+          style={{
+            fontSize: "3.2rem",
+            fontWeight: "900",
+            textAlign: "center",
+            marginBottom: "25px",
+            color: "#00fff7",
+            textShadow: "0 0 30px #00fff7, 0 0 60px #00fff799",
+            background: "linear-gradient(45deg, #00fff7, #7dd3fc, #1de9b6)",
+            backgroundSize: "200% 100%",
+            backgroundClip: "text",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            position: "relative",
+            zIndex: 1,
+            animation: "gradientShift 5s ease-in-out infinite",
+          }}
+        >
+          Our Services
+        </h2>
 
-  <p
-    style={{
-      textAlign: "center",
-      color: "#94a3b8",
-      fontSize: "1.2rem",
-      maxWidth: "650px",
-      margin: "0 auto 60px",
-      position: "relative",
-      zIndex: 1,
-      lineHeight: 1.6,
-    }}
-  >
-    Transforming businesses with cutting-edge technology solutions
-  </p>
+        <p
+          style={{
+            textAlign: "center",
+            color: "#94a3b8",
+            fontSize: "1.2rem",
+            maxWidth: "650px",
+            margin: "0 auto 60px",
+            position: "relative",
+            zIndex: 1,
+            lineHeight: 1.6,
+          }}
+        >
+          Transforming businesses with cutting-edge technology solutions
+        </p>
 
-  <div style={{ position: "relative", zIndex: 1 }}>
-    <Slider {...servicesSliderSettings}>
-      {servicesData.map((service, idx) => (
-        <div key={idx} style={{ padding: "0 8px" }}>
-          <div
-            style={{
-              background: "rgba(0,255,255,0.08)",
-              backdropFilter: "blur(20px)",
-              borderRadius: "24px",
-              height: "340px",
-              textAlign: "center",
-              boxShadow: "0 20px 60px rgba(0,255,255,0.2), 0 8px 25px rgba(0,0,0,0.15)",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              padding: "30px 20px",
-              transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-              border: "1px solid rgba(0,255,255,0.25)",
-              position: "relative",
-              overflow: "hidden",
-              cursor: "pointer",
-              margin: "0 auto",
-              maxWidth: "280px",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = "translateY(-15px) scale(1.03)";
-              e.currentTarget.style.boxShadow = "0 30px 80px rgba(0, 255, 255, 0.4), 0 15px 35px rgba(0,0,0,0.3)";
-              e.currentTarget.style.borderColor = "rgba(0,255,255,0.5)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = "translateY(0) scale(1)";
-              e.currentTarget.style.boxShadow = "0 20px 60px rgba(0,255,255,0.2), 0 8px 25px rgba(0,0,0,0.15)";
-              e.currentTarget.style.borderColor = "rgba(0,255,255,0.25)";
-            }}
-          >
-            <div
-              style={{
-                position: "absolute",
-                top: 0,
-                left: 0,
-                right: 0,
-                height: "4px",
-                background: service.gradient,
-                borderRadius: "24px 24px 0 0",
-                animation: "pulse 3s ease-in-out infinite",
-              }}
-            />
+        <div style={{ position: "relative", zIndex: 1 }}>
+          {/* 👇 force re-render with sliderKey */}
+          <Slider key={sliderKey} {...servicesSliderSettings}>
+            {servicesData.map((service, idx) => (
+              <div key={idx} style={{ padding: "0 8px" }}>
+                <div
+                  style={{
+                    background: "rgba(0,255,255,0.08)",
+                    backdropFilter: "blur(20px)",
+                    borderRadius: "24px",
+                    height: "340px",
+                    textAlign: "center",
+                    boxShadow:
+                      "0 20px 60px rgba(0,255,255,0.2), 0 8px 25px rgba(0,0,0,0.15)",
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                    padding: "30px 20px",
+                    transition:
+                      "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                    border: "1px solid rgba(0,255,255,0.25)",
+                    position: "relative",
+                    overflow: "hidden",
+                    cursor: "pointer",
+                    margin: "0 auto",
+                    maxWidth: "280px",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform =
+                      "translateY(-15px) scale(1.03)";
+                    e.currentTarget.style.boxShadow =
+                      "0 30px 80px rgba(0, 255, 255, 0.4), 0 15px 35px rgba(0,0,0,0.3)";
+                    e.currentTarget.style.borderColor =
+                      "rgba(0,255,255,0.5)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = "translateY(0) scale(1)";
+                    e.currentTarget.style.boxShadow =
+                      "0 20px 60px rgba(0,255,255,0.2), 0 8px 25px rgba(0,0,0,0.15)";
+                    e.currentTarget.style.borderColor =
+                      "rgba(0,255,255,0.25)";
+                  }}
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: "4px",
+                      background: service.gradient,
+                      borderRadius: "24px 24px 0 0",
+                      animation: "pulse 3s ease-in-out infinite",
+                    }}
+                  />
 
-            <div
-              style={{
-                fontSize: "3.5rem",
-                marginBottom: "20px",
-                textShadow: "0 0 20px #00fff7",
-                filter: "drop-shadow(0 0 15px rgba(0,255,247,0.4))",
-              }}
-            >
-              {service.icon}
-            </div>
+                  <div
+                    style={{
+                      fontSize: "3.5rem",
+                      marginBottom: "20px",
+                      textShadow: "0 0 20px #00fff7",
+                      filter: "drop-shadow(0 0 15px rgba(0,255,247,0.4))",
+                    }}
+                  >
+                    {service.icon}
+                  </div>
 
-            <h3
-              style={{
-                fontSize: "1.4rem",
-                marginBottom: "15px",
-                color: "#ffffff",
-                textShadow: "0 0 15px rgba(0,255,247,0.6)",
-                fontWeight: "700",
-                letterSpacing: "-0.02em",
-              }}
-            >
-              {service.title}
-            </h3>
+                  <h3
+                    style={{
+                      fontSize: "1.4rem",
+                      marginBottom: "15px",
+                      color: "#ffffff",
+                      textShadow: "0 0 15px rgba(0,255,247,0.6)",
+                      fontWeight: "700",
+                      letterSpacing: "-0.02em",
+                    }}
+                  >
+                    {service.title}
+                  </h3>
 
-            <p
-              style={{
-                color: "#cbd5e1",
-                fontSize: "0.95rem",
-                lineHeight: 1.5,
-                margin: 0,
-                fontWeight: "400",
-                opacity: 0.9,
-              }}
-            >
-              {service.desc}
-            </p>
-          </div>
+                  <p
+                    style={{
+                      color: "#cbd5e1",
+                      fontSize: "0.95rem",
+                      lineHeight: 1.5,
+                      margin: 0,
+                      fontWeight: "400",
+                      opacity: 0.9,
+                    }}
+                  >
+                    {service.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </Slider>
         </div>
-      ))}
-    </Slider>
-  </div>
-</section>
+      </section>
+
 
 
         {/* About Section */}
@@ -651,7 +669,7 @@ export default function App() {
           </h2>
 
           <div style={{ position: "relative", zIndex: 1 }}>
-            <Slider {...clientsSliderSettings}>
+            <Slider key={sliderKey} {...clientsSliderSettings}>
               {clientsData.map((client, index) => (
                 <div key={index} style={{ padding: "0 10px" }}>
                   <div
@@ -1090,6 +1108,17 @@ export default function App() {
         .slick-slide > div {
           height: 100%;
         }
+
+        .slick-slider,
+.slick-list,
+.slick-track {
+  transform: translate3d(0,0,0); /* force GPU repaint */
+}
+
+.slick-track {
+  will-change: transform, width;
+}
+
 
         .slick-track {
           display: flex;
