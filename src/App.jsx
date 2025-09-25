@@ -1130,12 +1130,19 @@ useEffect(() => {
 
 @media (max-width: 768px) {
   .slick-slide {
-    flex: 0 0 90% !important;
+    flex: 0 0 90% !important;   /* one card width */
     max-width: 90% !important;
     margin: 0 auto !important;
     box-sizing: border-box;
   }
+
+  /* 👇 ensure cards always stretch full height */
+  .slick-slide > div {
+    height: 100% !important;
+    display: flex !important;
+  }
 }
+
 
 
 
