@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from "react"; // add useEffect
+import { useState, useCallback, useRef, useEffect } from "react";
 import Particles from "react-tsparticles";
 import { loadSlim } from "tsparticles-slim";
 import Slider from "react-slick";
@@ -29,12 +29,14 @@ export default function App() {
   const contactRef = useRef(null);
   const clientsRef = useRef(null);
 
-  const [sliderKey, setSliderKey] = useState(0);
+ const [sliderKey, setSliderKey] = useState(0);
 
 useEffect(() => {
   if (window.innerWidth < 768) {
-    setTimeout(() => setSliderKey((prev) => prev + 1), 300);
-    setTimeout(() => setSliderKey((prev) => prev + 1), 1000); // second refresh
+    // Fire multiple refreshes for safety
+    setTimeout(() => setSliderKey((prev) => prev + 1), 200);
+    setTimeout(() => setSliderKey((prev) => prev + 1), 1000);
+    setTimeout(() => window.dispatchEvent(new Event("resize")), 1500);
   }
 }, []);
 
