@@ -127,19 +127,19 @@ const servicesSliderSettings = {
   dots: true,
   infinite: true,
   speed: 800,
-  slidesToShow: 5,
+  slidesToShow: 5, // default for big screens
   slidesToScroll: 1,
   autoplay: true,
   autoplaySpeed: 3500,
   pauseOnHover: true,
   responsive: [
-    { breakpoint: 600, settings: { slidesToShow: 1 } },
-    { breakpoint: 900, settings: { slidesToShow: 2 } },
-    { breakpoint: 1200, settings: { slidesToShow: 3 } },
     { breakpoint: 1600, settings: { slidesToShow: 4 } },
-    { breakpoint: 9999, settings: { slidesToShow: 5 } }, // desktop max
+    { breakpoint: 1200, settings: { slidesToShow: 3 } },
+    { breakpoint: 900,  settings: { slidesToShow: 2 } },
+    { breakpoint: 768,  settings: { slidesToShow: 1 } }, // 👈 iPhone & most mobiles
   ],
 };
+
 
 
   const clientsSliderSettings = {
