@@ -6,6 +6,9 @@ import ReCAPTCHA from "react-google-recaptcha";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
+import Projects from "./Projects.jsx";
+
 
 export default function App() {
   const particlesInit = useCallback(async (engine) => {
