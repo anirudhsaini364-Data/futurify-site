@@ -124,19 +124,18 @@ useEffect(() => {
   dots: true,
   infinite: true,
   speed: 800,
-  slidesToShow: 5,
+  slidesToShow: 1,
   slidesToScroll: 1,
   autoplay: true,
   autoplaySpeed: 3500,
   pauseOnHover: true,
-  responsive: [
-    { breakpoint: 1600, settings: { slidesToShow: 4, slidesToScroll: 1 } },
-    { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
-    { breakpoint: 900, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-   { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1 } },
-{ breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
-
-  ],
+  rresponsive: [
+  { breakpoint: 600, settings: { slidesToShow: 1 } },
+  { breakpoint: 900, settings: { slidesToShow: 2 } },
+  { breakpoint: 1200, settings: { slidesToShow: 3 } },
+  { breakpoint: 1600, settings: { slidesToShow: 4 } },
+  { breakpoint: 9999, settings: { slidesToShow: 5 } }, // desktop max
+],
 };
 
   const clientsSliderSettings = {
@@ -1113,9 +1112,11 @@ useEffect(() => {
           text-shadow: 0 0 15px #00fff7 !important;
         }
 
-        .slick-slide > div {
-          height: 100%;
-        }
+     .slick-slide > div {
+  height: 100% !important;
+  display: flex !important;
+}
+
 
        /* Ensure slick recalculates properly on mobile */
 .slick-track {
