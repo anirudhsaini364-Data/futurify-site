@@ -195,95 +195,105 @@ const servicesSliderSettings = {
         style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: -1 }}
       />
 
-      {/* Enhanced Futuristic Navbar */}
-      <nav
+     {/* Enhanced Futuristic Navbar */}
+<nav
+  style={{
+    position: "fixed",
+    top: 0,
+    left: 0,
+    width: "100%",
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: window.innerWidth < 768 ? "15px 20px" : "20px 40px",
+    background: "rgba(10,15,31,0.95)",
+    backdropFilter: "blur(30px)",
+    borderBottom: "1px solid rgba(0,255,255,0.3)",
+    zIndex: 100,
+    boxShadow:
+      "0 8px 40px rgba(0,255,255,0.15), 0 0 80px rgba(29,233,182,0.1)",
+  }}
+>
+  <div
+    style={{
+      color: "#00ffff",
+      fontSize: window.innerWidth < 768 ? "1.8rem" : "2.4rem",
+      fontWeight: "900",
+      textShadow: "0 0 30px #00ffff, 0 0 60px #1de9b6",
+      background: "linear-gradient(45deg, #00ffff, #1de9b6, #00ffff)",
+      backgroundSize: "200% 100%",
+      backgroundClip: "text",
+      WebkitBackgroundClip: "text",
+      WebkitTextFillColor: "transparent",
+      letterSpacing: "-0.02em",
+      animation: "gradientShift 3s ease-in-out infinite",
+    }}
+  >
+    FUTURIFY
+  </div>
+
+  <div
+    style={{
+      display: "flex",
+      gap: window.innerWidth < 768 ? "15px" : "35px",
+      alignItems: "center",
+      flexWrap: "wrap",
+    }}
+  >
+    {[
+      { name: "Home", ref: null },
+      { name: "Services", ref: servicesRef },
+      { name: "About", ref: aboutRef },
+      { name: "Why Us", ref: whyRef },
+      { name: "Clients", ref: clientsRef },
+      { name: "Projects", ref: "projects" }, // NEW
+    ].map((item) => (
+      <button
+        key={item.name}
+        onClick={() => {
+          if (item.name === "Projects") {
+            window.location.href = "/projects"; // Navigate to Projects page
+          } else {
+            scrollToSection(item.ref);
+          }
+        }}
         style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: "100%",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: window.innerWidth < 768 ? "15px 20px" : "20px 40px",
-          background: "rgba(10,15,31,0.95)",
-          backdropFilter: "blur(30px)",
-          borderBottom: "1px solid rgba(0,255,255,0.3)",
-          zIndex: 100,
-          boxShadow: "0 8px 40px rgba(0,255,255,0.15), 0 0 80px rgba(29,233,182,0.1)"
+          background: "rgba(0,255,255,0.05)",
+          border: "1px solid rgba(0,255,255,0.2)",
+          color: "#ffffff",
+          fontSize: window.innerWidth < 768 ? "0.9rem" : "1rem",
+          cursor: "pointer",
+          padding: "10px 20px",
+          borderRadius: "12px",
+          transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+          position: "relative",
+          fontWeight: "500",
+          overflow: "hidden",
+        }}
+        onMouseEnter={(e) => {
+          e.target.style.color = "#000";
+          e.target.style.background =
+            "linear-gradient(45deg, #00ffff, #1de9b6)";
+          e.target.style.borderColor = "#00ffff";
+          e.target.style.boxShadow = "0 0 20px rgba(0,255,255,0.5)";
+          e.target.style.transform = "translateY(-2px)";
+        }}
+        onMouseLeave={(e) => {
+          e.target.style.color = "#ffffff";
+          e.target.style.background = "rgba(0,255,255,0.05)";
+          e.target.style.borderColor = "rgba(0,255,255,0.2)";
+          e.target.style.boxShadow = "none";
+          e.target.style.transform = "translateY(0)";
         }}
       >
-        <div
-          style={{
-            color: "#00ffff",
-            fontSize: window.innerWidth < 768 ? "1.8rem" : "2.4rem",
-            fontWeight: "900",
-            textShadow: "0 0 30px #00ffff, 0 0 60px #1de9b6",
-            background: "linear-gradient(45deg, #00ffff, #1de9b6, #00ffff)",
-            backgroundSize: "200% 100%",
-            backgroundClip: "text",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            letterSpacing: "-0.02em",
-            animation: "gradientShift 3s ease-in-out infinite"
-          }}
-        >
-          FUTURIFY
-        </div>
+        {item.name}
+      </button>
+    ))}
+  </div>
+</nav>
 
-        <div
-          style={{
-            display: "flex",
-            gap: window.innerWidth < 768 ? "15px" : "35px",
-            alignItems: "center",
-            flexWrap: "wrap"
-          }}
-        >
-          {[
-            { name: "Home", ref: null },
-            { name: "Services", ref: servicesRef },
-            { name: "About", ref: aboutRef },
-            { name: "Why Us", ref: whyRef },
-            { name: "Clients", ref: clientsRef },
-          ].map((item) => (
-            <button
-              key={item.name}
-              onClick={() => scrollToSection(item.ref)}
-              style={{
-                background: "rgba(0,255,255,0.05)",
-                border: "1px solid rgba(0,255,255,0.2)",
-                color: "#ffffff",
-                fontSize: window.innerWidth < 768 ? "0.9rem" : "1rem",
-                cursor: "pointer",
-                padding: "10px 20px",
-                borderRadius: "12px",
-                transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                position: "relative",
-                fontWeight: "500",
-                overflow: "hidden"
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.color = "#000";
-                e.target.style.background = "linear-gradient(45deg, #00ffff, #1de9b6)";
-                e.target.style.borderColor = "#00ffff";
-                e.target.style.boxShadow = "0 0 20px rgba(0,255,255,0.5)";
-                e.target.style.transform = "translateY(-2px)";
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.color = "#ffffff";
-                e.target.style.background = "rgba(0,255,255,0.05)";
-                e.target.style.borderColor = "rgba(0,255,255,0.2)";
-                e.target.style.boxShadow = "none";
-                e.target.style.transform = "translateY(0)";
-              }}
-            >
-              {item.name}
-            </button>
-          ))}
-        </div>
-      </nav>
+<div style={{ position: "relative", zIndex: 10 }}>
 
-      <div style={{ position: "relative", zIndex: 10 }}>
         {/* Enhanced Hero Section */}
         <section style={{ 
           paddingTop: "120px", 
