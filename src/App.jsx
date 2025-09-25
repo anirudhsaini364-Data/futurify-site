@@ -29,24 +29,28 @@ export default function App() {
   const contactRef = useRef(null);
   const clientsRef = useRef(null);
 
- const [sliderKey, setSliderKey] = useState(0);
+ // Separate keys for each slider
+const [servicesKey, setServicesKey] = useState(0);
+const [clientsKey, setClientsKey] = useState(0);
 
+// Force recalculation on mobile Safari
 useEffect(() => {
   if (window.innerWidth < 768) {
-    // Fire multiple refreshes for safety
-    setTimeout(() => setSliderKey((prev) => prev + 1), 200);
-    setTimeout(() => setSliderKey((prev) => prev + 1), 1000);
-    setTimeout(() => window.dispatchEvent(new Event("resize")), 1500);
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+      setServicesKey((prev) => prev + 1);
+    }, 500);
+
+    setTimeout(() => {
+      window.dispatchEvent(new Event("resize"));
+      setClientsKey((prev) => prev + 1);
+    }, 1000);
   }
 }, []);
 
 
-  useEffect(() => {
-  // Force Slick to recalc widths on initial load (fixes squish on mobile)
-  setTimeout(() => {
-    window.dispatchEvent(new Event("resize"));
-  }, 500);
-}, []);
+
+
 
 
   const scrollToSection = (ref) => {
@@ -129,8 +133,9 @@ useEffect(() => {
     { breakpoint: 1600, settings: { slidesToShow: 4, slidesToScroll: 1 } },
     { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
     { breakpoint: 900, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-    { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
-    { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
+   { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+{ breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+
   ],
 };
 
@@ -146,8 +151,9 @@ useEffect(() => {
   responsive: [
     { breakpoint: 1200, settings: { slidesToShow: 3, slidesToScroll: 1 } },
     { breakpoint: 900, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-    { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "40px" } },
-    { breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1, centerMode: true, centerPadding: "20px" } },
+   { breakpoint: 600, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+{ breakpoint: 480, settings: { slidesToShow: 1, slidesToScroll: 1 } },
+
   ],
 };
 
@@ -409,7 +415,7 @@ useEffect(() => {
 
         <div style={{ position: "relative", zIndex: 1 }}>
           {/* 👇 force re-render with sliderKey */}
-          <Slider key={sliderKey} {...servicesSliderSettings}>
+          <Slider key={servicesKey} {...servicesSliderSettings}>
             {servicesData.map((service, idx) => (
               <div key={idx} style={{ padding: "0 8px" }}>
                 <div
@@ -671,7 +677,7 @@ useEffect(() => {
           </h2>
 
           <div style={{ position: "relative", zIndex: 1 }}>
-            <Slider key={sliderKey} {...clientsSliderSettings}>
+            <Slider key={clientsKey} {...clientsSliderSettings}>
               {clientsData.map((client, index) => (
                 <div key={index} style={{ padding: "0 10px" }}>
                   <div
@@ -1111,27 +1117,27 @@ useEffect(() => {
           height: 100%;
         }
 
-        .slick-slider,
-.slick-list,
+       /* Ensure slick recalculates properly on mobile */
 .slick-track {
-  transform: translate3d(0,0,0); /* force GPU repaint */
-}
-
-.slick-track {
+  transform: translate3d(0,0,0) !important;  /* GPU repaint */
   will-change: transform, width;
+  display: flex;
+  align-items: stretch;
 }
 
 
-        .slick-track {
-          display: flex;
-          align-items: stretch;
-        }
 
-        @media (max-width: 768px) {
-          .slick-dots {
-            bottom: -50px !important;
-          }
-        }
+
+@media (max-width: 768px) {
+  .slick-slide {
+    flex: 0 0 90% !important;
+    max-width: 90% !important;
+    margin: 0 auto !important;
+    box-sizing: border-box;
+  }
+}
+
+
 
         /* Custom scrollbar */
         ::-webkit-scrollbar {
