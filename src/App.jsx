@@ -29,6 +29,15 @@ export default function App() {
   const contactRef = useRef(null);
   const clientsRef = useRef(null);
 
+
+  useEffect(() => {
+  // Force Slick to recalc widths on initial load (fixes squish on mobile)
+  setTimeout(() => {
+    window.dispatchEvent(new Event("resize"));
+  }, 500);
+}, []);
+
+
   const scrollToSection = (ref) => {
     if (!ref) {
       window.scrollTo({ top: 0, behavior: "smooth" });
