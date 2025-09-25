@@ -1121,10 +1121,9 @@ const servicesSliderSettings = {
 
        /* Ensure slick recalculates properly on mobile */
 .slick-track {
-  transform: translate3d(0,0,0) !important;  /* GPU repaint */
-  will-change: transform, width;
-
-  align-items: stretch;
+  display: flex !important;       /* makes slides stretch */
+  align-items: stretch !important;
+  will-change: transform, width;  /* keep GPU optimization */
 }
 
 
@@ -1132,10 +1131,11 @@ const servicesSliderSettings = {
 @media (max-width: 768px) {
 
   /* 👇 ensure cards always stretch full height */
-  .slick-slide > div {
-    height: 100% !important;
-    display: flex !important;
-  }
+ .slick-slide > div {
+  height: 100% !important;
+  display: flex !important;
+}
+
 }
 
 
