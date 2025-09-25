@@ -1117,14 +1117,7 @@ useEffect(() => {
           height: 100%;
         }
 
-       /* Ensure slick recalculates properly on mobile */
-.slick-track {
-  transform: translate3d(0,0,0) !important;  /* GPU repaint */
-  will-change: transform, width;
-  display: flex;
-  align-items: stretch;
-}
-
+ 
 
 
 
