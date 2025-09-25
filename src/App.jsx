@@ -326,7 +326,7 @@ export default function App() {
           </div>
         </section>
 
-     /* Enhanced Services Section */
+     {/* Enhanced Services Section */}
 <section
   ref={servicesRef}
   style={{
@@ -387,7 +387,7 @@ export default function App() {
   </p>
 
   <div style={{ position: "relative", zIndex: 1 }}>
-    <Slider key={refreshKey} {...servicesSliderSettings}>
+    <Slider {...servicesSliderSettings}>
       {servicesData.map((service, idx) => (
         <div key={idx} style={{ padding: "0 8px" }}>
           <div
