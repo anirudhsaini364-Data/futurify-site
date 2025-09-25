@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import ReCAPTCHA from "react-google-recaptcha";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
+import { Link } from "react-router-dom";
 
 export default function App() {
   const particlesInit = useCallback(async (engine) => {
@@ -195,7 +195,9 @@ const servicesSliderSettings = {
         style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", zIndex: -1 }}
       />
 
-     {/* Enhanced Futuristic Navbar */}
+     
+
+{/* Enhanced Futuristic Navbar */}
 <nav
   style={{
     position: "fixed",
@@ -246,17 +248,14 @@ const servicesSliderSettings = {
       { name: "About", ref: aboutRef },
       { name: "Why Us", ref: whyRef },
       { name: "Clients", ref: clientsRef },
-      { name: "Projects", ref: "projects" }, // NEW
     ].map((item) => (
       <button
         key={item.name}
-        onClick={() => {
-          if (item.name === "Projects") {
-            window.location.href = "/projects"; // Navigate to Projects page
-          } else {
-            scrollToSection(item.ref);
-          }
-        }}
+        onClick={() =>
+          item.ref
+            ? scrollToSection(item.ref)
+            : window.scrollTo({ top: 0, behavior: "smooth" })
+        }
         style={{
           background: "rgba(0,255,255,0.05)",
           border: "1px solid rgba(0,255,255,0.2)",
@@ -289,6 +288,42 @@ const servicesSliderSettings = {
         {item.name}
       </button>
     ))}
+
+    {/* Projects Link (React Router) */}
+    <Link
+      to="/projects"
+      style={{
+        background: "rgba(0,255,255,0.05)",
+        border: "1px solid rgba(0,255,255,0.2)",
+        color: "#ffffff",
+        fontSize: window.innerWidth < 768 ? "0.9rem" : "1rem",
+        cursor: "pointer",
+        padding: "10px 20px",
+        borderRadius: "12px",
+        transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+        position: "relative",
+        fontWeight: "500",
+        overflow: "hidden",
+        textDecoration: "none",
+      }}
+      onMouseEnter={(e) => {
+        e.target.style.color = "#000";
+        e.target.style.background =
+          "linear-gradient(45deg, #00ffff, #1de9b6)";
+        e.target.style.borderColor = "#00ffff";
+        e.target.style.boxShadow = "0 0 20px rgba(0,255,255,0.5)";
+        e.target.style.transform = "translateY(-2px)";
+      }}
+      onMouseLeave={(e) => {
+        e.target.style.color = "#ffffff";
+        e.target.style.background = "rgba(0,255,255,0.05)";
+        e.target.style.borderColor = "rgba(0,255,255,0.2)";
+        e.target.style.boxShadow = "none";
+        e.target.style.transform = "translateY(0)";
+      }}
+    >
+      Projects
+    </Link>
   </div>
 </nav>
 
