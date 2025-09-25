@@ -120,7 +120,7 @@ useEffect(() => {
     { name: "HCL Technologies", work: "Built real-time monitoring systems", impact: "Improved system uptime by 45%" },
   ];
 
- const servicesSliderSettings = {
+const servicesSliderSettings = {
   dots: true,
   infinite: true,
   speed: 800,
@@ -129,14 +129,15 @@ useEffect(() => {
   autoplay: true,
   autoplaySpeed: 3500,
   pauseOnHover: true,
-  rresponsive: [
-  { breakpoint: 600, settings: { slidesToShow: 1 } },
-  { breakpoint: 900, settings: { slidesToShow: 2 } },
-  { breakpoint: 1200, settings: { slidesToShow: 3 } },
-  { breakpoint: 1600, settings: { slidesToShow: 4 } },
-  { breakpoint: 9999, settings: { slidesToShow: 5 } }, // desktop max
-],
+  responsive: [
+    { breakpoint: 600, settings: { slidesToShow: 1 } },
+    { breakpoint: 900, settings: { slidesToShow: 2 } },
+    { breakpoint: 1200, settings: { slidesToShow: 3 } },
+    { breakpoint: 1600, settings: { slidesToShow: 4 } },
+    { breakpoint: 9999, settings: { slidesToShow: 5 } }, // desktop max
+  ],
 };
+
 
   const clientsSliderSettings = {
   dots: false,
@@ -1122,20 +1123,13 @@ useEffect(() => {
 .slick-track {
   transform: translate3d(0,0,0) !important;  /* GPU repaint */
   will-change: transform, width;
-  display: flex;
+
   align-items: stretch;
 }
 
 
 
-
 @media (max-width: 768px) {
-  .slick-slide {
-    flex: 0 0 90% !important;   /* one card width */
-    max-width: 90% !important;
-    margin: 0 auto !important;
-    box-sizing: border-box;
-  }
 
   /* 👇 ensure cards always stretch full height */
   .slick-slide > div {
